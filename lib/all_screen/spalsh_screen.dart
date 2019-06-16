@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       CircleAvatar(
                         backgroundColor: Colors.white,
                         radius: 50.0,
-                        child: Imagesassert(),
+                        child: ImagesAssert(),
                       ),
 
                       Padding(padding: EdgeInsets.only(top: 10.0,bottom: 10.0),
@@ -58,7 +58,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   ),
                 ),
               ),
-              Expanded(
+              /*Expanded(
                 flex: 2,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -66,7 +66,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     CircularProgressIndicator(backgroundColor: Color(0xffe71827),strokeWidth: 5.0,valueColor: new AlwaysStoppedAnimation<Color>(Color(0xff292664)),),
                   ],
                 ),
-              ),
+              ),*/
             ],
           )
         ],
@@ -77,7 +77,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void navigationPage() {
     Navigator.of(
         context).pushReplacementNamed(
-        '/LoginScreen');
+        '/Route');
   }
   @override
   void initState() {
@@ -85,7 +85,7 @@ class _SplashScreenState extends State<SplashScreen> {
     startTime();
   }
 }
-class Imagesassert extends StatelessWidget{
+class ImagesAssert extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     AssetImage assetmage = AssetImage('images/aulogo.png');
