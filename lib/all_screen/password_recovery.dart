@@ -216,7 +216,7 @@ class RegisterButton extends StatelessWidget {
   final TextEditingController emailIdController;
   final TextEditingController passwordController;
   final TextEditingController confirmPasswordController;
-  final postUrl = "http://192.168.0.106:8080/JavaAPI/rest/services/register";
+  final postUrl = "http://172.20.10.2:8080/JavaAPI/rest/services/register";
 
   const RegisterButton({
     @required this.emailIdController,

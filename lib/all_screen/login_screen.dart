@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:myfirst/all_screen/register_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'admin_home_screen.dart';
+import 'student_home_screen.dart';
 
 var selectedVal = "Student";
 
@@ -338,7 +339,7 @@ class SignInButtonState extends State {
   final TextEditingController passwordController;
   bool apiCall = false, timedOut = false;
   static final postUrl =
-      'http://192.168.0.106:8080/JavaAPI/rest/services/authenticate';
+      'http://172.20.10.2:8080/JavaAPI/rest/services/authenticate';
 
   SharedPreferences preferences;
   static const String key1 = "email";
@@ -452,27 +453,26 @@ class SignInButtonState extends State {
                         ).timeout(
                             Duration(
                               seconds: 20, //Set timeout to 10 seconds
+                            ), onTimeout: () {
+                          setState(() {
+                            timedOut = true;
+                          });
+                          Scaffold.of(context).showSnackBar(SnackBar(
+                            content: Text(
+                              'Server Timed Out',
+                              style: TextStyle(color: Colors.white),
                             ),
-                            onTimeout: () {
-                              setState(() {
-                                timedOut = true;
-                              });
-                              Scaffold.of(context).showSnackBar(SnackBar(
-                                content: Text(
-                                  'Server Timed Out',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                                action: SnackBarAction(
-                                  label: 'OK',
-                                  onPressed: () {
-                                    print(timedOut);
-                                  },
-                                  textColor: Colors.white,
-                                ),
-                                backgroundColor: Colors.red,
-                                duration: Duration(seconds: 3),
-                              ));
-                            });
+                            action: SnackBarAction(
+                              label: 'OK',
+                              onPressed: () {
+                                print(timedOut);
+                              },
+                              textColor: Colors.white,
+                            ),
+                            backgroundColor: Colors.red,
+                            duration: Duration(seconds: 3),
+                          ));
+                        });
                         var res = post.body;
                         if (res == "true") {
                           this._setEmailPref(email);
@@ -480,7 +480,16 @@ class SignInButtonState extends State {
                           setState(() {
                             apiCall = false;
                           });
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AdminHome() ));
+                          selectedVal == "Student"
+                              ? Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          StudentHomeScreen()))
+                              : Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => AdminHome()));
                           /*Scaffold.of(context).showSnackBar(SnackBar(
                             content: Text(
                               'Logged In ! :)',
@@ -498,19 +507,19 @@ class SignInButtonState extends State {
                           setState(() {
                             apiCall = false;
                           });
-                            Scaffold.of(context).showSnackBar(SnackBar(
-                              content: Text(
-                                'Invalid Login Credentials :(',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              action: SnackBarAction(
-                                label: 'OK',
-                                onPressed: () {},
-                                textColor: Colors.white,
-                              ),
-                              backgroundColor: Colors.red,
-                              duration: Duration(seconds: 3),
-                            ));
+                          Scaffold.of(context).showSnackBar(SnackBar(
+                            content: Text(
+                              'Invalid Login Credentials :(',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            action: SnackBarAction(
+                              label: 'OK',
+                              onPressed: () {},
+                              textColor: Colors.white,
+                            ),
+                            backgroundColor: Colors.red,
+                            duration: Duration(seconds: 3),
+                          ));
                         }
                       } catch (e) {
                         setState(() {

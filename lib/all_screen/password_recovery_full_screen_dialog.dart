@@ -34,7 +34,7 @@ class PasswordRecoveryFullScreenDialogState extends State {
   String password;
   String confirmPassword;
   int otp;
-  final postUrl = "http://192.168.0.106:8080/JavaAPI/rest/services/recovery";
+  final postUrl = "http://172.20.10.2:8080/JavaAPI/rest/services/recovery";
   PasswordRecoveryFullScreenDialogState({
     @required this.emailId,
     @required this.password,

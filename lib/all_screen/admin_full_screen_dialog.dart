@@ -29,7 +29,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
   String selectedRadio = "A";
   bool apiCall = false, timedOut = false;
   static final postUrl =
-      'http://192.168.0.106:8080/JavaAPI/rest/services/updateEvent';
+      'http://172.20.10.2:8080/JavaAPI/rest/services/updateEvent';
   final List<String> _dropdownValues = [
     "A",
     "B",

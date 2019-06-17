@@ -12,7 +12,7 @@ import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'login_screen.dart';
 
-final String ip = "192.168.0.106";
+final String ip = "172.20.10.2";
 Set<String> eventDates = new Set();
 List<Event> events;
 bool apiCall = false, timedOut = false;

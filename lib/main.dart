@@ -6,6 +6,7 @@ import 'all_screen/register_screen.dart';
 import 'all_screen/password_recovery.dart';
 import 'all_screen/admin_home_screen.dart';
 import 'all_screen/admin_event_screen_final.dart';
+import 'all_screen/student_home_screen.dart';
 
 void main() => runApp(new Myflutter());
 
@@ -63,7 +64,7 @@ class MyFlutterState extends State {
               }
             : userPref == "Student"
                 ? <String, WidgetBuilder>{
-                    '/Route': (BuildContext context) => new RegisterScreen()
+                    '/Route': (BuildContext context) => new StudentHomeScreen()
                   }
                 : <String, WidgetBuilder>{
                     '/Route': (BuildContext context) =>
