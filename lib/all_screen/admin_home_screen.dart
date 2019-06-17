@@ -2,17 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'Events.dart';
-import 'dart:io';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'update_event_full_screen_dialog.dart';
 
 import 'admin_full_screen_dialog.dart';
-import 'package:intl/intl.dart';
-import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'login_screen.dart';
+import 'resources.dart';
 
-final String ip = "172.20.10.2";
+final String ip = Resource.ip;
 Set<String> eventDates = new Set();
 List<Event> events;
 bool apiCall = false, timedOut = false;
@@ -26,6 +23,7 @@ class _AdminHomeState extends State<AdminHome> {
   _AdminHomeState() {
     apiCall = true;
     getData().then((val) {
+      eventDates.forEach((d) => print("Dates: $d"));
       setState(() {
         apiCall = false;
       });
@@ -42,7 +40,10 @@ class _AdminHomeState extends State<AdminHome> {
         final List parsedList = json.decode(res.body);
         setState(() {
 //          apiCall = false;
-          if (events != null) events.clear();
+          if (events != null) {
+            events.clear();
+            eventDates.clear();
+          }
           events = parsedList.map((val) => Event.fromJson(val)).toList();
           events.forEach((e) {
             eventDates.add(e.date);
@@ -58,6 +59,8 @@ class _AdminHomeState extends State<AdminHome> {
         showDialog(
             context: context,
             builder: (BuildContext context) => AlertDialog(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0))),
                   title: Text("Status"),
                   content: Text(
                     "It takes too long than usual, please referesh.",
@@ -65,7 +68,8 @@ class _AdminHomeState extends State<AdminHome> {
                   ),
                   actions: <Widget>[
                     FlatButton(
-                      child: Text('OK', style: TextStyle(color: Color(0xff292664))),
+                      child: Text('OK',
+                          style: TextStyle(color: Color(0xff292664))),
                       onPressed: () {
                         Navigator.pop(context, 'OK');
                       },
@@ -86,6 +90,8 @@ class _AdminHomeState extends State<AdminHome> {
         showDialog(
             context: context,
             builder: (BuildContext context) => AlertDialog(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0))),
                   title: Text("Status"),
                   content: Text(
                     "Server could not be reached ⚠️",
@@ -93,7 +99,8 @@ class _AdminHomeState extends State<AdminHome> {
                   ),
                   actions: <Widget>[
                     FlatButton(
-                      child: Text('OK', style: TextStyle(color: Color(0xff292664))),
+                      child: Text('OK',
+                          style: TextStyle(color: Color(0xff292664))),
                       onPressed: () {
                         Navigator.pop(context, 'OK');
                       },
@@ -134,6 +141,7 @@ class _AdminHomeState extends State<AdminHome> {
                       setState(() {
                         apiCall = true;
                         getData().then((val) {
+                          eventDates.forEach((d) => print("Dates: $d"));
                           setState(() {
                             apiCall = false;
                           });
@@ -147,18 +155,30 @@ class _AdminHomeState extends State<AdminHome> {
             /**/
             IconButton(
               icon: Icon(Icons.power_settings_new),
-              color: Colors.white,
+              color: Color(0xffe71827),
               onPressed: () {
                 showDialog(
                     context: context,
                     builder: (BuildContext context) => AlertDialog(
-                          title: Text("Log Out"),
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10.0))),
+                          title: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(
+                                Icons.exit_to_app,
+                                color: Color(0xffe71827),
+                                size: 30.0,
+                              ),
+                            ],
+                          ),
                           content: Text(
-                            "Are you sure you want to \nlog out ?",
+                            "Are you sure you want to \nsign out ?",
                           ),
                           actions: <Widget>[
                             FlatButton(
-                              child: Text('Log Out',
+                              child: Text('Sign Out',
                                   style: TextStyle(color: Color(0xffe71827))),
                               onPressed: () async {
                                 var pref =
@@ -174,11 +194,14 @@ class _AdminHomeState extends State<AdminHome> {
                             ),
                             FlatButton(
                                 onPressed: () => Navigator.pop(context, 'OK'),
-                                child: Text("Cancel", style: TextStyle(color: Colors.black),))
+                                child: Text(
+                                  "Cancel",
+                                  style: TextStyle(color: Colors.black),
+                                ))
                           ],
                         ));
               },
-              tooltip: "Log Out",
+              tooltip: "Sign Out",
             )
           ],
           bottom: apiCall
@@ -199,10 +222,12 @@ class _AdminHomeState extends State<AdminHome> {
                               ? Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
-                                    Text(
-                                      "No events are available",
-                                      style: TextStyle(
-                                        fontSize: 20.0,
+                                    Center(
+                                      child: Text(
+                                        "No events are available",
+                                        style: TextStyle(
+                                          fontSize: 20.0,
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -298,6 +323,9 @@ class EventDetailsExpansionTileState extends State {
                 showDialog(
                     context: context,
                     builder: (BuildContext context) => AlertDialog(
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10.0))),
                           title: Text("Action"),
                           content: Text(
                               "Are you sure you want to delete this event ?"),
@@ -384,6 +412,9 @@ class EventDetailsExpansionTileState extends State {
             showDialog(
                 context: context,
                 builder: (BuildContext context) => AlertDialog(
+                      shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(10.0))),
                       title: Text(e.activity),
                       content: SingleChildScrollView(
                         child: e.description == "null" || e.description == ""
@@ -490,7 +521,11 @@ class EventDetailsExpansionTileState extends State {
       ).then((res) {
         final List parsedList = json.decode(res.body);
         setState(() {
-          if (events != null) events.clear();
+          eventDates.clear();
+          if (events != null) {
+            events.clear();
+            eventDates.clear();
+          }
           events = parsedList.map((val) => Event.fromJson(val)).toList();
           events.forEach((e) {
             eventDates.add(e.date);
@@ -506,6 +541,8 @@ class EventDetailsExpansionTileState extends State {
         showDialog(
             context: context,
             builder: (BuildContext context) => AlertDialog(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0))),
                   title: Text("Status"),
                   content: Text(
                     "It takes too long than usual, please referesh.",
@@ -513,7 +550,8 @@ class EventDetailsExpansionTileState extends State {
                   ),
                   actions: <Widget>[
                     FlatButton(
-                      child: Text('OK', style: TextStyle(color: Color(0xff292664))),
+                      child: Text('OK',
+                          style: TextStyle(color: Color(0xff292664))),
                       onPressed: () {
                         Navigator.pop(context, 'OK');
                       },
@@ -534,6 +572,8 @@ class EventDetailsExpansionTileState extends State {
         showDialog(
             context: context,
             builder: (BuildContext context) => AlertDialog(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0))),
                   title: Text("Status"),
                   content: Text(
                     "Server could not be reached ⚠️",
@@ -541,7 +581,8 @@ class EventDetailsExpansionTileState extends State {
                   ),
                   actions: <Widget>[
                     FlatButton(
-                      child: Text('OK', style: TextStyle(color: Color(0xff292664))),
+                      child: Text('OK',
+                          style: TextStyle(color: Color(0xff292664))),
                       onPressed: () {
                         Navigator.pop(context, 'OK');
                       },

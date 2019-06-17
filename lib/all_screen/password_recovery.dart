@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'password_recovery_full_screen_dialog.dart';
 import 'dart:math' as math;
 import 'Email.dart';
+import 'resources.dart';
 
 class PasswordRecoveryScreen extends StatelessWidget{
   @override
@@ -53,7 +54,7 @@ class PasswordRecoveryState extends State{
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    colors: [Color(0xff558fe0), Color(0xff558fe0)],
+                    colors: [Color(0xff292664), Color(0xff292664)],
                   ),
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(0),
@@ -189,8 +190,8 @@ class PasswordRecoveryState extends State{
                 alignment: Alignment.center,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 33.0, top: 10.0),
-                  child: Text("Password Should contain 8 or more characters, Upper & Lower letters and Atleast one number.",
-                    style: TextStyle(color: Colors.indigo,wordSpacing: 1.0),
+                  child: Text("Password Should contain 6 or more characters, atleast one letter and one number.",
+                    style: TextStyle(color: Color(0xff292664),wordSpacing: 1.0),
                   ),
                 ),
               ),
@@ -216,7 +217,7 @@ class RegisterButton extends StatelessWidget {
   final TextEditingController emailIdController;
   final TextEditingController passwordController;
   final TextEditingController confirmPasswordController;
-  final postUrl = "http://172.20.10.2:8080/JavaAPI/rest/services/register";
+  static final postUrl = "http://${Resource.ip}:8080/JavaAPI/rest/services/register";
 
   const RegisterButton({
     @required this.emailIdController,
@@ -232,7 +233,7 @@ class RegisterButton extends StatelessWidget {
       width: MediaQuery.of(context).size.width / 2.5,
       height: 40.0,
       child: RaisedButton(
-        color: Color(0xff558fe0),
+        color: Color(0xff292664),
         child: Center(
           child: FittedBox(
             fit: BoxFit.fitWidth,
@@ -260,7 +261,7 @@ class RegisterButton extends StatelessWidget {
               if (password == confirmPassword) {
                 // Regular Expression for password validation
                 var pswdRegex =
-                    r"^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$";
+                    r"^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,}$";
                 RegExp regExp1 = new RegExp(pswdRegex);
                 if (regExp1.hasMatch(password)) {
                   //Generating random number for otp
@@ -291,7 +292,7 @@ class RegisterButton extends StatelessWidget {
                       onPressed: () {},
                       textColor: Colors.white,
                     ),
-                    backgroundColor: Colors.red,
+                    backgroundColor: Color(0xffe71827),
                     duration: Duration(seconds: 2),
                   ));
                 }
@@ -306,7 +307,7 @@ class RegisterButton extends StatelessWidget {
                     onPressed: () {},
                     textColor: Colors.white,
                   ),
-                  backgroundColor: Colors.red,
+                  backgroundColor: Color(0xffe71827),
                   duration: Duration(seconds: 2),
                 ));
               }
@@ -321,7 +322,7 @@ class RegisterButton extends StatelessWidget {
                   onPressed: () {},
                   textColor: Colors.white,
                 ),
-                backgroundColor: Colors.red,
+                backgroundColor: Color(0xffe71827),
                 duration: Duration(seconds: 2),
               ));
             }
@@ -336,7 +337,7 @@ class RegisterButton extends StatelessWidget {
                 onPressed: () {},
                 textColor: Colors.white,
               ),
-              backgroundColor: Colors.red,
+              backgroundColor: Color(0xffe71827),
               duration: Duration(seconds: 2),
             ));
           }

@@ -11,11 +11,12 @@ class _ImageScreenState extends State<ImageScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: Text("Image Gallery"),
+        backgroundColor: Color(0xff292664),
+        title: Text("Image Gallery", style: TextStyle(color: Colors.white),),
         centerTitle: true,
         leading: IconButton(
             icon: Icon(Icons.arrow_back),
+            color: Colors.white,
             onPressed: () => Navigator.of(context).pop()),
       ),
       body: SingleChildScrollView(
@@ -39,7 +40,7 @@ class _ImageScreenState extends State<ImageScreen> {
               ExpansionTile(
                 leading: Icon(
                   Icons.school,
-                  color: Colors.redAccent,
+                  color: Color(0xffe71827),
                 ),
                 title: Text(
                   "School of Engineering and Applied Science",
@@ -52,7 +53,17 @@ class _ImageScreenState extends State<ImageScreen> {
                     child: Text(
                       "Address: Ahmedabad University, GICT Building, Central Campus, Navrangpura, Ahmedabad, Gujarat 380009",
                       style: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.w500),
+                          fontSize: 20.0, fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        right: 20.0, left: 20.0, bottom: 20.0, top: 10.0),
+                    child: Text(
+                      "The School of Engineering and Applied Science, Ahmedabad University, "
+                          "offers BTech, MTech and PhD programmes in a range of disciplines.",
+                      style: TextStyle(
+                          fontSize: 20.0, fontWeight: FontWeight.w400),
                     ),
                   ),
                   Padding(
@@ -61,67 +72,34 @@ class _ImageScreenState extends State<ImageScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        GestureDetector(
-                          onTap: () {
+                        IconButton(
+                          onPressed: () {
                             setState(() {
                               AllCallMap()._callMe();
                             });
                           },
-                          child: Column(
-                            children: <Widget>[
-                              Icon(
-                                Icons.phone,
-                                color: Colors.blueAccent,
-                              ),
-                              Text(
-                                "Call",
-                                style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.blue),
-                              ),
-                            ],
-                          ),
+                          icon: Icon(Icons.phone),
+                          color: Colors.blueAccent,
+                          tooltip: "Call",
                         ),
                         Divider(
                           color: Colors.black,
                           indent: 100.0,
                         ),
-                        GestureDetector(
-                          onTap: () {
+                        IconButton(
+                          onPressed: () {
                             setState(() {
                               AllCallMap()._launchMaps();
                             });
                           },
-                          child: Column(
-                            children: <Widget>[
-                              Icon(
-                                Icons.map,
-                                color: Colors.blueAccent,
-                              ),
-                              Text(
-                                "Map",
-                                style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.blue),
-                              ),
-                            ],
-                          ),
+                          icon: Icon(Icons.location_on),
+                          color: Colors.blueAccent,
+                          tooltip: "Call",
                         ),
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        right: 20.0, left: 20.0, bottom: 20.0, top: 10.0),
-                    child: Text(
-                      "The School of Engineering and Applied Science, Ahmedabad University, "
-                      "offers BTech, MTech and PhD programmes in a range of disciplines.",
-                      style: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.w500),
-                    ),
-                  ),
+
                 ],
               ),
               Divider(
@@ -144,7 +122,7 @@ class _ImageScreenState extends State<ImageScreen> {
               ExpansionTile(
                 leading: Icon(
                   Icons.school,
-                  color: Colors.redAccent,
+                  color: Color(0xffe71827),
                 ),
                 title: Text(
                   "Amrut Mody School of Management",
@@ -157,7 +135,19 @@ class _ImageScreenState extends State<ImageScreen> {
                     child: Text(
                       "Address: Ahmedabad University, GICT Building, Central Campus, Navrangpura, Ahmedabad, Gujarat 380009",
                       style: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.w500),
+                          fontSize: 20.0, fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        right: 20.0, left: 20.0, bottom: 20.0, top: 10.0),
+                    child: Text(
+                      "The Amrut Mody School of Management offers wide-ranging,"
+                          " multi-faceted management education through undergraduate,"
+                          " graduate and doctoral programmes. We also offer short-term "
+                          "certificate programmes for working professionals and other practitioners.",
+                      style: TextStyle(
+                          fontSize: 20.0, fontWeight: FontWeight.w400),
                     ),
                   ),
                   Padding(
@@ -166,69 +156,34 @@ class _ImageScreenState extends State<ImageScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        GestureDetector(
-                          onTap: () {
+                        IconButton(
+                          onPressed: () {
                             setState(() {
                               AllCallMap()._callMe();
                             });
                           },
-                          child: Column(
-                            children: <Widget>[
-                              Icon(
-                                Icons.phone,
-                                color: Colors.blueAccent,
-                              ),
-                              Text(
-                                "Call",
-                                style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.blue),
-                              ),
-                            ],
-                          ),
+                          icon: Icon(Icons.phone),
+                          color: Colors.blueAccent,
+                          tooltip: "Call",
                         ),
                         Divider(
                           color: Colors.black,
                           indent: 100.0,
                         ),
-                        GestureDetector(
-                          onTap: () {
+                        IconButton(
+                          onPressed: () {
                             setState(() {
                               AllCallMap()._launchMaps();
                             });
                           },
-                          child: Column(
-                            children: <Widget>[
-                              Icon(
-                                Icons.map,
-                                color: Colors.blueAccent,
-                              ),
-                              Text(
-                                "Map",
-                                style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.blue),
-                              ),
-                            ],
-                          ),
+                          icon: Icon(Icons.location_on),
+                          color: Colors.blueAccent,
+                          tooltip: "Call",
                         ),
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        right: 20.0, left: 20.0, bottom: 20.0, top: 10.0),
-                    child: Text(
-                      "The Amrut Mody School of Management offers wide-ranging,"
-                      " multi-faceted management education through undergraduate,"
-                      " graduate and doctoral programmes. We also offer short-term "
-                      "certificate programmes for working professionals and other practitioners.",
-                      style: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.w500),
-                    ),
-                  ),
+
                 ],
               ),
               Divider(
@@ -251,7 +206,7 @@ class _ImageScreenState extends State<ImageScreen> {
               ExpansionTile(
                 leading: Icon(
                   Icons.school,
-                  color: Colors.redAccent,
+                  color: Color(0xffe71827),
                 ),
                 title: Text(
                   "Biological & Life Sciences, School of Arts and Sciences, Ahmedabad University",
@@ -264,7 +219,21 @@ class _ImageScreenState extends State<ImageScreen> {
                     child: Text(
                       "Address: Ahmedabad University Central Campus, Navrangpura, Ahmedabad, Gujarat 380009",
                       style: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.w500),
+                          fontSize: 20.0, fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        right: 20.0, left: 20.0, bottom: 20.0, top: 10.0),
+                    child: Text(
+                      "The Biological and Life Sciences division is part of "
+                          "the new School of Arts and Sciences at Ahmedabad University. "
+                          "It began in 2012 with a vision to nurture science, knowledge "
+                          "and innovation among highly motivated graduate students and "
+                          "researchers looking to break new ground in their chosen specialisations. "
+                          "It currently offers a five-year Integrated MS in Life Sciences, as well as a PhD programme.",
+                      style: TextStyle(
+                          fontSize: 20.0, fontWeight: FontWeight.w400),
                     ),
                   ),
                   Padding(
@@ -273,71 +242,34 @@ class _ImageScreenState extends State<ImageScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        GestureDetector(
-                          onTap: () {
+                        IconButton(
+                          onPressed: () {
                             setState(() {
                               AllCallMap()._callMeBiological();
                             });
                           },
-                          child: Column(
-                            children: <Widget>[
-                              Icon(
-                                Icons.phone,
-                                color: Colors.blueAccent,
-                              ),
-                              Text(
-                                "Call",
-                                style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.blue),
-                              ),
-                            ],
-                          ),
+                          icon: Icon(Icons.phone),
+                          color: Colors.blueAccent,
+                          tooltip: "Call",
                         ),
                         Divider(
                           color: Colors.black,
                           indent: 100.0,
                         ),
-                        GestureDetector(
-                          onTap: () {
+                        IconButton(
+                          onPressed: () {
                             setState(() {
                               AllCallMap()._launchMapsBiological();
                             });
                           },
-                          child: Column(
-                            children: <Widget>[
-                              Icon(
-                                Icons.map,
-                                color: Colors.blueAccent,
-                              ),
-                              Text(
-                                "Map",
-                                style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.blue),
-                              ),
-                            ],
-                          ),
+                          icon: Icon(Icons.location_on),
+                          color: Colors.blueAccent,
+                          tooltip: "Call",
                         ),
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        right: 20.0, left: 20.0, bottom: 20.0, top: 10.0),
-                    child: Text(
-                      "The School of Arts and Sciences at Ahmedabad University is "
-                      "in the process of being built, physically and institutionally."
-                      " It will help to form the core of the University’s educational "
-                      "experience. We will offer undergraduate and graduate learning to"
-                      " the highest academic standards in a variety of disciplines, spanning "
-                      "the range from visual arts to life sciences, from mathematics to history.",
-                      style: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.w500),
-                    ),
-                  ),
+
                 ],
               ),
               Divider(
@@ -360,7 +292,7 @@ class _ImageScreenState extends State<ImageScreen> {
               ExpansionTile(
                 leading: Icon(
                   Icons.school,
-                  color: Colors.redAccent,
+                  color: Color(0xffe71827),
                 ),
                 title: Text(
                   "Centre for Heritage Management (CHM)",
@@ -373,7 +305,20 @@ class _ImageScreenState extends State<ImageScreen> {
                     child: Text(
                       "Address: Asmita Bhavan, Central Campus, Navrangpura, Ahmedabad, Gujarat 380009",
                       style: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.w500),
+                          fontSize: 20.0, fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        right: 20.0, left: 20.0, bottom: 20.0, top: 10.0),
+                    child: Text(
+                      "The Centre for Heritage Management (CHM) at Ahmedabad University "
+                          "is a unique institution in India, specialising in the niche "
+                          "but very significant study of heritage management. Through "
+                          "our research and study, we aim to promote the conservation "
+                          "and management of the invaluable heritage assets of our communities.",
+                      style: TextStyle(
+                          fontSize: 20.0, fontWeight: FontWeight.w400),
                     ),
                   ),
                   Padding(
@@ -382,68 +327,34 @@ class _ImageScreenState extends State<ImageScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        GestureDetector(
-                          onTap: () {
+                        IconButton(
+                          onPressed: () {
                             setState(() {
                               AllCallMap()._callMeCHM();
                             });
                           },
-                          child: Column(
-                            children: <Widget>[
-                              Icon(
-                                Icons.phone,
-                                color: Colors.blueAccent,
-                              ),
-                              Text(
-                                "Call",
-                                style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.blue),
-                              ),
-                            ],
-                          ),
+                          icon: Icon(Icons.phone),
+                          color: Colors.blueAccent,
+                          tooltip: "Call",
                         ),
                         Divider(
                           color: Colors.black,
                           indent: 100.0,
                         ),
-                        GestureDetector(
-                          onTap: () {
+                        IconButton(
+                          onPressed: () {
                             setState(() {
                               AllCallMap()._launchMapsCHM();
                             });
                           },
-                          child: Column(
-                            children: <Widget>[
-                              Icon(
-                                Icons.map,
-                                color: Colors.blueAccent,
-                              ),
-                              Text(
-                                "Map",
-                                style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.blue),
-                              ),
-                            ],
-                          ),
+                          icon: Icon(Icons.location_on),
+                          color: Colors.blueAccent,
+                          tooltip: "Call",
                         ),
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        right: 20.0, left: 20.0, bottom: 20.0, top: 10.0),
-                    child: Text(
-                      "To foster critical discourses on the broader domain of heritage, and to"
-                      " promote a holistic heritage management approach as a guidance"
-                      " for sustainable and just social development.",
-                      style: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.w500),
-                    ),
-                  ),
+
                 ],
               ),
               Divider(
@@ -467,7 +378,7 @@ class _ImageScreenState extends State<ImageScreen> {
               ExpansionTile(
                 leading: Icon(
                   Icons.school,
-                  color: Colors.redAccent,
+                  color: Color(0xffe71827),
                 ),
                 title: Text(
                   "Venture Studio, Ahmedabad University",
@@ -480,7 +391,20 @@ class _ImageScreenState extends State<ImageScreen> {
                     child: Text(
                       "Address: AG Teacher's School Campus, Near Hanuman Temple, Commerce Six Road, Navrangpura, Ahmedabad, Gujarat 380009",
                       style: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.w500),
+                          fontSize: 20.0, fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        right: 20.0, left: 20.0, bottom: 20.0, top: 10.0),
+                    child: Text(
+                      "VentureStudio is a startup incubator established by Ahmedabad University "
+                          "in active collaboration with Stanford University – Centre for Design Research."
+                          " Since its inception in 2011, VentureStudio has helped incubate over 45 "
+                          "ventures in domains ranging health, education, energy and the environment "
+                          "to the agriculture industry, consumer products, transportation and more",
+                      style: TextStyle(
+                          fontSize: 20.0, fontWeight: FontWeight.w400),
                     ),
                   ),
                   Padding(
@@ -489,68 +413,31 @@ class _ImageScreenState extends State<ImageScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        GestureDetector(
-                          onTap: () {
+                        IconButton(
+                          onPressed: () {
                             setState(() {
                               AllCallMap()._callMeVS();
                             });
                           },
-                          child: Column(
-                            children: <Widget>[
-                              Icon(
-                                Icons.phone,
-                                color: Colors.blueAccent,
-                              ),
-                              Text(
-                                "Call",
-                                style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.blue),
-                              ),
-                            ],
-                          ),
+                          icon: Icon(Icons.phone),
+                          color: Colors.blueAccent,
+                          tooltip: "Call",
                         ),
                         Divider(
                           color: Colors.black,
                           indent: 100.0,
                         ),
-                        GestureDetector(
-                          onTap: () {
+                        IconButton(
+                          onPressed: () {
                             setState(() {
                               AllCallMap()._launchMapsVS();
                             });
                           },
-                          child: Column(
-                            children: <Widget>[
-                              Icon(
-                                Icons.map,
-                                color: Colors.blueAccent,
-                              ),
-                              Text(
-                                "Map",
-                                style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.blue),
-                              ),
-                            ],
-                          ),
+                          icon: Icon(Icons.location_on),
+                          color: Colors.blueAccent,
+                          tooltip: "Call",
                         ),
                       ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        right: 20.0, left: 20.0, bottom: 20.0, top: 10.0),
-                    child: Text(
-                      "VentureStudio is a startup incubator established by Ahmedabad University "
-                      "in active collaboration with Stanford University – Centre for Design Research."
-                      " Since its inception in 2011, VentureStudio has helped incubate over 45 "
-                      "ventures in domains ranging health, education, energy and the environment "
-                      "to the agriculture industry, consumer products, transportation and more",
-                      style: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.w500),
                     ),
                   ),
                 ],
@@ -576,7 +463,7 @@ class _ImageScreenState extends State<ImageScreen> {
               ExpansionTile(
                 leading: Icon(
                   Icons.school,
-                  color: Colors.redAccent,
+                  color: Color(0xffe71827),
                 ),
                 title: Text(
                   "School of Computer Studies, Ahmedabad University",
@@ -589,7 +476,21 @@ class _ImageScreenState extends State<ImageScreen> {
                     child: Text(
                       "Address: A.G. Campus Commerce Six Roads, University Road, Vasant Vihar, Navrangpura, Ahmedabad, Gujarat 380009",
                       style: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.w500),
+                          fontSize: 20.0, fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        right: 20.0, left: 20.0, bottom: 20.0, top: 10.0),
+                    child: Text(
+                      "The School of Computer Studies was established in 2000 "
+                          "by the Ahmedabad Education Trust to provide education "
+                          "to students seeking specialised programmes in information technology,"
+                          " creating a focused environment in which to achieve "
+                          "academic excellence and take the first steps to building rewarding careers.",
+                      softWrap: true,
+                      style: TextStyle(
+                          fontSize: 20.0, fontWeight: FontWeight.w400),
                     ),
                   ),
                   Padding(
@@ -598,70 +499,34 @@ class _ImageScreenState extends State<ImageScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        GestureDetector(
-                          onTap: () {
+                        IconButton(
+                          onPressed: () {
                             setState(() {
                               AllCallMap()._callMeSCS();
                             });
                           },
-                          child: Column(
-                            children: <Widget>[
-                              Icon(
-                                Icons.phone,
-                                color: Colors.blueAccent,
-                              ),
-                              Text(
-                                "Call",
-                                style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.blue),
-                              ),
-                            ],
-                          ),
+                          icon: Icon(Icons.phone),
+                          color: Colors.blueAccent,
+                          tooltip: "Call",
                         ),
                         Divider(
                           color: Colors.black,
                           indent: 100.0,
                         ),
-                        GestureDetector(
-                          onTap: () {
+                        IconButton(
+                          onPressed: () {
                             setState(() {
                               AllCallMap()._launchMapsSCS();
                             });
                           },
-                          child: Column(
-                            children: <Widget>[
-                              Icon(
-                                Icons.map,
-                                color: Colors.blueAccent,
-                              ),
-                              Text(
-                                "Map",
-                                style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.blue),
-                              ),
-                            ],
-                          ),
+                          icon: Icon(Icons.location_on),
+                          color: Colors.blueAccent,
+                          tooltip: "Call",
                         ),
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        right: 20.0, left: 20.0, bottom: 20.0, top: 10.0),
-                    child: Text(
-                      "Currently, we offer a post-graduate Master of Computer Applications programme"
-                      " and a five-year integrated MCA programme. Both feature contemporary,"
-                      " industry-oriented curricula and aim to prepare students for "
-                      "excellent professional careers in the IT industry.",
-                      softWrap: true,
-                      style: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.w500),
-                    ),
-                  ),
+
                 ],
               ),
               Divider(

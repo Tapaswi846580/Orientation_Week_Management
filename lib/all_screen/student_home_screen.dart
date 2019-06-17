@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myfirst/all_screen/image_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'login_screen.dart';
+
 void main() => runApp(new StudentHomeScreen());
 
 class StudentHomeScreen extends StatefulWidget {
@@ -34,17 +35,21 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
               PopupMenuButton<String>(
                 onSelected: choiceAction,
                 itemBuilder: (BuildContext context) {
-                  return popup.choice.map((String choice) {
+                  return PopUp.choice.map((String choice) {
                     return PopupMenuItem<String>(
                       value: choice,
-                      child: Text(choice),
+                      child: choice == "Sign Out"
+                          ? Text(
+                              choice,
+                              style: TextStyle(color: Color(0xffe71827)),
+                            )
+                          : Text(choice),
                     );
                   }).toList();
                 },
               ),
-
             ],
-            backgroundColor: Colors.blue,
+            backgroundColor: Color(0xff292664),
             title: Text("Schedule"),
             centerTitle: true,
           ),
@@ -62,7 +67,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                       IconButton(
                           icon: Icon(
                         Icons.arrow_back_ios,
-                        color: Colors.blue,
+                        color: Color(0xff292664),
                         size: 30.0,
                       )),
                       Align(
@@ -70,12 +75,12 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                         child: Text("23 May",
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontWeight: FontWeight.w800, fontSize: 20.0)),
+                                fontWeight: FontWeight.bold, fontSize: 20.0)),
                       ),
                       IconButton(
                           icon: Icon(
                         Icons.arrow_forward_ios,
-                        color: Colors.blue,
+                        color: Color(0xff292664),
                         size: 30.0,
                       )),
                     ],
@@ -92,13 +97,13 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                         children: <Widget>[
                           Icon(
                             Icons.location_on,
-                            color: Colors.orange,
+                            color: Color(0xff292664),
                             size: 40.0,
                           ),
                           Text(
                             "Ahmedabad University, GICT Building, Central Campus, Navrangpura, Ahmedabad, Gujarat 380009",
                             style: TextStyle(
-                                fontSize: 20.0, fontWeight: FontWeight.w500),
+                                fontSize: 20.0, fontWeight: FontWeight.w400),
                             textAlign: TextAlign.center,
                           ),
                         ],
@@ -117,6 +122,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
           )),
     );
   }
+
 /*for Sign Out*/
   void _showDialog() {
     showDialog(
@@ -124,38 +130,37 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
       builder: (BuildContext context) {
         return AlertDialog(
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(20.0))),
+              borderRadius: BorderRadius.all(Radius.circular(10.0))),
           title: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Icon(
-                Icons.info_outline,
-                color: Colors.deepOrange,
+                Icons.exit_to_app,
+                color: Color(0xffe71827),
                 size: 30.0,
               ),
-              new Text("Logging Out"),
             ],
           ),
-          content: new Text("Do you want to log out?"),
+          content: new Text("Are you sure you want to \nsign out ?"),
           actions: <Widget>[
             FlatButton(
-              child: Text('Log Out',
-                  style: TextStyle(color: Color(0xffe71827))),
+              child:
+                  Text('Sign Out', style: TextStyle(color: Color(0xffe71827))),
               onPressed: () async {
-                var pref =
-                await SharedPreferences.getInstance();
+                var pref = await SharedPreferences.getInstance();
                 pref.clear().then((boolVal) {
                   Navigator.pop(context);
-                  Navigator.pushReplacement(
-                      this.context,
-                      MaterialPageRoute(
-                          builder: (context) => LoginScreen()));
+                  Navigator.pushReplacement(this.context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()));
                 });
               },
             ),
             FlatButton(
                 onPressed: () => Navigator.pop(context, 'OK'),
-                child: Text("Cancel", style: TextStyle(color: Colors.black),))
+                child: Text(
+                  "Cancel",
+                  style: TextStyle(color: Colors.black),
+                ))
           ],
         );
       },
@@ -164,7 +169,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
 }
 
 /*For popup menu*/
-class popup {
+class PopUp {
   static const String Images = "Image Gallery";
   static const String SignOut = "Sign Out";
   static const List<String> choice = <String>[Images, SignOut];

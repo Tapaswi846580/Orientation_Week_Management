@@ -7,6 +7,7 @@ import 'package:myfirst/all_screen/register_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'admin_home_screen.dart';
 import 'student_home_screen.dart';
+import 'resources.dart';
 
 var selectedVal = "Student";
 
@@ -95,7 +96,7 @@ class _LoginState extends State<LoginPage> {
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    colors: [Color(0xff558fe0), Color(0xff558fe0)],
+                    colors: [Color(0xff292664), Color(0xff292664)],
                   ),
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(0),
@@ -248,7 +249,7 @@ class _LoginState extends State<LoginPage> {
                         "Lost your Password ?",
                         style: TextStyle(
                             fontSize: 15,
-                            color: Colors.indigo,
+                            color: Color(0xff292664),
                             decorationStyle: TextDecorationStyle.solid,
                             fontStyle: FontStyle.normal,
                             fontWeight: FontWeight.bold,
@@ -288,7 +289,7 @@ class _LoginState extends State<LoginPage> {
                         child: OutlineButton(
                           shape: new RoundedRectangleBorder(
                               borderRadius: new BorderRadius.circular(10.0)),
-                          color: Color(0xff558fe0),
+                          color: Color(0xff292664),
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute<Null>(
                                 builder: (BuildContext context) {
@@ -339,7 +340,7 @@ class SignInButtonState extends State {
   final TextEditingController passwordController;
   bool apiCall = false, timedOut = false;
   static final postUrl =
-      'http://172.20.10.2:8080/JavaAPI/rest/services/authenticate';
+      'http://${Resource.ip}:8080/JavaAPI/rest/services/authenticate';
 
   SharedPreferences preferences;
   static const String key1 = "email";
@@ -416,16 +417,16 @@ class SignInButtonState extends State {
           borderRadius: BorderRadius.all(Radius.circular(50)),
           boxShadow: [
             BoxShadow(
-              color: Colors.blueAccent,
+              color: Color(0xff292664),
               blurRadius: 0,
             )
           ]),
       child: RaisedButton(
-          color: Color(0xff558fe0),
+          color: Color(0xff292664),
           child: Center(
             child: getProperWidget(),
           ),
-          disabledColor: Color(0xff558fe0),
+          disabledColor: Color(0xff292664),
           onPressed: apiCall
               ? null
               : () async {
@@ -469,7 +470,7 @@ class SignInButtonState extends State {
                               },
                               textColor: Colors.white,
                             ),
-                            backgroundColor: Colors.red,
+                            backgroundColor: Color(0xffe71827),
                             duration: Duration(seconds: 3),
                           ));
                         });
@@ -490,19 +491,6 @@ class SignInButtonState extends State {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => AdminHome()));
-                          /*Scaffold.of(context).showSnackBar(SnackBar(
-                            content: Text(
-                              'Logged In ! :)',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            action: SnackBarAction(
-                              label: 'OK',
-                              onPressed: () {},
-                              textColor: Colors.white,
-                            ),
-                            backgroundColor: Colors.green,
-                            duration: Duration(seconds: 3),
-                          ));*/
                         } else {
                           setState(() {
                             apiCall = false;
@@ -517,7 +505,7 @@ class SignInButtonState extends State {
                               onPressed: () {},
                               textColor: Colors.white,
                             ),
-                            backgroundColor: Colors.red,
+                            backgroundColor: Color(0xffe71827),
                             duration: Duration(seconds: 3),
                           ));
                         }
@@ -536,7 +524,7 @@ class SignInButtonState extends State {
                               onPressed: () {},
                               textColor: Colors.white,
                             ),
-                            backgroundColor: Colors.red,
+                            backgroundColor: Color(0xffe71827),
                             duration: Duration(seconds: 3),
                           ));
                         }
@@ -558,7 +546,7 @@ class SignInButtonState extends State {
                           onPressed: () {},
                           textColor: Colors.white,
                         ),
-                        backgroundColor: Colors.red,
+                        backgroundColor: Color(0xffe71827),
                         duration: Duration(seconds: 2),
                       ));
                     }
@@ -577,7 +565,7 @@ class SignInButtonState extends State {
                         onPressed: () {},
                         textColor: Colors.white,
                       ),
-                      backgroundColor: Colors.red,
+                      backgroundColor: Color(0xffe71827),
                       duration: Duration(seconds: 2),
                     ));
                   }

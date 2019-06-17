@@ -4,6 +4,8 @@ import 'dart:convert';
 import 'dart:math' as math;
 import 'Email.dart';
 import 'dart:async';
+import 'resources.dart';
+import 'login_screen.dart';
 
 class RegistrationFullScreenDialog extends StatefulWidget {
   final String emailId;
@@ -34,7 +36,7 @@ class RegistrationFullScreenDialogState extends State {
   String password;
   String confirmPassword;
   int otp;
-  final postUrl = "http://172.20.10.2:8080/JavaAPI/rest/services/register";
+  final postUrl = "http://${Resource.ip}:8080/JavaAPI/rest/services/register";
   RegistrationFullScreenDialogState({
     @required this.emailId,
     @required this.password,
@@ -174,19 +176,26 @@ class RegistrationFullScreenDialogState extends State {
                                         context: context,
                                         builder: (BuildContext context) =>
                                             AlertDialog(
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              10.0))),
                                               title: Text("Status"),
                                               content: Text(
                                                 "OTP Sent !",
-                                                style:
-                                                    TextStyle(color: Colors.blue),
+                                                style: TextStyle(
+                                                    color: Colors.blue),
                                               ),
                                               actions: <Widget>[
                                                 FlatButton(
                                                   child: Text('OK',
                                                       style: TextStyle(
-                                                          color: Colors.indigo)),
+                                                          color:
+                                                              Colors.indigo)),
                                                   onPressed: () {
-                                                    Navigator.pop(context, 'OK');
+                                                    Navigator.pop(
+                                                        context, 'OK');
                                                   },
                                                 )
                                               ],
@@ -203,6 +212,11 @@ class RegistrationFullScreenDialogState extends State {
                                           context: context,
                                           builder: (BuildContext context) =>
                                               AlertDialog(
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                10.0))),
                                                 title: Text("Status"),
                                                 content: Text(
                                                   "$problem",
@@ -238,140 +252,189 @@ class RegistrationFullScreenDialogState extends State {
                         onPressed: disableButton
                             ? null
                             : () async {
-                          if (otp.toString() == otpController.text) {
-                            setState(() {
-                              disableButton = true;
-                            });
-                            try {
-                              var data = {
-                                'emailId': emailId,
-                                'password': password,
-                              };
-                              var post = await http.post(
-                                Uri.encodeFull( postUrl),
-                                body: json.encode(data),
-                                headers: {"Content-Type": "application/json"},
-                              );
-                              var res = post.body;
-                              if (res == "Done") {
-                                setState(() {
-                                  disableButton = false;
-                                });
-                                showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) =>
-                                        AlertDialog(
-                                          title: Text("Status"),
-                                          content: Text(
-                                            "Successfully Registered ! 😉",
-                                            style: TextStyle(color: Colors.green),
-                                          ),
-                                          actions: <Widget>[
-                                            FlatButton(
-                                              child: Text('OK',
+                                if (otp.toString() == otpController.text) {
+                                  setState(() {
+                                    disableButton = true;
+                                  });
+                                  try {
+                                    var data = {
+                                      'emailId': emailId,
+                                      'password': password,
+                                    };
+                                    var post = await http.post(
+                                      Uri.encodeFull(postUrl),
+                                      body: json.encode(data),
+                                      headers: {
+                                        "Content-Type": "application/json"
+                                      },
+                                    );
+                                    var res = post.body;
+                                    if (res == "Done") {
+                                      setState(() {
+                                        disableButton = false;
+                                      });
+                                      showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              AlertDialog(
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                10.0))),
+                                                title: Text("Status"),
+                                                content: Text(
+                                                  "Successfully Registered ! 😉",
                                                   style: TextStyle(
-                                                      color: Colors.indigo)),
-                                              onPressed: () {
-                                                otp = null;
-                                                Navigator.pop(context, 'OK');
-                                              },
-                                            )
-                                          ],
-                                        ));
-                              } else if (res == "Already Registered") {
-                                setState(() {
-                                  disableButton = false;
-                                });
-                                showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) =>
-                                        AlertDialog(
-                                          title: Text("Status"),
-                                          content: Text(
-                                            "This Email Id is already registered 🙁",
-                                            style: TextStyle(color: Colors.red),
-                                          ),
-                                          actions: <Widget>[
-                                            FlatButton(
-                                                child: Text('OK',
-                                                    style: TextStyle(
-                                                        color: Colors.indigo)),
-                                                onPressed: () {
-                                                  otp = null;
-                                                  Navigator.pop(context, 'OK');
-                                                })
-                                          ],
-                                        ));
-                              } else if (res == "Error") {
-                                setState(() {
-                                  disableButton = false;
-                                });
-                                showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) =>
-                                        AlertDialog(
-                                          title: Text("Status"),
-                                          content: Text(
-                                            "Some error has occured, please try again",
-                                            style: TextStyle(color: Colors.red),
-                                          ),
-                                          actions: <Widget>[
-                                            FlatButton(
-                                                child: Text('OK',
-                                                    style: TextStyle(
-                                                        color: Colors.indigo)),
-                                                onPressed: () {
-                                                  otp = null;
-                                                  Navigator.pop(context, 'OK');
-                                                })
-                                          ],
-                                        ));
-                              }
-                            } catch (e) {
-                              setState(() {
-                                disableButton = false;
-                              });
-                              showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) => AlertDialog(
-                                        title: Text("Status"),
-                                        content: Text(
-                                          "Server could not be reached ⚠️",
-                                          style: TextStyle(color: Colors.red),
-                                        ),
-                                        actions: <Widget>[
-                                          FlatButton(
-                                              child: Text('OK',
+                                                      color: Colors.green),
+                                                ),
+                                                actions: <Widget>[
+                                                  FlatButton(
+                                                    child: Text('OK',
+                                                        style: TextStyle(
+                                                            color:
+                                                                Colors.indigo)),
+                                                    onPressed: () {
+                                                      otp = null;
+                                                      Navigator.pop(
+                                                          context, 'OK');
+                                                      Navigator.pop(
+                                                          this.context, 'OK');
+                                                      Navigator.pushReplacement(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  LoginScreen()));
+                                                    },
+                                                  )
+                                                ],
+                                              ));
+                                    } else if (res == "Already Registered") {
+                                      setState(() {
+                                        disableButton = false;
+                                      });
+                                      showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              AlertDialog(
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                10.0))),
+                                                title: Text("Status"),
+                                                content: Text(
+                                                  "This Email Id is already registered 🙁",
                                                   style: TextStyle(
-                                                      color: Colors.indigo)),
-                                              onPressed: () {
-                                                otp = null;
-                                                Navigator.pop(context, 'OK');
-                                              })
-                                        ],
-                                      ));
-                            }
-                          } else {
-                            showDialog(
-                                context: context,
-                                builder: (BuildContext context) => AlertDialog(
-                                      title: Text("Status"),
-                                      content: Text(
-                                        "OTP did not matched, please try again or generate new one",
-                                        style: TextStyle(color: Colors.red),
-                                      ),
-                                      actions: <Widget>[
-                                        FlatButton(
-                                            child: Text('OK',
+                                                      color: Colors.red),
+                                                ),
+                                                actions: <Widget>[
+                                                  FlatButton(
+                                                      child: Text('OK',
+                                                          style: TextStyle(
+                                                              color: Colors
+                                                                  .indigo)),
+                                                      onPressed: () {
+                                                        otp = null;
+                                                        Navigator.pop(
+                                                            context, 'OK');
+                                                      })
+                                                ],
+                                              ));
+                                    } else if (res == "Error") {
+                                      setState(() {
+                                        disableButton = false;
+                                      });
+                                      showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              AlertDialog(
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                10.0))),
+                                                title: Text("Status"),
+                                                content: Text(
+                                                  "Some error has occured, please try again",
+                                                  style: TextStyle(
+                                                      color: Colors.red),
+                                                ),
+                                                actions: <Widget>[
+                                                  FlatButton(
+                                                      child: Text('OK',
+                                                          style: TextStyle(
+                                                              color: Colors
+                                                                  .indigo)),
+                                                      onPressed: () {
+                                                        otp = null;
+                                                        Navigator.pop(
+                                                            context, 'OK');
+                                                      })
+                                                ],
+                                              ));
+                                    }
+                                  } catch (e) {
+                                    setState(() {
+                                      disableButton = false;
+                                    });
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) =>
+                                            AlertDialog(
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              10.0))),
+                                              title: Text("Status"),
+                                              content: Text(
+                                                "Server could not be reached ⚠️",
                                                 style: TextStyle(
-                                                    color: Colors.indigo)),
-                                            onPressed: () {
-                                              Navigator.pop(context, 'OK');
-                                            }),
-                                      ],
-                                    ));
-                          }
-                        },
+                                                    color: Colors.red),
+                                              ),
+                                              actions: <Widget>[
+                                                FlatButton(
+                                                    child: Text('OK',
+                                                        style: TextStyle(
+                                                            color:
+                                                                Colors.indigo)),
+                                                    onPressed: () {
+                                                      otp = null;
+                                                      Navigator.pop(
+                                                          context, 'OK');
+                                                    })
+                                              ],
+                                            ));
+                                  }
+                                } else {
+                                  showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) =>
+                                          AlertDialog(
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10.0))),
+                                            title: Text("Status"),
+                                            content: Text(
+                                              "OTP did not matched, please try again or generate new one",
+                                              style:
+                                                  TextStyle(color: Colors.red),
+                                            ),
+                                            actions: <Widget>[
+                                              FlatButton(
+                                                  child: Text('OK',
+                                                      style: TextStyle(
+                                                          color:
+                                                              Colors.indigo)),
+                                                  onPressed: () {
+                                                    Navigator.pop(
+                                                        context, 'OK');
+                                                  }),
+                                            ],
+                                          ));
+                                }
+                              },
                       ),
                     )
                   ],

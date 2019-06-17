@@ -218,7 +218,7 @@ class _registerState extends State<RegisterPage> {
                 alignment: Alignment.center,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 33.0, top: 10.0),
-                  child: Text("Password Should contain 8 or more characters, Upper & Lower letters and Atleast one number.",
+                  child: Text("Password Should contain 6 or more characters, atleast one letter and one number.",
                     style: TextStyle(color: Colors.indigo,wordSpacing: 1.0),
                   ),
                 ),
@@ -233,13 +233,6 @@ class _registerState extends State<RegisterPage> {
                       confirmPasswordController: confirmPasswordController,
                     ),
                   )),
-/*
-              FlatButton(
-                  onPressed: () {
-                    removeEmailPref();
-                    removeUserPref();
-                  },
-                  child: Text("Clear")),*/
             ],
           ),
         ),
@@ -296,7 +289,7 @@ class RegisterButton extends StatelessWidget {
               if (password == confirmPassword) {
                 // Regular Expression for password validation
                 var pswdRegex =
-                    r"^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$";
+                    r"^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,}$";
                 RegExp regExp1 = new RegExp(pswdRegex);
                 if (regExp1.hasMatch(password)) {
                   //Generating random number for otp

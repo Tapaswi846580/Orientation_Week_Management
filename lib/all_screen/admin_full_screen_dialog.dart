@@ -4,6 +4,7 @@ import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'Events.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'resources.dart';
 
 class AdminFullscreenDialog extends StatefulWidget {
   Event event;
@@ -29,7 +30,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
   String selectedRadio = "A";
   bool apiCall = false, timedOut = false;
   static final postUrl =
-      'http://172.20.10.2:8080/JavaAPI/rest/services/updateEvent';
+      'http://${Resource.ip}:8080/JavaAPI/rest/services/updateEvent';
   final List<String> _dropdownValues = [
     "A",
     "B",
@@ -354,6 +355,8 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                         context: context,
                                         builder: (BuildContext context) =>
                                             AlertDialog(
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
                                               title: Text("Status"),
                                               content: Text(
                                                 "It is taking too long than usual, please try again.",
@@ -383,6 +386,8 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                         builder: (BuildContext context) =>
                                             AlertDialog(
                                               title: Text("Status"),
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
                                               content: Text(
                                                 "Record Updated Successfully ! 😉",
                                                 style: TextStyle(
@@ -412,6 +417,8 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                         builder: (BuildContext context) =>
                                             AlertDialog(
                                               title: Text("Status"),
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
                                               content: Text(
                                                 "Somethin went wrong, please try again. :(",
                                                 style: TextStyle(
@@ -442,6 +449,8 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                         builder: (BuildContext context) =>
                                             AlertDialog(
                                               title: Text("Status"),
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
                                               content: Text(
                                                 "Server could not be reached ⚠️",
                                                 style: TextStyle(
@@ -471,6 +480,8 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                     builder: (BuildContext context) =>
                                         AlertDialog(
                                           title: Text("Status"),
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.all(Radius.circular(10.0))),
                                           content: Text(
                                             "Please fill up all the mandatory fields.",
                                             style: TextStyle(

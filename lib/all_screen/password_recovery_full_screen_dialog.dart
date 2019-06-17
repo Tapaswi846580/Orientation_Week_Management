@@ -4,6 +4,8 @@ import 'dart:convert';
 import 'dart:math' as math;
 import 'Email.dart';
 import 'dart:async';
+import 'resources.dart';
+import 'login_screen.dart';
 
 class PasswordRecoveryFullScreenDialog extends StatefulWidget {
   final String emailId;
@@ -34,7 +36,7 @@ class PasswordRecoveryFullScreenDialogState extends State {
   String password;
   String confirmPassword;
   int otp;
-  final postUrl = "http://172.20.10.2:8080/JavaAPI/rest/services/recovery";
+  final postUrl = "http://${Resource.ip}:8080/JavaAPI/rest/services/recovery";
   PasswordRecoveryFullScreenDialogState({
     @required this.emailId,
     @required this.password,
@@ -102,7 +104,7 @@ class PasswordRecoveryFullScreenDialogState extends State {
           "One Time Password",
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Color(0xff558fe0),
+        backgroundColor: Color(0xff292664),
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 15.0, left: 10.0, right: 10.0),
@@ -175,19 +177,26 @@ class PasswordRecoveryFullScreenDialogState extends State {
                                           context: context,
                                           builder: (BuildContext context) =>
                                               AlertDialog(
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                10.0))),
                                                 title: Text("Status"),
                                                 content: Text(
                                                   "OTP Sent !",
-                                                  style:
-                                                      TextStyle(color: Colors.blue),
+                                                  style: TextStyle(
+                                                      color: Colors.blueAccent),
                                                 ),
                                                 actions: <Widget>[
                                                   FlatButton(
                                                     child: Text('OK',
                                                         style: TextStyle(
-                                                            color: Colors.indigo)),
+                                                            color:
+                                                                Colors.indigo)),
                                                     onPressed: () {
-                                                      Navigator.pop(context, 'OK');
+                                                      Navigator.pop(
+                                                          context, 'OK');
                                                     },
                                                   )
                                                 ],
@@ -204,18 +213,23 @@ class PasswordRecoveryFullScreenDialogState extends State {
                                             context: context,
                                             builder: (BuildContext context) =>
                                                 AlertDialog(
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  10.0))),
                                                   title: Text("Status"),
                                                   content: Text(
                                                     "$problem",
                                                     style: TextStyle(
-                                                        color: Colors.red),
+                                                        color: Color(0xffe71827)),
                                                   ),
                                                   actions: <Widget>[
                                                     FlatButton(
                                                       child: Text('OK',
                                                           style: TextStyle(
-                                                              color:
-                                                                  Colors.indigo)),
+                                                              color: Colors
+                                                                  .indigo)),
                                                       onPressed: () {
                                                         otp = null;
                                                         Navigator.pop(
@@ -233,8 +247,8 @@ class PasswordRecoveryFullScreenDialogState extends State {
                       Padding(
                         padding: const EdgeInsets.only(left: 8.0),
                         child: RaisedButton(
-                          color: Color(0xff558fe0),
-                          disabledColor: Color(0xff558fe0),
+                          color: Color(0xff292664),
+                          disabledColor: Color(0xff292664),
                           child: getProperWidgetForRaisedButton(),
                           onPressed: disableButton
                               ? null
@@ -264,6 +278,11 @@ class PasswordRecoveryFullScreenDialogState extends State {
                                             context: context,
                                             builder: (BuildContext context) =>
                                                 AlertDialog(
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  10.0))),
                                                   title: Text("Status"),
                                                   content: Text(
                                                     "Password Updated ! 😉",
@@ -274,12 +293,20 @@ class PasswordRecoveryFullScreenDialogState extends State {
                                                     FlatButton(
                                                       child: Text('OK',
                                                           style: TextStyle(
-                                                              color:
-                                                                  Colors.indigo)),
+                                                              color: Colors
+                                                                  .indigo)),
                                                       onPressed: () {
                                                         otp = null;
                                                         Navigator.pop(
                                                             context, 'OK');
+                                                        Navigator.pop(
+                                                            this.context, 'OK');
+                                                        Navigator.pushReplacement(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                                builder:
+                                                                    (context) =>
+                                                                        LoginScreen()));
                                                       },
                                                     )
                                                   ],
@@ -292,18 +319,23 @@ class PasswordRecoveryFullScreenDialogState extends State {
                                             context: context,
                                             builder: (BuildContext context) =>
                                                 AlertDialog(
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  10.0))),
                                                   title: Text("Status"),
                                                   content: Text(
                                                     "This Email Id is not registered 🙁",
                                                     style: TextStyle(
-                                                        color: Colors.red),
+                                                        color: Color(0xffe71827)),
                                                   ),
                                                   actions: <Widget>[
                                                     FlatButton(
                                                         child: Text('OK',
                                                             style: TextStyle(
-                                                                color:
-                                                                    Colors.indigo)),
+                                                                color: Colors
+                                                                    .indigo)),
                                                         onPressed: () {
                                                           otp = null;
                                                           Navigator.pop(
@@ -319,18 +351,23 @@ class PasswordRecoveryFullScreenDialogState extends State {
                                             context: context,
                                             builder: (BuildContext context) =>
                                                 AlertDialog(
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  10.0))),
                                                   title: Text("Status"),
                                                   content: Text(
                                                     "Some error has occured, please try again",
                                                     style: TextStyle(
-                                                        color: Colors.red),
+                                                        color: Color(0xffe71827)),
                                                   ),
                                                   actions: <Widget>[
                                                     FlatButton(
                                                         child: Text('OK',
                                                             style: TextStyle(
-                                                                color:
-                                                                    Colors.indigo)),
+                                                                color: Colors
+                                                                    .indigo)),
                                                         onPressed: () {
                                                           otp = null;
                                                           Navigator.pop(
@@ -347,18 +384,23 @@ class PasswordRecoveryFullScreenDialogState extends State {
                                           context: context,
                                           builder: (BuildContext context) =>
                                               AlertDialog(
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                10.0))),
                                                 title: Text("Status"),
                                                 content: Text(
                                                   "Server could not be reached ⚠️",
-                                                  style:
-                                                      TextStyle(color: Colors.red),
+                                                  style: TextStyle(
+                                                      color: Color(0xffe71827)),
                                                 ),
                                                 actions: <Widget>[
                                                   FlatButton(
                                                       child: Text('OK',
                                                           style: TextStyle(
-                                                              color:
-                                                                  Colors.indigo)),
+                                                              color: Colors
+                                                                  .indigo)),
                                                       onPressed: () {
                                                         otp = null;
                                                         Navigator.pop(
@@ -372,18 +414,25 @@ class PasswordRecoveryFullScreenDialogState extends State {
                                         context: context,
                                         builder: (BuildContext context) =>
                                             AlertDialog(
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              10.0))),
                                               title: Text("Status"),
                                               content: Text(
                                                 "OTP did not matched, please try again or generate new one",
-                                                style: TextStyle(color: Colors.red),
+                                                style: TextStyle(
+                                                    color: Color(0xffe71827)),
                                               ),
                                               actions: <Widget>[
                                                 FlatButton(
                                                     child: Text('OK',
                                                         style: TextStyle(
-                                                            color: Colors.indigo)),
+                                                            color: Color(0xff292664))),
                                                     onPressed: () {
-                                                      Navigator.pop(context, 'OK');
+                                                      Navigator.pop(
+                                                          context, 'OK');
                                                     }),
                                               ],
                                             ));
@@ -400,7 +449,7 @@ class PasswordRecoveryFullScreenDialogState extends State {
                 child: Text(
                   "🚨️ Do not share your OTP with anyone❗",
                   style: TextStyle(
-                    color: Colors.indigo,
+                    color: Color(0xff292664),
                     fontSize: 30.0,
                     fontWeight: FontWeight.bold,
                     wordSpacing: 1.5,

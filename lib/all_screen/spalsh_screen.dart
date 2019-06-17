@@ -54,6 +54,15 @@ class _SplashScreenState extends State<SplashScreen> {
                         duration: Duration(seconds: 5),
                         child: const Text("UNIVERSITY",style: TextStyle(color: Color(0xff292664),fontSize: 40.0),),
                       ),
+                      Divider(
+                        color: Colors.transparent,
+                        height: 30.0,
+                      ),
+                      AnimatedOpacity(
+                        opacity: !_visible ? 1.0 : 0.0,
+                        duration: Duration(seconds: 5),
+                        child: const Text("Orientation Week",style: TextStyle(color: Colors.black,fontSize: 30.0),),
+                      ),
                     ],
                   ),
                 ),
