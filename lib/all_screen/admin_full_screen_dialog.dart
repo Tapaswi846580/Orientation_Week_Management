@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'Events.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'resources.dart';
+
 
 class AdminFullscreenDialog extends StatefulWidget {
   Event event;
@@ -149,8 +149,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                         onTap: () {
                           showDatePicker(
                                   context: context,
-                                  initialDate: DateTime.now(),
-                                  firstDate: DateTime(2018),
+                                  firstDate: DateTime.now(),
                                   lastDate: DateTime(2020))
                               .then((dt) {
                             var formatter = DateFormat("dd-MMMM-yyyy");
