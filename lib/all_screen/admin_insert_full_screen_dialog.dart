@@ -6,19 +6,13 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'resources.dart';
 
-class AdminFullscreenDialog extends StatefulWidget {
-  Event event;
-  AdminFullscreenDialog({@required this.event});
-
+class AdminInsertFullscreenDialog extends StatefulWidget {
   @override
-  _AdminFullscreenDialogState createState() =>
-      _AdminFullscreenDialogState(event: event);
+  _AdminInsertFullscreenDialogState createState() =>
+      _AdminInsertFullscreenDialogState();
 }
 
-class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
-  Event event;
-
-  _AdminFullscreenDialogState({@required this.event});
+class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialog> {
 
   final eventNameController = TextEditingController();
   final eventVenueController = TextEditingController();
@@ -29,24 +23,14 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
   String selectedRadio = "A";
   bool apiCall = false, timedOut = false;
   static final postUrl =
-      'http://${Resource.ip}:8080/JavaAPI/rest/services/updateEvent';
+      'http://${Resource.ip}:8080/JavaAPI/rest/services/addEvent';
+
   setSelectedRadio(String val) {
     setState(() {
       selectedRadio = val;
     });
   }
 
-  @override
-  void initState() {
-    eventNameController.text = event.activity;
-    selectedRadio = event.grp;
-    eventDateController.text = event.date;
-    startTimeController.text = event.startTime;
-    endTimeController.text = event.endTime;
-    eventVenueController.text = event.venue;
-    if (event.description != "null")
-      eventDescriptionController.text = event.description;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +40,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Color(0xff292664),
-          title: Text("Update Activity"),
+          title: Text("Add Activity"),
           leading: IconButton(
             icon: new Icon(
               Icons.close,
@@ -148,10 +132,10 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                       child: InkWell(
                         onTap: () {
                           showDatePicker(
-                                  context: context,
-                                  initialDate: DateTime.now(),
-                                  firstDate: DateTime(2018),
-                                  lastDate: DateTime(2020))
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime(2018),
+                              lastDate: DateTime(2020))
                               .then((dt) {
                             var formatter = DateFormat("dd-MMMM-yyyy");
                             setState(() {
@@ -210,8 +194,8 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                 child: InkWell(
                                   onTap: () {
                                     showTimePicker(
-                                            context: context,
-                                            initialTime: TimeOfDay.now())
+                                        context: context,
+                                        initialTime: TimeOfDay.now())
                                         .then((time) {
                                       setState(() {
                                         startTimeController.text =
@@ -221,7 +205,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                   },
                                   child: TextField(
                                     style:
-                                        TextStyle(fontWeight: FontWeight.bold),
+                                    TextStyle(fontWeight: FontWeight.bold),
                                     enabled: false,
                                     controller: startTimeController,
                                   ),
@@ -236,8 +220,8 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                 child: InkWell(
                                   onTap: () {
                                     showTimePicker(
-                                            context: context,
-                                            initialTime: TimeOfDay.now())
+                                        context: context,
+                                        initialTime: TimeOfDay.now())
                                         .then((time) {
                                       setState(() {
                                         endTimeController.text =
@@ -247,7 +231,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                   },
                                   child: TextField(
                                     style:
-                                        TextStyle(fontWeight: FontWeight.bold),
+                                    TextStyle(fontWeight: FontWeight.bold),
                                     enabled: false,
                                     controller: endTimeController,
                                   ),
@@ -312,194 +296,189 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                       onPressed: apiCall
                           ? null
                           : () async {
-                              if (eventDateController.text.length != 0 &&
-                                  selectedRadio.length != 0 &&
-                                  startTimeController.text.length != 0 &&
-                                  endTimeController.text.length != 0 &&
-                                  eventNameController.text.length != 0 &&
-                                  eventVenueController.text.length != 0) {
-                                try {
-                                  setState(() {
-                                    apiCall = true;
-                                  });
-                                  var data = {
-                                    'id': '${event.id}',
-                                    'date': '${eventDateController.text}',
-                                    'grp': '$selectedRadio',
-                                    'startTime': '${startTimeController.text}',
-                                    'endTime': '${endTimeController.text}',
-                                    'activity': '${eventNameController.text}',
-                                    'description':
-                                        '${eventDescriptionController.text}',
-                                    'venue': '${eventVenueController.text}',
-                                  };
-                                  var post = await http.post(
-                                    Uri.encodeFull(postUrl),
-                                    body: json.encode(data),
-                                    headers: {
-                                      "Content-Type": "application/json"
-                                    },
-                                  ).timeout(
-                                      Duration(
-                                        seconds: 20, //Set timeout to 10 seconds
-                                      ), onTimeout: () {
-                                    setState(() {
-                                      timedOut = true;
-                                    });
-                                    showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) =>
-                                            AlertDialog(
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                                              title: Text("Status"),
-                                              content: Text(
-                                                "It is taking too long than usual, please try again.",
-                                              ),
-                                              actions: <Widget>[
-                                                FlatButton(
-                                                  child: Text('OK',
-                                                      style: TextStyle(
-                                                          color:
-                                                          Color(0xff292664))),
-                                                  onPressed: () {
-                                                    Navigator.pop(
-                                                        context, 'OK');
-                                                  },
-                                                )
-                                              ],
-                                            ));
-                                  });
-                                  var res = post.body;
-                                  if (res == "Done") {
-                                    setState(() {
-                                      apiCall = false;
-                                    });
-//                                print("Updated");
-                                    showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) =>
-                                            AlertDialog(
-                                              title: Text("Status"),
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                                              content: Text(
-                                                "Record Updated Successfully ! 😉",
+                        if (eventDateController.text.length != 0 &&
+                            selectedRadio.length != 0 &&
+                            startTimeController.text.length != 0 &&
+                            endTimeController.text.length != 0 &&
+                            eventNameController.text.length != 0 &&
+                            eventVenueController.text.length != 0) {
+                          try {
+                            setState(() {
+                              apiCall = true;
+                            });
+                            var data = {
+                              'date': '${eventDateController.text}',
+                              'grp': '$selectedRadio',
+                              'startTime': '${startTimeController.text}',
+                              'endTime': '${endTimeController.text}',
+                              'activity': '${eventNameController.text}',
+                              'description':
+                              '${eventDescriptionController.text}',
+                              'venue': '${eventVenueController.text}',
+                            };
+                            var post = await http.post(
+                              Uri.encodeFull(postUrl),
+                              body: json.encode(data),
+                              headers: {
+                                "Content-Type": "application/json"
+                              },
+                            ).timeout(
+                                Duration(
+                                  seconds: 20, //Set timeout to 20 seconds
+                                ), onTimeout: () {
+                              setState(() {
+                                timedOut = true;
+                              });
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      AlertDialog(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                                        title: Text("Status"),
+                                        content: Text(
+                                          "It is taking too long than usual, please try again.",
+                                        ),
+                                        actions: <Widget>[
+                                          FlatButton(
+                                            child: Text('OK',
                                                 style: TextStyle(
-                                                    color: Colors.green),
-                                              ),
-                                              actions: <Widget>[
-                                                FlatButton(
-                                                  child: Text('OK',
-                                                      style: TextStyle(
-                                                          color:
-                                                          Color(0xff292664))),
-                                                  onPressed: () {
-                                                    Navigator.pop(
-                                                        context, 'OK');
-                                                    Navigator.pop(
-                                                        this.context, 'OK');
-                                                  },
-                                                )
-                                              ],
-                                            )).then((val){
-                                      Navigator.pop(
-                                          context, 'OK');
-                                    });
-                                  } else {
-                                    setState(() {
-                                      apiCall = false;
-                                    });
-                                    showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) =>
-                                            AlertDialog(
-                                              title: Text("Status"),
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                                              content: Text(
-                                                "Somethin went wrong, please try again. :(",
+                                                    color:
+                                                    Color(0xff292664))),
+                                            onPressed: () {
+                                              Navigator.pop(
+                                                  context, 'OK');
+                                            },
+                                          )
+                                        ],
+                                      ));
+                            });
+                            var res = post.body;
+                            if (res == "Done") {
+                              setState(() {
+                                apiCall = false;
+                              });
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      AlertDialog(
+                                        title: Text("Status"),
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                                        content: Text(
+                                          "Record Updated Successfully ! 😉",
+                                          style: TextStyle(
+                                              color: Colors.green),
+                                        ),
+                                        actions: <Widget>[
+                                          FlatButton(
+                                            child: Text('OK',
                                                 style: TextStyle(
-                                                    color: Color(0xffe71827)),
-                                              ),
-                                              actions: <Widget>[
-                                                FlatButton(
-                                                  child: Text('OK',
-                                                      style: TextStyle(
-                                                          color:
-                                                          Color(0xff292664))),
-                                                  onPressed: () {
-                                                    Navigator.pop(
-                                                        context, 'OK');
-                                                  },
-                                                )
-                                              ],
-                                            ));
-                                  }
-                                } catch (e) {
-                                  setState(() {
-                                    apiCall = false;
-                                  });
+                                                    color:
+                                                    Color(0xff292664))),
+                                            onPressed: () {
+                                              Navigator.pop(
+                                                  context, 'OK');
+                                              Navigator.pop(
+                                                  this.context, 'OK');
+                                            },
+                                          )
+                                        ],
+                                      ));
+                            } else {
+                              setState(() {
+                                apiCall = false;
+                              });
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      AlertDialog(
+                                        title: Text("Status"),
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                                        content: Text(
+                                          "Somethin went wrong, please try again. :(",
+                                          style: TextStyle(
+                                              color: Color(0xffe71827)),
+                                        ),
+                                        actions: <Widget>[
+                                          FlatButton(
+                                            child: Text('OK',
+                                                style: TextStyle(
+                                                    color:
+                                                    Color(0xff292664))),
+                                            onPressed: () {
+                                              Navigator.pop(
+                                                  context, 'OK');
+                                            },
+                                          )
+                                        ],
+                                      ));
+                            }
+                          } catch (e) {
+                            setState(() {
+                              apiCall = false;
+                            });
 
-                                  if (timedOut == false) {
-                                    showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) =>
-                                            AlertDialog(
-                                              title: Text("Status"),
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                                              content: Text(
-                                                "Server could not be reached ⚠️",
+                            if (timedOut == false) {
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      AlertDialog(
+                                        title: Text("Status"),
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                                        content: Text(
+                                          "Server could not be reached ⚠️",
+                                          style: TextStyle(
+                                              color:Color(0xffe71827)),
+                                        ),
+                                        actions: <Widget>[
+                                          FlatButton(
+                                            child: Text('OK',
                                                 style: TextStyle(
-                                                    color:Color(0xffe71827)),
-                                              ),
-                                              actions: <Widget>[
-                                                FlatButton(
-                                                  child: Text('OK',
-                                                      style: TextStyle(
-                                                          color:
-                                                          Color(0xff292664))),
-                                                  onPressed: () {
-                                                    Navigator.pop(
-                                                        context, 'OK');
-                                                  },
-                                                )
-                                              ],
-                                            ));
-                                  }
-                                  setState(() {
-                                    timedOut = false;
-                                  });
-                                }
-                              }else{
-                                showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) =>
-                                        AlertDialog(
-                                          title: Text("Status"),
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                                          content: Text(
-                                            "Please fill up all the mandatory fields.",
+                                                    color:
+                                                    Color(0xff292664))),
+                                            onPressed: () {
+                                              Navigator.pop(
+                                                  context, 'OK');
+                                            },
+                                          )
+                                        ],
+                                      ));
+                            }
+                            setState(() {
+                              timedOut = false;
+                            });
+                          }
+                        }else{
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) =>
+                                  AlertDialog(
+                                    title: Text("Status"),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                                    content: Text(
+                                      "Please fill up all the mandatory fields.",
+                                      style: TextStyle(
+                                          color: Color(0xffe71827)),
+                                    ),
+                                    actions: <Widget>[
+                                      FlatButton(
+                                        child: Text('OK',
                                             style: TextStyle(
-                                                color: Color(0xffe71827)),
-                                          ),
-                                          actions: <Widget>[
-                                            FlatButton(
-                                              child: Text('OK',
-                                                  style: TextStyle(
-                                                      color:
-                                                      Color(0xff292664))),
-                                              onPressed: () {
-                                                Navigator.pop(
-                                                    context, 'OK');
-                                              },
-                                            )
-                                          ],
-                                        ));
-                              }
-                            },
+                                                color:
+                                                Color(0xff292664))),
+                                        onPressed: () {
+                                          Navigator.pop(
+                                              context, 'OK');
+                                        },
+                                      )
+                                    ],
+                                  ));
+                        }
+                      },
                       color: Color(0xff292664),
                       disabledColor: Color(0xff292664),
                     )
@@ -526,7 +505,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
       );
     } else {
       return Text(
-        "Update",
+        "Add Activity",
         style: TextStyle(
             fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.bold),
       );

@@ -1,3 +1,3 @@
 class Resource {
-  static final String ip = "192.168.0.101";
+  static final String ip = "172.20.10.2";
 }

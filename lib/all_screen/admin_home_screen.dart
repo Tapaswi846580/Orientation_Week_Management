@@ -3,11 +3,11 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'Events.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-
 import 'admin_full_screen_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'login_screen.dart';
 import 'resources.dart';
+import 'admin_insert_full_screen_dialog.dart';
 
 final String ip = Resource.ip;
 Set<String> eventDates = new Set();
@@ -23,7 +23,6 @@ class _AdminHomeState extends State<AdminHome> {
   _AdminHomeState() {
     apiCall = true;
     getData().then((val) {
-      eventDates.forEach((d) => print("Dates: $d"));
       setState(() {
         apiCall = false;
       });
@@ -239,7 +238,19 @@ class _AdminHomeState extends State<AdminHome> {
                             padding: EdgeInsets.all(20.0),
                             alignment: Alignment.bottomRight,
                             child: FloatingActionButton(
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  Navigator.of(context)
+                                      .push(new MaterialPageRoute(
+                                    builder: (BuildContext context) {
+                                      return AdminInsertFullscreenDialog();
+                                    },
+                                    fullscreenDialog: true,
+                                  )).then((val){
+                                    setState(() {
+                                      getData();
+                                    });
+                                  });
+                                },
                                 child: Icon(
                                   Icons.add,
                                   size: 30.0,
@@ -474,7 +485,8 @@ class EventDetailsExpansionTileState extends State {
                         style: TextStyle(
                             fontStyle: FontStyle.italic,
                             fontWeight: FontWeight.bold,
-                            fontSize: 10.0),
+                            fontSize: 10.0,
+                        color: Color(0xffe71827)),
                       ),
                       Text(
                         "& left to ",
@@ -486,7 +498,7 @@ class EventDetailsExpansionTileState extends State {
                         style: TextStyle(
                             fontStyle: FontStyle.italic,
                             fontWeight: FontWeight.bold,
-                            fontSize: 10.0),
+                            fontSize: 10.0, color: Color(0xff292664)),
                       ),
                       Text(
                         ", long press for ",
@@ -498,7 +510,7 @@ class EventDetailsExpansionTileState extends State {
                         style: TextStyle(
                             fontStyle: FontStyle.italic,
                             fontWeight: FontWeight.bold,
-                            fontSize: 10.0),
+                            fontSize: 10.0, color: Colors.black),
                       ),
                     ],
                   )

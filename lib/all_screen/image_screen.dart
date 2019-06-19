@@ -72,29 +72,53 @@ class _ImageScreenState extends State<ImageScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        IconButton(
-                          onPressed: () {
+                        GestureDetector(
+                          onTap: () {
                             setState(() {
                               AllCallMap()._callMe();
                             });
                           },
-                          icon: Icon(Icons.phone),
-                          color: Colors.blueAccent,
-                          tooltip: "Call",
+                          child: Column(
+                            children: <Widget>[
+                              Icon(
+                                Icons.phone,
+                                color: Colors.blueAccent,
+                              ),
+                              Text(
+                                "Call",
+                                style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.blueAccent),
+                              ),
+                            ],
+                          ),
                         ),
                         Divider(
                           color: Colors.black,
                           indent: 100.0,
                         ),
-                        IconButton(
-                          onPressed: () {
+                        GestureDetector(
+                          onTap: () {
                             setState(() {
                               AllCallMap()._launchMaps();
                             });
                           },
-                          icon: Icon(Icons.location_on),
-                          color: Colors.blueAccent,
-                          tooltip: "Call",
+                          child: Column(
+                            children: <Widget>[
+                              Icon(
+                                Icons.map,
+                                color: Colors.blueAccent,
+                              ),
+                              Text(
+                                "Map",
+                                style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.blueAccent),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -156,29 +180,53 @@ class _ImageScreenState extends State<ImageScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        IconButton(
-                          onPressed: () {
+                        GestureDetector(
+                          onTap: () {
                             setState(() {
                               AllCallMap()._callMe();
                             });
                           },
-                          icon: Icon(Icons.phone),
-                          color: Colors.blueAccent,
-                          tooltip: "Call",
+                          child: Column(
+                            children: <Widget>[
+                              Icon(
+                                Icons.phone,
+                                color: Colors.blueAccent,
+                              ),
+                              Text(
+                                "Call",
+                                style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.blueAccent),
+                              ),
+                            ],
+                          ),
                         ),
                         Divider(
                           color: Colors.black,
                           indent: 100.0,
                         ),
-                        IconButton(
-                          onPressed: () {
+                        GestureDetector(
+                          onTap: () {
                             setState(() {
                               AllCallMap()._launchMaps();
                             });
                           },
-                          icon: Icon(Icons.location_on),
-                          color: Colors.blueAccent,
-                          tooltip: "Call",
+                          child: Column(
+                            children: <Widget>[
+                              Icon(
+                                Icons.map,
+                                color: Colors.blueAccent,
+                              ),
+                              Text(
+                                "Map",
+                                style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.blueAccent),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -242,29 +290,53 @@ class _ImageScreenState extends State<ImageScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        IconButton(
-                          onPressed: () {
+                        GestureDetector(
+                          onTap: () {
                             setState(() {
                               AllCallMap()._callMeBiological();
                             });
                           },
-                          icon: Icon(Icons.phone),
-                          color: Colors.blueAccent,
-                          tooltip: "Call",
+                          child: Column(
+                            children: <Widget>[
+                              Icon(
+                                Icons.phone,
+                                color: Colors.blueAccent,
+                              ),
+                              Text(
+                                "Call",
+                                style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.blueAccent),
+                              ),
+                            ],
+                          ),
                         ),
                         Divider(
                           color: Colors.black,
                           indent: 100.0,
                         ),
-                        IconButton(
-                          onPressed: () {
+                        GestureDetector(
+                          onTap: () {
                             setState(() {
                               AllCallMap()._launchMapsBiological();
                             });
                           },
-                          icon: Icon(Icons.location_on),
-                          color: Colors.blueAccent,
-                          tooltip: "Call",
+                          child: Column(
+                            children: <Widget>[
+                              Icon(
+                                Icons.map,
+                                color: Colors.blueAccent,
+                              ),
+                              Text(
+                                "Map",
+                                style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.blueAccent),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -327,29 +399,53 @@ class _ImageScreenState extends State<ImageScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        IconButton(
-                          onPressed: () {
+                        GestureDetector(
+                          onTap: () {
                             setState(() {
                               AllCallMap()._callMeCHM();
                             });
                           },
-                          icon: Icon(Icons.phone),
-                          color: Colors.blueAccent,
-                          tooltip: "Call",
+                          child: Column(
+                            children: <Widget>[
+                              Icon(
+                                Icons.phone,
+                                color: Colors.blueAccent,
+                              ),
+                              Text(
+                                "Call",
+                                style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.blueAccent),
+                              ),
+                            ],
+                          ),
                         ),
                         Divider(
                           color: Colors.black,
                           indent: 100.0,
                         ),
-                        IconButton(
-                          onPressed: () {
+                        GestureDetector(
+                          onTap: () {
                             setState(() {
                               AllCallMap()._launchMapsCHM();
                             });
                           },
-                          icon: Icon(Icons.location_on),
-                          color: Colors.blueAccent,
-                          tooltip: "Call",
+                          child: Column(
+                            children: <Widget>[
+                              Icon(
+                                Icons.map,
+                                color: Colors.blueAccent,
+                              ),
+                              Text(
+                                "Map",
+                                style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.blueAccent),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -413,29 +509,53 @@ class _ImageScreenState extends State<ImageScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        IconButton(
-                          onPressed: () {
+                        GestureDetector(
+                          onTap: () {
                             setState(() {
                               AllCallMap()._callMeVS();
                             });
                           },
-                          icon: Icon(Icons.phone),
-                          color: Colors.blueAccent,
-                          tooltip: "Call",
+                          child: Column(
+                            children: <Widget>[
+                              Icon(
+                                Icons.phone,
+                                color: Colors.blueAccent,
+                              ),
+                              Text(
+                                "Call",
+                                style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.blueAccent),
+                              ),
+                            ],
+                          ),
                         ),
                         Divider(
                           color: Colors.black,
                           indent: 100.0,
                         ),
-                        IconButton(
-                          onPressed: () {
+                        GestureDetector(
+                          onTap: () {
                             setState(() {
                               AllCallMap()._launchMapsVS();
                             });
                           },
-                          icon: Icon(Icons.location_on),
-                          color: Colors.blueAccent,
-                          tooltip: "Call",
+                          child: Column(
+                            children: <Widget>[
+                              Icon(
+                                Icons.map,
+                                color: Colors.blueAccent,
+                              ),
+                              Text(
+                                "Map",
+                                style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.blueAccent),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -499,29 +619,53 @@ class _ImageScreenState extends State<ImageScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        IconButton(
-                          onPressed: () {
+                        GestureDetector(
+                          onTap: () {
                             setState(() {
                               AllCallMap()._callMeSCS();
                             });
                           },
-                          icon: Icon(Icons.phone),
-                          color: Colors.blueAccent,
-                          tooltip: "Call",
+                          child: Column(
+                            children: <Widget>[
+                              Icon(
+                                Icons.phone,
+                                color: Colors.blueAccent,
+                              ),
+                              Text(
+                                "Call",
+                                style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.blueAccent),
+                              ),
+                            ],
+                          ),
                         ),
                         Divider(
                           color: Colors.black,
                           indent: 100.0,
                         ),
-                        IconButton(
-                          onPressed: () {
+                        GestureDetector(
+                          onTap: () {
                             setState(() {
                               AllCallMap()._launchMapsSCS();
                             });
                           },
-                          icon: Icon(Icons.location_on),
-                          color: Colors.blueAccent,
-                          tooltip: "Call",
+                          child: Column(
+                            children: <Widget>[
+                              Icon(
+                                Icons.map,
+                                color: Colors.blueAccent,
+                              ),
+                              Text(
+                                "Map",
+                                style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.blueAccent),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),

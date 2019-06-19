@@ -310,7 +310,19 @@ class PasswordRecoveryFullScreenDialogState extends State {
                                                       },
                                                     )
                                                   ],
-                                                ));
+                                                )).then((val){
+                                          otp = null;
+                                          Navigator.pop(
+                                              context, 'OK');
+                                          Navigator.pop(
+                                              this.context, 'OK');
+                                          Navigator.pushReplacement(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder:
+                                                      (context) =>
+                                                      LoginScreen()));
+                                        });
                                       } else if (res == "Not Registered") {
                                         setState(() {
                                           disableButton = false;

@@ -82,7 +82,7 @@ class _registerState extends State<RegisterPage> {
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    colors: [Color(0xff558fe0), Color(0xff558fe0)],
+                    colors: [Color(0xff292664), Color(0xff292664)],
                   ),
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(0),
@@ -261,7 +261,7 @@ class RegisterButton extends StatelessWidget {
       width: MediaQuery.of(context).size.width / 2.5,
       height: 40.0,
       child: RaisedButton(
-        color: Color(0xff558fe0),
+        color: Color(0xff292664),
         child: Center(
           child: FittedBox(
             fit: BoxFit.fitHeight,
@@ -320,7 +320,7 @@ class RegisterButton extends StatelessWidget {
                       onPressed: () {},
                       textColor: Colors.white,
                     ),
-                    backgroundColor: Colors.red,
+                    backgroundColor: Color(0xffe71827),
                     duration: Duration(seconds: 2),
                   ));
                 }
@@ -335,7 +335,7 @@ class RegisterButton extends StatelessWidget {
                     onPressed: () {},
                     textColor: Colors.white,
                   ),
-                  backgroundColor: Colors.red,
+                  backgroundColor: Color(0xffe71827),
                   duration: Duration(seconds: 2),
                 ));
               }
@@ -350,7 +350,7 @@ class RegisterButton extends StatelessWidget {
                   onPressed: () {},
                   textColor: Colors.white,
                 ),
-                backgroundColor: Colors.red,
+                backgroundColor: Color(0xffe71827),
                 duration: Duration(seconds: 2),
               ));
             }
@@ -365,7 +365,7 @@ class RegisterButton extends StatelessWidget {
                 onPressed: () {},
                 textColor: Colors.white,
               ),
-              backgroundColor: Colors.red,
+              backgroundColor: Color(0xffe71827),
               duration: Duration(seconds: 2),
             ));
           }

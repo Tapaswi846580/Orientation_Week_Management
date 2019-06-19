@@ -246,8 +246,8 @@ class RegistrationFullScreenDialogState extends State {
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
                       child: RaisedButton(
-                        color: Color(0xff558fe0),
-                        disabledColor: Color(0xff558fe0),
+                        color: Color(0xff292664),
+                        disabledColor: Color(0xff292664),
                         child: getProperWidgetForRaisedButton(),
                         onPressed: disableButton
                             ? null
@@ -308,7 +308,18 @@ class RegistrationFullScreenDialogState extends State {
                                                     },
                                                   )
                                                 ],
-                                              ));
+                                              )).then((val){
+                                        otp = null;
+                                        Navigator.pop(
+                                            context, 'OK');
+                                        Navigator.pop(
+                                            this.context, 'OK');
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    LoginScreen()));
+                                      });
                                     } else if (res == "Already Registered") {
                                       setState(() {
                                         disableButton = false;

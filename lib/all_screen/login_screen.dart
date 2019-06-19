@@ -475,12 +475,13 @@ class SignInButtonState extends State {
                           ));
                         });
                         var res = post.body;
-                        if (res == "true") {
+                        if (res == "Valid") {
                           this._setEmailPref(email);
                           this._setUserPref(selectedVal);
                           setState(() {
                             apiCall = false;
                           });
+
                           selectedVal == "Student"
                               ? Navigator.pushReplacement(
                                   context,
@@ -491,7 +492,7 @@ class SignInButtonState extends State {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => AdminHome()));
-                        } else {
+                        } else if (res == "Invalid") {
                           setState(() {
                             apiCall = false;
                           });
@@ -508,7 +509,60 @@ class SignInButtonState extends State {
                             backgroundColor: Color(0xffe71827),
                             duration: Duration(seconds: 3),
                           ));
+                        } else if (res == "Error") {
+                          setState(() {
+                            apiCall = false;
+                          });
+                          Scaffold.of(context).showSnackBar(SnackBar(
+                            content: Text(
+                              'Some error has occurred, please contact administrator',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            action: SnackBarAction(
+                              label: 'OK',
+                              onPressed: () {},
+                              textColor: Colors.white,
+                            ),
+                            backgroundColor: Color(0xffe71827),
+                            duration: Duration(seconds: 3),
+                          ));
+                        } else if(post.statusCode == 404) {
+                          setState(() {
+                            apiCall = false;
+                          });
+                          Scaffold.of(context).showSnackBar(SnackBar(
+                            content: Text(
+                              'Server could not be reached, please contact administrator',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            action: SnackBarAction(
+                              label: 'OK',
+                              onPressed: () {},
+                              textColor: Colors.white,
+                            ),
+                            backgroundColor: Color(0xffe71827),
+                            duration: Duration(seconds: 3),
+                          ));
                         }
+                        else{
+                          setState(() {
+                            apiCall = false;
+                          });
+                          Scaffold.of(context).showSnackBar(SnackBar(
+                            content: Text(
+                              'Some error has occurred, please contact administrator',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            action: SnackBarAction(
+                              label: 'OK',
+                              onPressed: () {},
+                              textColor: Colors.white,
+                            ),
+                            backgroundColor: Color(0xffe71827),
+                            duration: Duration(seconds: 3),
+                          ));
+                        }
+
                       } catch (e) {
                         setState(() {
                           apiCall = false;
@@ -516,7 +570,7 @@ class SignInButtonState extends State {
                         if (timedOut == false) {
                           Scaffold.of(context).showSnackBar(SnackBar(
                             content: Text(
-                              'Server could not be reached ⚠️',
+                              'Server could not be reached, please contact administrator ⚠️',
                               style: TextStyle(color: Colors.white),
                             ),
                             action: SnackBarAction(
