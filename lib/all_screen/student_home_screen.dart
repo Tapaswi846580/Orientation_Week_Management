@@ -2,8 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:myfirst/all_screen/image_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'login_screen.dart';
+import 'package:http/http.dart' as http;
+import 'Events.dart';
+import 'dart:convert';
+import 'resources.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() => runApp(new StudentHomeScreen());
+Set<String> eventDates = new Set();
+List<Event> events;
+bool apiCall = false, timedOut = false, isRegistered = true, isPageView = true;
+String email, grp;
 
 class StudentHomeScreen extends StatefulWidget {
   @override
@@ -11,6 +20,8 @@ class StudentHomeScreen extends StatefulWidget {
 }
 
 class _StudentHomeScreenState extends State<StudentHomeScreen> {
+  SharedPreferences prefs;
+  PageController _controller = PageController(initialPage: 0, keepPage: false);
   void choiceAction(String choice) {
     if (choice == "Image Gallery") {
       setState(() {
@@ -21,7 +32,211 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
       setState(() {
         _showDialog();
       });
+    } else if (choice == "Refresh") {
+      setState(() {
+        apiCall = true;
+        getData().then((val) {
+          setState(() {
+            apiCall = false;
+          });
+        });
+      });
     }
+  }
+
+  _StudentHomeScreenState() {
+    apiCall = true;
+    isRegistered = true;
+    getGroup();
+  }
+
+  Future<bool> getGroup() async {
+    var prefs = SharedPreferences.getInstance();
+    prefs.then((val) async {
+      setState(() {
+        email = val.getString("email");
+      });
+      try {
+        final url =
+            'http://${Resource.ip}:8080/JavaAPI/rest/services/getGroup/$email';
+        await http
+            .get(
+          Uri.encodeFull(url),
+        )
+            .then((res) {
+          grp = res.body;
+          if (grp == "No Registered") {
+            setState(() {
+              isRegistered = false;
+              apiCall = false;
+            });
+          } else {
+            getData().then((val) {
+              setState(() {
+                apiCall = false;
+              });
+            });
+          }
+        }).timeout(
+                Duration(
+                  seconds: 20, //Set timeout to 20 seconds
+                ), onTimeout: () {
+          setState(() {
+            timedOut = true;
+          });
+          showDialog(
+              context: context,
+              builder: (BuildContext context) => AlertDialog(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                    title: Text("Status"),
+                    content: Text(
+                      "It takes too long than usual, please referesh.",
+                      style: TextStyle(color: Color(0xffe71827)),
+                    ),
+                    actions: <Widget>[
+                      FlatButton(
+                        child: Text('OK',
+                            style: TextStyle(color: Color(0xff292664))),
+                        onPressed: () {
+                          Navigator.pop(context, 'OK');
+                        },
+                      )
+                    ],
+                  )).then((val) {
+            setState(() {
+              apiCall = false;
+            });
+          });
+        });
+        return isRegistered;
+      } catch (e) {
+        setState(() {
+          apiCall = false;
+        });
+        if (timedOut == false) {
+          showDialog(
+              context: context,
+              builder: (BuildContext context) => AlertDialog(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                    title: Text("Status"),
+                    content: Text(
+                      "Server could not be reached ⚠️",
+                      style: TextStyle(color: Color(0xffe71827)),
+                    ),
+                    actions: <Widget>[
+                      FlatButton(
+                        child: Text('OK',
+                            style: TextStyle(color: Color(0xff292664))),
+                        onPressed: () {
+                          Navigator.pop(context, 'OK');
+                        },
+                      )
+                    ],
+                  )).then((val) {
+            setState(() {
+              apiCall = false;
+            });
+          });
+        }
+        setState(() {
+          timedOut = false;
+        });
+        return false;
+      }
+    });
+
+    return false;
+  }
+
+  Future<bool> getData() async {
+    try {
+      final url =
+          'http://${Resource.ip}:8080/JavaAPI/rest/services/getAllEvent';
+      await http.get(
+        Uri.encodeFull(url),
+        headers: {"Content-Type": "application/json"},
+      ).then((res) {
+        final List parsedList = json.decode(res.body);
+        setState(() {
+          if (events != null) {
+            events.clear();
+            eventDates.clear();
+          }
+          events = parsedList.map((val) => Event.fromJson(val)).toList();
+          events.forEach((e) {
+            if (e.grp == grp) eventDates.add(e.date);
+          });
+        });
+      }).timeout(
+          Duration(
+            seconds: 20, //Set timeout to 20 seconds
+          ), onTimeout: () {
+        setState(() {
+          timedOut = true;
+        });
+        showDialog(
+            context: context,
+            builder: (BuildContext context) => AlertDialog(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                  title: Text("Status"),
+                  content: Text(
+                    "It takes too long than usual, please referesh.",
+                    style: TextStyle(color: Color(0xffe71827)),
+                  ),
+                  actions: <Widget>[
+                    FlatButton(
+                      child: Text('OK',
+                          style: TextStyle(color: Color(0xff292664))),
+                      onPressed: () {
+                        Navigator.pop(context, 'OK');
+                      },
+                    )
+                  ],
+                )).then((val) {
+          setState(() {
+            apiCall = false;
+          });
+        });
+      });
+      return true;
+    } catch (e) {
+      setState(() {
+        apiCall = false;
+      });
+      if (timedOut == false) {
+        showDialog(
+            context: context,
+            builder: (BuildContext context) => AlertDialog(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                  title: Text("Status"),
+                  content: Text(
+                    "Server could not be reached ⚠️",
+                    style: TextStyle(color: Color(0xffe71827)),
+                  ),
+                  actions: <Widget>[
+                    FlatButton(
+                      child: Text('OK',
+                          style: TextStyle(color: Color(0xff292664))),
+                      onPressed: () {
+                        Navigator.pop(context, 'OK');
+                      },
+                    )
+                  ],
+                )).then((val) {
+          setState(() {
+            apiCall = false;
+          });
+        });
+      }
+      setState(() {
+        timedOut = false;
+      });
+    }
+    return false;
   }
 
   @override
@@ -32,6 +247,23 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
       home: Scaffold(
           appBar: AppBar(
             actions: <Widget>[
+              IconButton(
+                color: Colors.white,
+                icon: isPageView
+                    ? Icon(Icons.format_list_bulleted)
+                    : Icon(Icons.pageview),
+                onPressed: isPageView
+                    ? () {
+                        setState(() {
+                          isPageView = false;
+                        });
+                      }
+                    : () {
+                        setState(() {
+                          isPageView = true;
+                        });
+                      },
+              ),
               PopupMenuButton<String>(
                 onSelected: choiceAction,
                 itemBuilder: (BuildContext context) {
@@ -52,75 +284,277 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
             backgroundColor: Color(0xff292664),
             title: Text("Schedule"),
             centerTitle: true,
+            bottom: apiCall
+                ? MyLinearProgressIndicator(
+                    backgroundColor: Colors.white,
+                    valueColor:
+                        new AlwaysStoppedAnimation<Color>(Color(0xff292664)),
+                  )
+                : null,
           ),
-          body: Container(
-            child: SingleChildScrollView(
-              child: Column(
-                children: <Widget>[
-                  Divider(
-                    indent: 0.0,
-                    height: 20.0,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      IconButton(
-                          icon: Icon(
-                        Icons.arrow_back_ios,
-                        color: Color(0xff292664),
-                        size: 30.0,
-                      )),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Text("23 May",
-                            textAlign: TextAlign.center,
+          body: Center(
+            child: apiCall == false
+                ? isRegistered
+                    ? events != null
+                        ? events.isEmpty
+                            ? Text(
+                                "No activities are available",
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                ),
+                              )
+                            : isPageView
+                                ? PageView.builder(
+                                    controller: _controller,
+                                    itemBuilder: _buildEventDatePage,
+                                    itemCount: eventDates.length,
+                                  )
+                                : ListView.builder(
+                                    itemBuilder: _buildEventDateExpansionTile,
+                                    itemCount: eventDates.length,
+                                  )
+                        : Text(
+                            "Server could not reached, \nplease try again",
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 20.0)),
-                      ),
-                      IconButton(
-                          icon: Icon(
-                        Icons.arrow_forward_ios,
-                        color: Color(0xff292664),
-                        size: 30.0,
-                      )),
-                    ],
-                  ),
-                  Divider(
-                    indent: 0.0,
-                    height: 20.0,
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 20.0, right: 20.0),
-                      child: Column(
-                        children: <Widget>[
-                          Icon(
-                            Icons.location_on,
-                            color: Color(0xff292664),
-                            size: 40.0,
-                          ),
-                          Text(
-                            "Ahmedabad University, GICT Building, Central Campus, Navrangpura, Ahmedabad, Gujarat 380009",
-                            style: TextStyle(
-                                fontSize: 20.0, fontWeight: FontWeight.w400),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
-                      ),
+                              fontSize: 20.0,
+                            ),
+                          )
+                    : Text(
+                        "You are not registered by admin,\n please contact administration",
+                        style: TextStyle(fontSize: 20.0),
+                      )
+                : Text(
+                    "Please wait...",
+                    style: TextStyle(
+                      fontSize: 20.0,
                     ),
                   ),
-                  Divider(
-                    color: Colors.black,
-                    indent: 0.0,
-                    height: 40.0,
+          )),
+    );
+  }
+
+  Widget _buildEventDateExpansionTile(BuildContext context, int index) {
+    return Padding(
+        padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
+        child: Container(
+          decoration: BoxDecoration(
+              border: Border(bottom: BorderSide(color: Colors.black))),
+          child: ExpansionTile(
+            title: Text(
+              "${eventDates.elementAt(index)}",
+              style: Theme.of(context).textTheme.title,
+            ),
+            children: events.isEmpty
+                ? <Widget>[Text("Please wait...")]
+                : createList(eventDates.elementAt(index)),
+          ),
+        ));
+  }
+
+
+  Widget _buildEventDatePage(BuildContext context, int index) {
+    return Container(
+      child: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Divider(
+              color: Colors.transparent,
+              indent: 0.0,
+              height: 20.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                IconButton(
+                  icon: Icon(
+                    Icons.arrow_back_ios,
+                    color: Color(0xff292664),
+                    size: 30.0,
                   ),
-                  /*Write down your card code here sir*/
+                  onPressed: () {
+                    _controller.previousPage(
+                        duration: Duration(milliseconds: 500),
+                        curve: Cubic(10, 10, 10, 10));
+                  },
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Text("${eventDates.elementAt(index)}",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 20.0)),
+                ),
+                IconButton(
+                    icon: Icon(
+                      Icons.arrow_forward_ios,
+                      color: Color(0xff292664),
+                      size: 30.0,
+                    ),
+                    onPressed: () {
+                      _controller.nextPage(
+                          duration: Duration(milliseconds: 500),
+                          curve: Cubic(10, 10, 10, 10));
+                    }),
+              ],
+            ),
+            Divider(
+              color: Colors.transparent,
+              indent: 0.0,
+              height: 20.0,
+            ),
+            Align(
+              alignment: Alignment.center,
+              child: Padding(
+                padding: EdgeInsets.only(left: 20.0, right: 20.0),
+                child: Column(
+                  children: <Widget>[
+                    Icon(
+                      Icons.location_on,
+                      color: Color(0xff292664),
+                      size: 40.0,
+                    ),
+                    Text(
+                      "${events.where((e) => e.date == eventDates.elementAt(index)).elementAt(0).venue}",
+                      style: TextStyle(
+                          fontSize: 20.0, fontWeight: FontWeight.w400),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Divider(
+              color: Colors.black,
+              indent: 0.0,
+              height: 40.0,
+            ),
+            Column(
+              children: createList(eventDates.elementAt(index)),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  List<Widget> createList(String date) {
+    List<Widget> list = new List();
+    int p;
+    Iterable<Event> dateWiseEvents =
+        events.where((e) => e.date == date && e.grp == grp);
+    dateWiseEvents.forEach((e) {
+      list.add(Slidable(
+        key: Key("${e.id}"),
+        actionPane: SlidableDrawerActionPane(),
+        actionExtentRatio: 0.25,
+        actions: <Widget>[],
+        secondaryActions: <Widget>[],
+        child: InkWell(
+          highlightColor: Color(0xff292664),
+          onLongPress: () {
+            showDialog(
+                context: context,
+                builder: (BuildContext context) => AlertDialog(
+                      shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(10.0))),
+                      title: Text(
+                        e.activity,
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                      content: SingleChildScrollView(
+                        child: Column(
+                          children: <Widget>[
+                            Text(
+                              "Venue: ${e.venue}",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            e.description == "null" || e.description == ""
+                                ? Text("\n\nNo description")
+                                : Text("\n\n" + e.description),
+                          ],
+                        ),
+                      ),
+                      actions: <Widget>[
+                        FlatButton(
+                          child: Text('OK',
+                              style: TextStyle(color: Color(0xff292664))),
+                          onPressed: () {
+                            Navigator.pop(context, 'OK');
+                          },
+                        )
+                      ],
+                    ));
+          },
+          child: Card(
+            elevation: 5.0,
+            child: ListTile(
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+              title: Text(
+                e.activity,
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, color: Color(0xff292664)),
+              ),
+              subtitle: Column(
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Text(e.startTime),
+                      Text(
+                        " TO ",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text(e.endTime),
+                      Text(
+                        " | ",
+                        style: TextStyle(fontWeight: FontWeight.w700),
+                      ),
+                      Text("Group: ${e.grp}")
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[Text("")],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Text(
+                        "Long press for ",
+                        style: TextStyle(
+                            fontStyle: FontStyle.italic, fontSize: 10.0),
+                      ),
+                      Text(
+                        "Venue ",
+                        style: TextStyle(
+                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 10.0,
+                            color: Colors.black),
+                      ),
+                      Text(
+                        "& ",
+                        style: TextStyle(
+                            fontStyle: FontStyle.italic, fontSize: 10.0),
+                      ),
+                      Text(
+                        "Description ",
+                        style: TextStyle(
+                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 10.0,
+                            color: Colors.black),
+                      )
+                    ],
+                  )
                 ],
               ),
             ),
-          )),
-    );
+          ),
+        ),
+      ));
+    });
+    return list;
   }
 
 /*for Sign Out*/
@@ -170,7 +604,30 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
 
 /*For popup menu*/
 class PopUp {
-  static const String Images = "Image Gallery";
-  static const String SignOut = "Sign Out";
-  static const List<String> choice = <String>[Images, SignOut];
+  static const List<String> choice = <String>[
+    "Image Gallery",
+    "Refresh",
+    "Sign Out"
+  ];
+}
+
+const double _kMyLinearProgressIndicatorHeight = 6.0;
+
+class MyLinearProgressIndicator extends LinearProgressIndicator
+    implements PreferredSizeWidget {
+  MyLinearProgressIndicator({
+    Key key,
+    double value,
+    Color backgroundColor,
+    Animation<Color> valueColor,
+  }) : super(
+          key: key,
+          value: value,
+          backgroundColor: backgroundColor,
+          valueColor: valueColor,
+        ) {
+    preferredSize = Size(double.infinity, _kMyLinearProgressIndicatorHeight);
+  }
+  @override
+  Size preferredSize;
 }

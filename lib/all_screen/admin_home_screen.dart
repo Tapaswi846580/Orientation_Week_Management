@@ -128,11 +128,6 @@ class _AdminHomeState extends State<AdminHome> {
           ),
           backgroundColor: Color(0xff292664),
           actions: <Widget>[
-            /*IconButton(
-              icon: Icon(Icons.refresh),
-              onPressed: () => getData(),
-              tooltip: "Refresh",
-            ),*/
             apiCall == false
                 ? IconButton(
                     icon: Icon(Icons.refresh),
@@ -140,7 +135,6 @@ class _AdminHomeState extends State<AdminHome> {
                       setState(() {
                         apiCall = true;
                         getData().then((val) {
-                          eventDates.forEach((d) => print("Dates: $d"));
                           setState(() {
                             apiCall = false;
                           });
@@ -223,7 +217,7 @@ class _AdminHomeState extends State<AdminHome> {
                                   children: <Widget>[
                                     Center(
                                       child: Text(
-                                        "No events are available",
+                                        "No activities are available",
                                         style: TextStyle(
                                           fontSize: 20.0,
                                         ),
@@ -231,9 +225,7 @@ class _AdminHomeState extends State<AdminHome> {
                                     ),
                                   ],
                                 )
-                              : EventDetailsExpansionTile(
-                                  events: events,
-                                ),
+                              : EventDetailsExpansionTile(),
                           Container(
                             padding: EdgeInsets.all(20.0),
                             alignment: Alignment.bottomRight,
@@ -245,7 +237,8 @@ class _AdminHomeState extends State<AdminHome> {
                                       return AdminInsertFullscreenDialog();
                                     },
                                     fullscreenDialog: true,
-                                  )).then((val){
+                                  ))
+                                      .then((val) {
                                     setState(() {
                                       getData();
                                     });
@@ -260,8 +253,18 @@ class _AdminHomeState extends State<AdminHome> {
                           ),
                         ],
                       )
-                    : Text("Server could not reached, please try again")
-                : Text("Please wait..."),
+                    : Text(
+                        "Server could not reached, please try again",
+                        style: TextStyle(
+                          fontSize: 20.0,
+                        ),
+                      )
+                : Text(
+                    "Please wait...",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                    ),
+                  ),
           ),
         ));
   }
@@ -270,7 +273,6 @@ class _AdminHomeState extends State<AdminHome> {
 class EventDetailsExpansionTile extends StatefulWidget {
   List<Event> events = new List();
   //Set<String> eventDates = new Set();
-  EventDetailsExpansionTile({@required this.events});
 
   @override
   State<StatefulWidget> createState() {
@@ -486,7 +488,7 @@ class EventDetailsExpansionTileState extends State {
                             fontStyle: FontStyle.italic,
                             fontWeight: FontWeight.bold,
                             fontSize: 10.0,
-                        color: Color(0xffe71827)),
+                            color: Color(0xffe71827)),
                       ),
                       Text(
                         "& left to ",
@@ -498,7 +500,8 @@ class EventDetailsExpansionTileState extends State {
                         style: TextStyle(
                             fontStyle: FontStyle.italic,
                             fontWeight: FontWeight.bold,
-                            fontSize: 10.0, color: Color(0xff292664)),
+                            fontSize: 10.0,
+                            color: Color(0xff292664)),
                       ),
                       Text(
                         ", long press for ",
@@ -510,7 +513,8 @@ class EventDetailsExpansionTileState extends State {
                         style: TextStyle(
                             fontStyle: FontStyle.italic,
                             fontWeight: FontWeight.bold,
-                            fontSize: 10.0, color: Colors.black),
+                            fontSize: 10.0,
+                            color: Colors.black),
                       ),
                     ],
                   )

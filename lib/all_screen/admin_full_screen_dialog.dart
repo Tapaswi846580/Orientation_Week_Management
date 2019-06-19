@@ -263,7 +263,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                         keyboardType: TextInputType.multiline,
 //                                style: Theme.of(context).textTheme.body1,
                         decoration: InputDecoration(
-                          labelText: 'Venue',
+                          labelText: 'Venue*',
                           labelStyle: TextStyle(
                               fontStyle: FontStyle.italic,
                               fontWeight: FontWeight.bold,
