@@ -384,7 +384,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                               shape: RoundedRectangleBorder(
                                                   borderRadius: BorderRadius.all(Radius.circular(10.0))),
                                               content: Text(
-                                                "Record Updated Successfully ! 😉",
+                                                "Record Updated ! 😉",
                                                 style: TextStyle(
                                                     color: Colors.green),
                                               ),

@@ -191,6 +191,9 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                               ),
                               Container(
                                 width: 120.0,
+                                decoration: BoxDecoration(
+                                  border: Border(bottom: BorderSide(color: Colors.black))
+                                ),
                                 child: InkWell(
                                   onTap: () {
                                     showTimePicker(
@@ -217,6 +220,9 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                               ),
                               Container(
                                 width: 120.0,
+                                decoration: BoxDecoration(
+                                    border: Border(bottom: BorderSide(color: Colors.black))
+                                ),
                                 child: InkWell(
                                   onTap: () {
                                     showTimePicker(
@@ -366,7 +372,7 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                                         shape: RoundedRectangleBorder(
                                             borderRadius: BorderRadius.all(Radius.circular(10.0))),
                                         content: Text(
-                                          "Record Updated Successfully ! 😉",
+                                          "Activity Added ! 😉",
                                           style: TextStyle(
                                               color: Colors.green),
                                         ),
@@ -385,7 +391,65 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                                           )
                                         ],
                                       ));
-                            } else {
+                            } else if (res == "Error") {
+                              setState(() {
+                                apiCall = false;
+                              });
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      AlertDialog(
+                                        title: Text("Status"),
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                                        content: Text(
+                                          "Somethin went wrong, please try again. :(",
+                                          style: TextStyle(
+                                              color: Color(0xffe71827)),
+                                        ),
+                                        actions: <Widget>[
+                                          FlatButton(
+                                            child: Text('OK',
+                                                style: TextStyle(
+                                                    color:
+                                                    Color(0xff292664))),
+                                            onPressed: () {
+                                              Navigator.pop(
+                                                  context, 'OK');
+                                            },
+                                          )
+                                        ],
+                                      ));
+                            }else if(post.statusCode == 404){
+                              setState(() {
+                                apiCall = false;
+                              });
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      AlertDialog(
+                                        title: Text("Status"),
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                                        content: Text(
+                                          "Server could not be reached, please try again",
+                                          style: TextStyle(
+                                              color: Color(0xffe71827)),
+                                        ),
+                                        actions: <Widget>[
+                                          FlatButton(
+                                            child: Text('OK',
+                                                style: TextStyle(
+                                                    color:
+                                                    Color(0xff292664))),
+                                            onPressed: () {
+                                              Navigator.pop(
+                                                  context, 'OK');
+                                            },
+                                          )
+                                        ],
+                                      ));
+                            }else{
                               setState(() {
                                 apiCall = false;
                               });
