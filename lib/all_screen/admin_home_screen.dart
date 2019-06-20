@@ -469,7 +469,14 @@ class EventDetailsExpansionTileState extends State {
                         " | ",
                         style: TextStyle(fontWeight: FontWeight.w700),
                       ),
-                      Text("Group: ${e.grp}")
+                      Text("Group: ${e.grp}"),
+                      Text(
+                        " | ",
+                        style: TextStyle(fontWeight: FontWeight.w700),
+                      ),
+                      e.batch == "null" || e.batch == "" || e.batch == null
+                          ? Text("Batch: N/A")
+                          : Text("Batch: ${e.batch}"),
                     ],
                   ),
                   Row(

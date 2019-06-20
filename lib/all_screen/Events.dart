@@ -1,14 +1,14 @@
 class Event{
   int _id;
-  String _date,_grp,_startTime,_endTime,_activity,_description,_venue;
+  String _date,_grp,_batch,_startTime,_endTime,_activity,_description,_venue;
 
   factory Event.fromJson(Map<String, dynamic> json){
-    return Event(int.parse(json['id'].toString()),json['date'].toString(),json['grp'].toString(),
+    return Event(int.parse(json['id'].toString()),json['date'].toString(),json['grp'].toString(),json['batch'].toString(),
         json['startTime'].toString(),json['endTime'].toString(),json['activity'].toString(),json['description'].toString(),json['venue'].toString());
   }
 
 
-  Event(this._id, this._date, this._grp, this._startTime, this._endTime,
+  Event(this._id, this._date, this._grp, this._batch, this._startTime, this._endTime,
       this._activity, this._description, this._venue);
 
   get venue => _venue;
@@ -45,6 +45,12 @@ class Event{
 
   set grp(value) {
     _grp = value;
+  }
+
+  get batch => _batch;
+
+  set batch(value) {
+    _batch = value;
   }
 
   String get date => _date;

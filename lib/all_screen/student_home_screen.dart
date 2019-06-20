@@ -12,7 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 Set<String> eventDates = new Set();
 List<Event> events;
 bool apiCall = false, timedOut = false, isRegistered = true, isPageView = true;
-String email, grp;
+String email, grp, batch;
 
 class StudentHomeScreen extends StatefulWidget {
   @override
@@ -35,11 +35,12 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
     } else if (choice == "Refresh") {
       setState(() {
         apiCall = true;
-        getData().then((val) {
+        /*getData().then((val) {
           setState(() {
             apiCall = false;
           });
-        });
+        });*/
+        getGroup();
       });
     }
   }
@@ -64,13 +65,18 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
           Uri.encodeFull(url),
         )
             .then((res) {
-          grp = res.body;
-          if (grp == "No Registered") {
+          if (res.body == "No Registered") {
+            print(res.body);
             setState(() {
               isRegistered = false;
               apiCall = false;
             });
           } else {
+            setState(() {
+              grp = res.body.split(",")[0];
+              batch = res.body.split(",")[1];
+              isRegistered = true;
+            });
             getData().then((val) {
               setState(() {
                 apiCall = false;
@@ -166,7 +172,11 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
           }
           events = parsedList.map((val) => Event.fromJson(val)).toList();
           events.forEach((e) {
-            if (e.grp == grp) eventDates.add(e.date);
+            if (e.grp == grp &&
+                (e.batch == batch ||
+                    e.batch == "null" ||
+                    e.batch == "" ||
+                    e.batch == null)) eventDates.add(e.date);
           });
         });
       }).timeout(
@@ -248,6 +258,62 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
           appBar: AppBar(
             actions: <Widget>[
               IconButton(
+                  icon: Icon(Icons.info_outline),
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0))),
+                              title: Center(
+                                  child: Icon(Icons.info_outline,size: 30.0,) ),
+                              content: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Row(
+                                    children: <Widget>[
+                                      Text(
+                                        "Your Group: ",
+                                        style: TextStyle(fontSize: 20.0),
+                                      ),
+                                      Text(
+                                        "$grp",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20.0),
+                                      )
+                                    ],
+                                  ),
+                                  Row(
+                                    children: <Widget>[
+                                      Text(
+                                        "Your Batch: ",
+                                        style: TextStyle(fontSize: 20.0),
+                                      ),
+                                      Text(
+                                        "$batch",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20.0),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
+                              actions: <Widget>[
+                                FlatButton(
+                                  child: Text('OK',
+                                      style:
+                                          TextStyle(color: Color(0xff292664))),
+                                  onPressed: () {
+                                    Navigator.pop(context, 'OK');
+                                  },
+                                )
+                              ],
+                            ));
+                  }),
+              IconButton(
                 color: Colors.white,
                 icon: isPageView
                     ? Icon(Icons.format_list_bulleted)
@@ -283,7 +349,6 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
             ],
             backgroundColor: Color(0xff292664),
             title: Text("Schedule"),
-            centerTitle: true,
             bottom: apiCall
                 ? MyLinearProgressIndicator(
                     backgroundColor: Colors.white,
@@ -291,6 +356,40 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                         new AlwaysStoppedAnimation<Color>(Color(0xff292664)),
                   )
                 : null,
+          ),
+          bottomNavigationBar: BottomAppBar(
+              color: Colors.white,
+            child: Padding(
+              padding: const EdgeInsets.all(3.0),
+              child: Container(
+
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 5.0, // has the effect of softening the shadow
+                      spreadRadius: 1.0, // has the effect of extending the shadow
+//                      offset: Offset(
+//                        10.0, // horizontal, move right 10
+//                        10.0, // vertical, move down 10
+//                      ),
+                    )
+                  ],
+                  color: Colors.white,
+                    borderRadius: new BorderRadius.all(Radius.circular(10.0)),
+                ),
+                height: 40.0,
+                child: Center(
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Text(
+                      "Welcome $email",
+//                style: TextStyle( color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ),
           body: Center(
             child: apiCall == false
@@ -351,16 +450,14 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
         ));
   }
 
-
   Widget _buildEventDatePage(BuildContext context, int index) {
     return Container(
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Divider(
+              height: 10.0,
               color: Colors.transparent,
-              indent: 0.0,
-              height: 20.0,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -401,7 +498,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
             Divider(
               color: Colors.transparent,
               indent: 0.0,
-              height: 20.0,
+              height: 10.0,
             ),
             Align(
               alignment: Alignment.center,
@@ -441,8 +538,13 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
   List<Widget> createList(String date) {
     List<Widget> list = new List();
     int p;
-    Iterable<Event> dateWiseEvents =
-        events.where((e) => e.date == date && e.grp == grp);
+    Iterable<Event> dateWiseEvents = events.where((e) =>
+        e.date == date &&
+        e.grp == grp &&
+        (e.batch == batch ||
+            e.batch == "null" ||
+            e.batch == "" ||
+            e.batch == null));
     dateWiseEvents.forEach((e) {
       list.add(Slidable(
         key: Key("${e.id}"),
@@ -511,7 +613,14 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                         " | ",
                         style: TextStyle(fontWeight: FontWeight.w700),
                       ),
-                      Text("Group: ${e.grp}")
+                      Text("Group: ${e.grp}"),
+                      Text(
+                        " | ",
+                        style: TextStyle(fontWeight: FontWeight.w700),
+                      ),
+                      e.batch == "null" || e.batch == "" || e.batch == null
+                          ? Text("Batch: N/A")
+                          : Text("Batch: ${e.batch}"),
                     ],
                   ),
                   Row(
