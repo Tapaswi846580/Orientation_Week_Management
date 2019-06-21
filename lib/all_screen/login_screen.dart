@@ -149,6 +149,7 @@ class _LoginState extends State<LoginPage> {
                           ]),
                       child: TextFormField(
                         keyboardType: TextInputType.emailAddress,
+                        autocorrect: false,
                         decoration: InputDecoration(
                           icon: Icon(Icons.alternate_email),
                           border: InputBorder.none,

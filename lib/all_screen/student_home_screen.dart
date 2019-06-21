@@ -267,7 +267,10 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10.0))),
                               title: Center(
-                                  child: Icon(Icons.info_outline,size: 30.0,) ),
+                                  child: Icon(
+                                Icons.info_outline,
+                                size: 30.0,
+                              )),
                               content: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: <Widget>[
@@ -358,17 +361,17 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                 : null,
           ),
           bottomNavigationBar: BottomAppBar(
-              color: Colors.white,
+            color: Colors.white,
             child: Padding(
               padding: const EdgeInsets.all(3.0),
               child: Container(
-
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey,
                       blurRadius: 5.0, // has the effect of softening the shadow
-                      spreadRadius: 1.0, // has the effect of extending the shadow
+                      spreadRadius:
+                          1.0, // has the effect of extending the shadow
 //                      offset: Offset(
 //                        10.0, // horizontal, move right 10
 //                        10.0, // vertical, move down 10
@@ -376,7 +379,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                     )
                   ],
                   color: Colors.white,
-                    borderRadius: new BorderRadius.all(Radius.circular(10.0)),
+                  borderRadius: new BorderRadius.all(Radius.circular(10.0)),
                 ),
                 height: 40.0,
                 child: Center(
@@ -545,6 +548,13 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
             e.batch == "null" ||
             e.batch == "" ||
             e.batch == null));
+    var dateWiseEventsList = dateWiseEvents.toList();
+    dateWiseEventsList.sort((a, b) {
+      return a.startTime.compareTo(b.startTime);
+    });
+    dateWiseEventsList.forEach((e) {
+      print("Start ttime: ${e.startTime} ");
+    });
     dateWiseEvents.forEach((e) {
       list.add(Slidable(
         key: Key("${e.id}"),
@@ -619,8 +629,8 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                         style: TextStyle(fontWeight: FontWeight.w700),
                       ),
                       e.batch == "null" || e.batch == "" || e.batch == null
-                          ? Text("Batch: N/A")
-                          : Text("Batch: ${e.batch}"),
+                          ? Text("")
+                          : Text("${e.batch}"),
                     ],
                   ),
                   Row(

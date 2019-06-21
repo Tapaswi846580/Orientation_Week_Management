@@ -457,6 +457,10 @@ class EventDetailsExpansionTileState extends State {
               ),
               subtitle: Column(
                 children: <Widget>[
+                  Divider(
+                    color: Colors.transparent,
+                    height: 2.0,
+                  ),
                   Row(
                     children: <Widget>[
                       Text(e.startTime),
@@ -469,18 +473,28 @@ class EventDetailsExpansionTileState extends State {
                         " | ",
                         style: TextStyle(fontWeight: FontWeight.w700),
                       ),
+
+                    ],
+                  ),
+                  Divider(
+                    color: Colors.transparent,
+                    height: 2.0,
+                  ),
+                  Row(
+                    children: <Widget>[
                       Text("Group: ${e.grp}"),
                       Text(
                         " | ",
                         style: TextStyle(fontWeight: FontWeight.w700),
                       ),
                       e.batch == "null" || e.batch == "" || e.batch == null
-                          ? Text("Batch: N/A")
-                          : Text("Batch: ${e.batch}"),
+                          ? Text("")
+                          : Text("${e.batch}"),
                     ],
                   ),
-                  Row(
-                    children: <Widget>[Text("")],
+                  Divider(
+                    color: Colors.transparent,
+                    height: 5.0,
                   ),
                   Row(
                     children: <Widget>[
