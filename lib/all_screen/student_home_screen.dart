@@ -7,12 +7,12 @@ import 'Events.dart';
 import 'dart:convert';
 import 'resources.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/services.dart';
 
 Set<String> eventDates = new Set();
 List<Event> events;
 bool apiCall = false, timedOut = false, isRegistered = true, isPageView = true;
-String email, grp, batch;
+String email, grp, batch, circle;
 
 class StudentHomeScreen extends StatefulWidget {
   @override
@@ -75,6 +75,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
             setState(() {
               grp = res.body.split(",")[0];
               batch = res.body.split(",")[1];
+              circle = res.body.split(",")[2];
               isRegistered = true;
             });
             getData().then((val) {
@@ -296,6 +297,20 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                                       ),
                                       Text(
                                         "$batch",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20.0),
+                                      )
+                                    ],
+                                  ),
+                                  Row(
+                                    children: <Widget>[
+                                      Text(
+                                        "Your Circle: ",
+                                        style: TextStyle(fontSize: 20.0),
+                                      ),
+                                      Text(
+                                        "$circle",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 20.0),
@@ -548,13 +563,14 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
             e.batch == "null" ||
             e.batch == "" ||
             e.batch == null));
-    var dateWiseEventsList = dateWiseEvents.toList();
-    dateWiseEventsList.sort((a, b) {
-      return a.startTime.compareTo(b.startTime);
-    });
-    dateWiseEventsList.forEach((e) {
-      print("Start ttime: ${e.startTime} ");
-    });
+
+//    var dateWiseEventsList = dateWiseEvents.toList();
+//    dateWiseEventsList.sort((a, b) {
+//      return a.startTime.compareTo(b.startTime);
+//    });
+//    dateWiseEventsList.forEach((e) {
+//      print("Start ttime: ${e.startTime} ");
+//    });
     dateWiseEvents.forEach((e) {
       list.add(Slidable(
         key: Key("${e.id}"),
@@ -564,7 +580,8 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
         secondaryActions: <Widget>[],
         child: InkWell(
           highlightColor: Color(0xff292664),
-          onLongPress: () {
+          onLongPress: () async{
+            HapticFeedback.lightImpact();
             showDialog(
                 context: context,
                 builder: (BuildContext context) => AlertDialog(
