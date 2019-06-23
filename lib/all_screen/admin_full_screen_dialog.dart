@@ -26,6 +26,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
   final eventDateController = TextEditingController();
   final startTimeController = TextEditingController();
   final endTimeController = TextEditingController();
+  final batchController = TextEditingController();
   String selectedRadio = "A";
   bool apiCall = false, timedOut = false;
   static final postUrl =
@@ -40,6 +41,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
   void initState() {
     eventNameController.text = event.activity;
     selectedRadio = event.grp;
+    batchController.text = event.batch;
     eventDateController.text = event.date;
     startTimeController.text = event.startTime;
     endTimeController.text = event.endTime;
@@ -144,6 +146,30 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                       ],
                     ),
                     Padding(
+                      padding: const EdgeInsets.only(top: 7.0),
+                      child: TextField(
+                        keyboardType: TextInputType.multiline,
+//                                style: Theme.of(context).textTheme.body1,
+                        decoration: InputDecoration(
+                          labelText: 'Batch*',
+                          labelStyle: TextStyle(
+                              fontStyle: FontStyle.italic,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.green),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Color(0xffe71827)),
+                          ),
+                        ),
+                        controller: batchController,
+                      ),
+                    ),
+                    Padding(
                       padding: const EdgeInsets.only(top: 5.0),
                       child: InkWell(
                         onTap: () {
@@ -159,15 +185,10 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                             });
                           });
                         },
-                        child: /*Text("${event.date}")*/ TextField(
-//                      inputType: InputType.date,
-//                      format: DateFormat("dd-MMMM-yyyy"),
+                        child: TextField(
                           keyboardType: TextInputType.datetime,
                           enabled: false,
-
                           style: TextStyle(fontWeight: FontWeight.bold),
-//                      editable: false,
-//                            style: Theme.of(context).textTheme.title,
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.date_range),
                             labelText: 'Date*',
@@ -325,6 +346,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                     'id': '${event.id}',
                                     'date': '${eventDateController.text}',
                                     'grp': '$selectedRadio',
+                                    'batch': '${batchController.text}',
                                     'startTime': '${startTimeController.text}',
                                     'endTime': '${endTimeController.text}',
                                     'activity': '${eventNameController.text}',
@@ -396,8 +418,8 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                                   onPressed: () {
                                                     Navigator.pop(
                                                         context, 'OK');
-                                                    Navigator.pop(
-                                                        this.context, 'OK');
+                                                    /*Navigator.pop(
+                                                        this.context, 'OK');*/
                                                   },
                                                 )
                                               ],

@@ -20,6 +20,7 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
   final eventDateController = TextEditingController();
   final startTimeController = TextEditingController();
   final endTimeController = TextEditingController();
+  final batchController = TextEditingController();
   String selectedRadio = "A";
   bool apiCall = false, timedOut = false;
   static final postUrl =
@@ -126,6 +127,30 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                               fontWeight: FontWeight.w800, fontSize: 20.0),
                         ),
                       ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7.0),
+                      child: TextField(
+                        keyboardType: TextInputType.multiline,
+//                                style: Theme.of(context).textTheme.body1,
+                        decoration: InputDecoration(
+                          labelText: 'Batch*',
+                          labelStyle: TextStyle(
+                              fontStyle: FontStyle.italic,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.green),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Color(0xffe71827)),
+                          ),
+                        ),
+                        controller: batchController,
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 5.0),
@@ -254,7 +279,7 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                         keyboardType: TextInputType.multiline,
 //                                style: Theme.of(context).textTheme.body1,
                         decoration: InputDecoration(
-                          labelText: 'Venue',
+                          labelText: 'Venue*',
                           labelStyle: TextStyle(
                               fontStyle: FontStyle.italic,
                               fontWeight: FontWeight.bold,
@@ -307,7 +332,8 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                             startTimeController.text.length != 0 &&
                             endTimeController.text.length != 0 &&
                             eventNameController.text.length != 0 &&
-                            eventVenueController.text.length != 0) {
+                            eventVenueController.text.length != 0 &&
+                            batchController.text.length != 0) {
                           try {
                             setState(() {
                               apiCall = true;
@@ -315,6 +341,7 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                             var data = {
                               'date': '${eventDateController.text}',
                               'grp': '$selectedRadio',
+                              'batch': '${batchController.text}',
                               'startTime': '${startTimeController.text}',
                               'endTime': '${endTimeController.text}',
                               'activity': '${eventNameController.text}',
