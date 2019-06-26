@@ -175,6 +175,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
           events.forEach((e) {
             if (e.grp == grp &&
                 (e.batch == batch ||
+                    e.batch == "BOTH" ||
                     e.batch == "null" ||
                     e.batch == "" ||
                     e.batch == null)) eventDates.add(e.date);
@@ -366,7 +367,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
               ),
             ],
             backgroundColor: Color(0xff292664),
-            title: Text("Schedule"),
+            title: Text("Orientation App"),
             bottom: apiCall
                 ? MyLinearProgressIndicator(
                     backgroundColor: Colors.white,
@@ -560,6 +561,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
         e.date == date &&
         e.grp == grp &&
         (e.batch == batch ||
+            e.batch == "BOTH" ||
             e.batch == "null" ||
             e.batch == "" ||
             e.batch == null));
