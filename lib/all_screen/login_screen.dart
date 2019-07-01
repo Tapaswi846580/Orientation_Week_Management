@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'admin_home_screen.dart';
 import 'student_home_screen.dart';
 import 'resources.dart';
+import 'registration_full_screen_dialog.dart';
 
 var selectedVal = "Student";
 
@@ -294,7 +295,7 @@ class _LoginState extends State<LoginPage> {
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute<Null>(
                                 builder: (BuildContext context) {
-                              return RegisterScreen();
+                              return  RegisterScreen();
                             }));
                           },
                           child: Center(

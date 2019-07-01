@@ -29,6 +29,23 @@ class _AdminHomeState extends State<AdminHome> {
     });
   }
 
+  String selectedGroupRadio = "Both";
+  String selectedBatchRadio = "Both";
+
+  setSelectedGroupRadio(String val) {
+    setState(() {
+      selectedGroupRadio = val;
+      print("Group: $selectedGroupRadio");
+    });
+  }
+
+  setSelectedBatchRadio(String val) {
+    setState(() {
+      selectedBatchRadio = val;
+      print("Batch: $selectedBatchRadio");
+    });
+  }
+
   Future<bool> getData() async {
     try {
       final url = 'http://$ip:8080/JavaAPI/rest/services/getAllEvent';
@@ -145,7 +162,155 @@ class _AdminHomeState extends State<AdminHome> {
                     color: Colors.white,
                   )
                 : Text(""),
-            /**/
+            /*IconButton(
+              icon: Icon(Icons.settings),
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) => AlertDialog(
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10.0))),
+                          title: Text("Filters"),
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              Text("Group"),
+                              Divider(
+                                color: Colors.black,
+                              ),
+                              SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: <Widget>[
+                                    Radio(
+                                      value: "A",
+                                      activeColor: Color(0xff292664),
+                                      groupValue: selectedGroupRadio,
+                                      onChanged: (val) {
+                                        setSelectedGroupRadio(val);
+                                      },
+                                    ),
+                                    Text(
+                                      "A",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w800,
+                                          fontSize: 20.0),
+                                    ),
+                                    Radio(
+                                      value: "B",
+                                      activeColor: Color(0xff292664),
+                                      groupValue: selectedGroupRadio,
+                                      onChanged: (val) {
+                                        setSelectedGroupRadio(val);
+                                      },
+                                    ),
+                                    Text(
+                                      "B",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w800,
+                                          fontSize: 20.0),
+                                    ),
+                                    Radio(
+                                      value: "Both",
+                                      activeColor: Color(0xff292664),
+                                      groupValue: selectedGroupRadio,
+                                      onChanged: (val) {
+                                        setSelectedGroupRadio(val);
+                                      },
+                                    ),
+                                    Text(
+                                      "Both",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w800,
+                                          fontSize: 20.0),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Divider(
+                                color: Colors.transparent,
+                              ),
+                              Text("Batch"),
+                              Divider(
+                                color: Colors.black,
+                              ),
+                              SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: <Widget>[
+                                    Radio(
+                                      value: "1",
+                                      activeColor: Color(0xff292664),
+                                      groupValue: selectedBatchRadio,
+                                      onChanged: (val) {
+                                        setSelectedBatchRadio(val);
+                                      },
+                                    ),
+                                    Text(
+                                      "1",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w800,
+                                          fontSize: 20.0),
+                                    ),
+                                    Radio(
+                                      value: "2",
+                                      activeColor: Color(0xff292664),
+                                      groupValue: selectedBatchRadio,
+                                      onChanged: (val) {
+                                        setSelectedBatchRadio(val);
+                                      },
+                                    ),
+                                    Text(
+                                      "2",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w800,
+                                          fontSize: 20.0),
+                                    ),
+                                    Radio(
+                                      value: "Both",
+                                      activeColor: Color(0xff292664),
+                                      groupValue: selectedBatchRadio,
+                                      onChanged: (val) {
+                                        setSelectedBatchRadio(val);
+                                      },
+                                    ),
+                                    Text(
+                                      "Both",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w800,
+                                          fontSize: 20.0),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                          actions: <Widget>[
+                            RaisedButton(
+                              child: Text('Apply',
+                                  style: TextStyle(color: Colors.white)),
+                              onPressed: () {
+                                Navigator.pop(context, 'OK');
+                              },
+                              color: Color(0xff292664),
+                            )
+                          ],
+                        ));
+              },
+              tooltip: "Filters",
+            ),*/
+            /*PopupMenuButton(
+              itemBuilder: (context) {
+                var list = List<PopupMenuEntry<Object>>();
+                list.add(PopupMenuItem(child: Text("Group")));
+              },
+            ),*/
+            /*Log Out Button*/
             IconButton(
               icon: Icon(Icons.power_settings_new),
               color: Color(0xffe71827),
@@ -473,7 +638,6 @@ class EventDetailsExpansionTileState extends State {
                         " | ",
                         style: TextStyle(fontWeight: FontWeight.w700),
                       ),
-
                     ],
                   ),
                   Divider(

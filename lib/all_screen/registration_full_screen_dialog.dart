@@ -6,17 +6,16 @@ import 'Email.dart';
 import 'dart:async';
 import 'resources.dart';
 import 'login_screen.dart';
+import 'package:pin_code_text_field/pin_code_text_field.dart';
 
 class RegistrationFullScreenDialog extends StatefulWidget {
   final String emailId;
   final String password;
-  final String confirmPassword;
   final int otp;
 
   const RegistrationFullScreenDialog({
     @required this.emailId,
     @required this.password,
-    @required this.confirmPassword,
     @required this.otp,
   });
 
@@ -26,7 +25,6 @@ class RegistrationFullScreenDialog extends StatefulWidget {
     return RegistrationFullScreenDialogState(
         emailId: emailId,
         password: password,
-        confirmPassword: confirmPassword,
         otp: otp);
   }
 }
@@ -34,13 +32,13 @@ class RegistrationFullScreenDialog extends StatefulWidget {
 class RegistrationFullScreenDialogState extends State {
   String emailId;
   String password;
-  String confirmPassword;
   int otp;
+  int enteredValue;
   final postUrl = "http://${Resource.ip}:8080/JavaAPI/rest/services/register";
+
   RegistrationFullScreenDialogState({
     @required this.emailId,
     @required this.password,
-    @required this.confirmPassword,
     @required this.otp,
   });
 
@@ -79,7 +77,7 @@ class RegistrationFullScreenDialogState extends State {
     } else {
       return Text(
         "Register",
-        style: TextStyle(color: Colors.lightGreenAccent),
+        style: TextStyle(color: Colors.white),
       );
     }
   }
@@ -89,7 +87,7 @@ class RegistrationFullScreenDialogState extends State {
     timer.cancel();
     super.dispose();
   }
-
+  TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -104,7 +102,7 @@ class RegistrationFullScreenDialogState extends State {
           "One Time Password",
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Color(0xff558fe0),
+        backgroundColor: Color(0xff292664),
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 15.0, left: 10.0, right: 10.0),
@@ -116,8 +114,8 @@ class RegistrationFullScreenDialogState extends State {
               style: TextStyle(color: Colors.indigo),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 15.0),
-              child: TextField(
+                padding: const EdgeInsets.only(top: 15.0),
+                /*child: TextField(
                 keyboardType: TextInputType.number,
                 style: Theme.of(context).textTheme.title,
                 decoration: InputDecoration(
@@ -134,7 +132,23 @@ class RegistrationFullScreenDialogState extends State {
                 ),
                 controller: otpController,
                 obscureText: true,
-              ),
+              ),*/
+                child: PinCodeTextField(
+                  autofocus: false,
+                  controller: controller,
+                  pinBoxHeight: 50.0,
+                  pinBoxWidth: 50.0,
+                  highlight: true,
+                  maxLength: "$otp".length,
+                  highlightColor: Colors.blue,
+                  defaultBorderColor: Colors.black,
+                  hasTextBorderColor: Colors.green,
+                  onDone: (text){
+                    enteredValue = 0;
+                    enteredValue = int.parse(text);
+                  },
+                  onTextChanged: (t){},
+                )
             ),
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
@@ -199,7 +213,11 @@ class RegistrationFullScreenDialogState extends State {
                                                   },
                                                 )
                                               ],
-                                            ));
+                                            )).then((val){
+                                              setState(() {
+                                                otp = otp;
+                                              });
+                                    });
                                   } else {
                                     setState(() {
                                       apiCall = false;
@@ -207,7 +225,7 @@ class RegistrationFullScreenDialogState extends State {
                                     String problem;
                                     for (var p in sr.validationProblems) {
                                       problem = p.code;
-                                      //print('Problem: ${p.code}: ${p.msg}');
+
                                       showDialog(
                                           context: context,
                                           builder: (BuildContext context) =>
@@ -252,7 +270,7 @@ class RegistrationFullScreenDialogState extends State {
                         onPressed: disableButton
                             ? null
                             : () async {
-                                if (otp.toString() == otpController.text) {
+                                if (otp == enteredValue) {
                                   setState(() {
                                     disableButton = true;
                                   });
@@ -308,12 +326,9 @@ class RegistrationFullScreenDialogState extends State {
                                                     },
                                                   )
                                                 ],
-                                              )).then((val){
+                                              )).then((val) {
                                         otp = null;
-                                        Navigator.pop(
-                                            context, 'OK');
-                                        Navigator.pop(
-                                            this.context, 'OK');
+                                        Navigator.pop(this.context, 'OK');
                                         Navigator.pushReplacement(
                                             context,
                                             MaterialPageRoute(
@@ -455,10 +470,10 @@ class RegistrationFullScreenDialogState extends State {
             Padding(
               padding: const EdgeInsets.only(top: 20.0, left: 10.0),
               child: Text(
-                "🚨️ Do not share your OTP with anyone❗",
+                "* Do not share your OTP with anyone❗",
                 style: TextStyle(
-                  color: Colors.indigo,
-                  fontSize: 30.0,
+                  color: Colors.red,
+                  fontSize: 15.0,
                   fontWeight: FontWeight.bold,
                   wordSpacing: 1.5,
                   fontStyle: FontStyle.italic,

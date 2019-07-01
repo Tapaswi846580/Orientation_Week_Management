@@ -275,7 +275,6 @@ class RegisterButton extends StatelessWidget {
                       return PasswordRecoveryFullScreenDialog(
                         emailId: email,
                         password: password,
-                        confirmPassword: confirmPassword,
                         otp: otp,
                       );
                     },

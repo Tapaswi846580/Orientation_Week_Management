@@ -303,7 +303,6 @@ class RegisterButton extends StatelessWidget {
                       return RegistrationFullScreenDialog(
                         emailId: email,
                         password: password,
-                        confirmPassword: confirmPassword,
                         otp: otp,
                       );
                     },

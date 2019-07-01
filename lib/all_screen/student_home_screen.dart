@@ -8,11 +8,20 @@ import 'dart:convert';
 import 'resources.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter/services.dart';
+import 'package:myfirst/all_screen/important_contact.dart';
 
 Set<String> eventDates = new Set();
 List<Event> events;
 bool apiCall = false, timedOut = false, isRegistered = true, isPageView = true;
-String email, grp, batch, circle;
+String email,
+    grp,
+    batch,
+    circle,
+    facultyAdvisor,
+    emailFacultyAdvisor,
+    studentMitra,
+    emailStudentMitra,
+    mobileStudentMitra;
 
 class StudentHomeScreen extends StatefulWidget {
   @override
@@ -22,8 +31,9 @@ class StudentHomeScreen extends StatefulWidget {
 class _StudentHomeScreenState extends State<StudentHomeScreen> {
   SharedPreferences prefs;
   PageController _controller = PageController(initialPage: 0, keepPage: false);
+
   void choiceAction(String choice) {
-    if (choice == "Image Gallery") {
+    if (choice == "Campus Guide") {
       setState(() {
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => ImageScreen()));
@@ -41,6 +51,11 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
           });
         });*/
         getGroup();
+      });
+    } else if (choice == "Contact Details") {
+      setState(() {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => ContactDeatils()));
       });
     }
   }
@@ -76,6 +91,11 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
               grp = res.body.split(",")[0];
               batch = res.body.split(",")[1];
               circle = res.body.split(",")[2];
+              facultyAdvisor = res.body.split(",")[3];
+              emailFacultyAdvisor = res.body.split(",")[4];
+              studentMitra = res.body.split(",")[5];
+              emailStudentMitra = res.body.split(",")[6];
+              mobileStudentMitra = res.body.split(",")[7];
               isRegistered = true;
             });
             getData().then((val) {
@@ -268,63 +288,160 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                               shape: RoundedRectangleBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10.0))),
-                              title: Center(
-                                  child: Icon(
-                                Icons.info_outline,
-                                size: 30.0,
-                              )),
-                              content: Column(
-                                mainAxisSize: MainAxisSize.min,
+                              title: Row(
                                 children: <Widget>[
-                                  Row(
-                                    children: <Widget>[
-                                      Text(
-                                        "Your Group: ",
-                                        style: TextStyle(fontSize: 20.0),
-                                      ),
-                                      Text(
-                                        "$grp",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20.0),
-                                      )
-                                    ],
+                                  Center(
+                                      child: Icon(
+                                    Icons.sentiment_satisfied,
+                                    size: 40.0,
+                                  )),
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 30.0),
                                   ),
-                                  Row(
-                                    children: <Widget>[
-                                      Text(
-                                        "Your Batch: ",
-                                        style: TextStyle(fontSize: 20.0),
-                                      ),
-                                      Text(
-                                        "$batch",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20.0),
-                                      )
-                                    ],
+                                  Center(
+                                    child: Text("Information Box"),
                                   ),
-                                  Row(
-                                    children: <Widget>[
-                                      Text(
-                                        "Your Circle: ",
-                                        style: TextStyle(fontSize: 20.0),
-                                      ),
-                                      Text(
-                                        "$circle",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20.0),
-                                      )
-                                    ],
-                                  )
                                 ],
+                              ),
+
+                              content: SingleChildScrollView(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    ListTile(
+                                      title: Text(
+                                        "Your Group",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 15.0,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                      subtitle: Text("$grp",style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.w400)),
+                                    ),
+                                    Divider(
+                                      color: Colors.black,
+                                      height: 5.0,
+                                    ),
+
+                                    ListTile(
+                                      title: Text(
+                                        "Your Friend Circle",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 15.0,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                      subtitle: Text("$circle",style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.w400)),
+                                    ),
+                                    Divider(
+                                      color: Colors.black,
+                                      height: 5.0,
+                                    ),
+
+                                    ListTile(
+                                      title: Text(
+                                        "Faculty Advisor",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 15.0,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                      subtitle: Text("$facultyAdvisor",style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.w400)),
+                                    ),
+                                    Divider(
+                                      color: Colors.black,
+                                      height: 5.0,
+                                    ),
+
+                                    ListTile(
+                                      title: Text(
+                                        "Email of Faculty Advisor",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 15.0,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                      subtitle: Text("$emailFacultyAdvisor",style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.w400)),
+                                    ),
+                                    Divider(
+                                      color: Colors.black,
+                                      height: 5.0,
+                                    ),
+
+                                    ListTile(
+                                      title: Text(
+                                        "Student Mitra",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 15.0,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                      subtitle: Text("$studentMitra",style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.w400)),
+                                    ),
+                                    Divider(
+                                      color: Colors.black,
+                                      height: 5.0,
+                                    ),
+
+                                    ListTile(
+                                      title: Text(
+                                        "Email of Student Mitra",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 15.0,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                      subtitle: Text("$emailStudentMitra",style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.w400)),
+                                    ),
+                                    Divider(
+                                      color: Colors.black,
+                                      height: 5.0,
+                                    ),
+
+                                    ListTile(
+                                      title: Text(
+                                        "Mobile of Student Mitra",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 15.0,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                      subtitle: Text("$mobileStudentMitra",style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 15.0,
+                                          fontWeight: FontWeight.w400)),
+                                    ),
+                                    Divider(
+                                      color: Colors.black,
+                                      height: 5.0,
+                                    ),
+
+                                  ],
+                                ),
                               ),
                               actions: <Widget>[
                                 FlatButton(
                                   child: Text('OK',
-                                      style:
-                                          TextStyle(color: Color(0xff292664))),
+                                      style: TextStyle(
+                                          color: Colors.green, fontSize: 15.0)),
                                   onPressed: () {
                                     Navigator.pop(context, 'OK');
                                   },
@@ -582,7 +699,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
         secondaryActions: <Widget>[],
         child: InkWell(
           highlightColor: Color(0xff292664),
-          onLongPress: () async{
+          onLongPress: () async {
             HapticFeedback.lightImpact();
             showDialog(
                 context: context,
@@ -743,8 +860,9 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
 /*For popup menu*/
 class PopUp {
   static const List<String> choice = <String>[
-    "Image Gallery",
     "Refresh",
+    "Campus Guide",
+    "Contact Details",
     "Sign Out"
   ];
 }
@@ -766,6 +884,7 @@ class MyLinearProgressIndicator extends LinearProgressIndicator
         ) {
     preferredSize = Size(double.infinity, _kMyLinearProgressIndicatorHeight);
   }
+
   @override
   Size preferredSize;
 }

@@ -11,7 +11,7 @@ class _SplashScreenState extends State<SplashScreen> {
   bool _visible=false;
   startTime() async {
     var _duration = new Duration(
-        seconds: 5);
+        seconds: 3);
     return new Timer(
         _duration, navigationPage);
   }
@@ -45,13 +45,13 @@ class _SplashScreenState extends State<SplashScreen> {
                       ),
                       AnimatedOpacity(
                         opacity: !_visible ? 1.0 : 0.0,
-                        duration: Duration(seconds: 5),
+                        duration: Duration(seconds: 3),
                         child: const Text("AHMEDABAD",style: TextStyle(color: Color(0xffe71827),fontSize: 40.0),),
 
                       ),
                       AnimatedOpacity(
                         opacity: !_visible ? 1.0 : 0.0,
-                        duration: Duration(seconds: 5),
+                        duration: Duration(seconds: 3),
                         child: const Text("UNIVERSITY",style: TextStyle(color: Color(0xff292664),fontSize: 40.0),),
                       ),
                       Divider(
@@ -60,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       ),
                       AnimatedOpacity(
                         opacity: !_visible ? 1.0 : 0.0,
-                        duration: Duration(seconds: 5),
+                        duration: Duration(seconds: 3),
                         child: const Text("Orientation Week",style: TextStyle(color: Colors.black,fontSize: 30.0),),
                       ),
                     ],

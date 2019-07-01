@@ -27,7 +27,8 @@ dependencies:
   url_launcher: ^5.0.3
   date_format: ^1.0.6
   flutter_pdfview: ^1.0.0+6
-
+  pin_code_text_field: ^1.3.6
+  carousel_pro: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -55,6 +56,27 @@ flutter:
     - images/dbls.jpg
     - images/scs1.jpg
     - images/VS.jpg
+    - images/h1.jpg
+    - images/h2.jpg
+    - images/h3.jpg
+    - images/h4.jpg
+    - images/h5.jpg
+    - images/h6.jpg
+    - images/h7.jpg
+    - images/h8.jpg
+    - images/c1.jpg
+    - images/c2.jpg
+    - images/c3.jpg
+    - images/c4.jpg
+    - images/c5.jpg
+    - images/b1.jpg
+    - images/b2.jpg
+    - images/b3.jpg
+    - images/s1.jpg
+    - images/s2.jpg
+    - images/s3.jpg
+    - images/l1.jpeg
+    - images/l2.jpg
 
   #  - images/a_dot_ham.jpeg
 
