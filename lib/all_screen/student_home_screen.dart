@@ -288,20 +288,23 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                               shape: RoundedRectangleBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10.0))),
-                              title: Row(
-                                children: <Widget>[
-                                  Center(
-                                      child: Icon(
-                                    Icons.sentiment_satisfied,
-                                    size: 40.0,
-                                  )),
-                                  Padding(
-                                    padding: EdgeInsets.only(left: 30.0),
-                                  ),
-                                  Center(
-                                    child: Text("Information Box"),
-                                  ),
-                                ],
+                              title: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children: <Widget>[
+                                    Center(
+                                        child: Icon(
+                                      Icons.sentiment_satisfied,
+                                      size: 40.0,
+                                    )),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 30.0),
+                                    ),
+                                    Center(
+                                      child: Text("Information Box"),
+                                    ),
+                                  ],
+                                ),
                               ),
 
                               content: SingleChildScrollView(
@@ -484,7 +487,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
               ),
             ],
             backgroundColor: Color(0xff292664),
-            title: Text("Orientation App"),
+            title: SingleChildScrollView(scrollDirection: Axis.horizontal,child: Text("Orientation App")),
             bottom: apiCall
                 ? MyLinearProgressIndicator(
                     backgroundColor: Colors.white,
@@ -755,7 +758,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       Text(e.endTime),
-                      Text(
+                      /*Text(
                         " | ",
                         style: TextStyle(fontWeight: FontWeight.w700),
                       ),
@@ -766,7 +769,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                       ),
                       e.batch == "null" || e.batch == "" || e.batch == null
                           ? Text("")
-                          : Text("${e.batch}"),
+                          : Text("${e.batch}"),*/
                     ],
                   ),
                   Row(

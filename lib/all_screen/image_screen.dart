@@ -851,84 +851,87 @@ class _ImageScreenState extends State<ImageScreen> {
                             Padding(
                               padding: const EdgeInsets.only(
                                   right: 10.0, left: 10.0, bottom: 10.0, top: 10.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        AllCallMap()._AUOAF();
-                                      });
-                                    },
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.call,
-                                          color: Colors.blueAccent,
-                                        ),
-                                        Text(
-                                          "Call",
-                                          style: TextStyle(
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
-                                        ),
-                                      ],
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          AllCallMap()._AUOAF();
+                                        });
+                                      },
+                                      child: Column(
+                                        children: <Widget>[
+                                          Icon(
+                                            Icons.call,
+                                            color: Colors.blueAccent,
+                                          ),
+                                          Text(
+                                            "Call",
+                                            style: TextStyle(
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.blueAccent),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  Divider(
-                                    color: Colors.black,
-                                    indent: 100.0,
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        AllCallMap()._launchMapUO();
-                                      });
-                                    },
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.map,
-                                          color: Colors.blueAccent,
-                                        ),
-                                        Text(
-                                          "Map",
-                                          style: TextStyle(
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
-                                        ),
-                                      ],
+                                    Divider(
+                                      color: Colors.black,
+                                      indent: 100.0,
                                     ),
-                                  ),
-                                  Divider(
-                                    color: Colors.black,
-                                    indent: 100.0,
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        AllCallMap()._AUOAFM();
-                                      });
-                                    },
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.mail,
-                                          color: Colors.blueAccent,
-                                        ),
-                                        Text(
-                                          "Mail",
-                                          style: TextStyle(
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
-                                        ),
-                                      ],
+                                    GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          AllCallMap()._launchMapUO();
+                                        });
+                                      },
+                                      child: Column(
+                                        children: <Widget>[
+                                          Icon(
+                                            Icons.map,
+                                            color: Colors.blueAccent,
+                                          ),
+                                          Text(
+                                            "Map",
+                                            style: TextStyle(
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.blueAccent),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                    Divider(
+                                      color: Colors.black,
+                                      indent: 100.0,
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          AllCallMap()._AUOAFM();
+                                        });
+                                      },
+                                      child: Column(
+                                        children: <Widget>[
+                                          Icon(
+                                            Icons.mail,
+                                            color: Colors.blueAccent,
+                                          ),
+                                          Text(
+                                            "Mail",
+                                            style: TextStyle(
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.blueAccent),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],
@@ -1000,84 +1003,87 @@ class _ImageScreenState extends State<ImageScreen> {
                             Padding(
                               padding: const EdgeInsets.only(
                                   right: 10.0, left: 10.0, bottom: 10.0, top: 10.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        AllCallMap()._AUSstu();
-                                      });
-                                    },
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.call,
-                                          color: Colors.blueAccent,
-                                        ),
-                                        Text(
-                                          "Call",
-                                          style: TextStyle(
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
-                                        ),
-                                      ],
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          AllCallMap()._AUSstu();
+                                        });
+                                      },
+                                      child: Column(
+                                        children: <Widget>[
+                                          Icon(
+                                            Icons.call,
+                                            color: Colors.blueAccent,
+                                          ),
+                                          Text(
+                                            "Call",
+                                            style: TextStyle(
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.blueAccent),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  Divider(
-                                    color: Colors.black,
-                                    indent: 100.0,
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        AllCallMap()._launchMapSsetu();
-                                      });
-                                    },
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.map,
-                                          color: Colors.blueAccent,
-                                        ),
-                                        Text(
-                                          "Map",
-                                          style: TextStyle(
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
-                                        ),
-                                      ],
+                                    Divider(
+                                      color: Colors.black,
+                                      indent: 100.0,
                                     ),
-                                  ),
-                                  Divider(
-                                    color: Colors.black,
-                                    indent: 100.0,
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        AllCallMap()._AUSetuMail();
-                                      });
-                                    },
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.mail,
-                                          color: Colors.blueAccent,
-                                        ),
-                                        Text(
-                                          "Mail",
-                                          style: TextStyle(
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
-                                        ),
-                                      ],
+                                    GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          AllCallMap()._launchMapSsetu();
+                                        });
+                                      },
+                                      child: Column(
+                                        children: <Widget>[
+                                          Icon(
+                                            Icons.map,
+                                            color: Colors.blueAccent,
+                                          ),
+                                          Text(
+                                            "Map",
+                                            style: TextStyle(
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.blueAccent),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                    Divider(
+                                      color: Colors.black,
+                                      indent: 100.0,
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          AllCallMap()._AUSetuMail();
+                                        });
+                                      },
+                                      child: Column(
+                                        children: <Widget>[
+                                          Icon(
+                                            Icons.mail,
+                                            color: Colors.blueAccent,
+                                          ),
+                                          Text(
+                                            "Mail",
+                                            style: TextStyle(
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.blueAccent),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],
@@ -1147,84 +1153,87 @@ class _ImageScreenState extends State<ImageScreen> {
                             Padding(
                               padding: const EdgeInsets.only(
                                   right: 10.0, left: 10.0, bottom: 10.0, top: 10.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        AllCallMap()._callBookStore();
-                                      });
-                                    },
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.call,
-                                          color: Colors.blueAccent,
-                                        ),
-                                        Text(
-                                          "Call",
-                                          style: TextStyle(
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
-                                        ),
-                                      ],
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          AllCallMap()._callBookStore();
+                                        });
+                                      },
+                                      child: Column(
+                                        children: <Widget>[
+                                          Icon(
+                                            Icons.call,
+                                            color: Colors.blueAccent,
+                                          ),
+                                          Text(
+                                            "Call",
+                                            style: TextStyle(
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.blueAccent),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  Divider(
-                                    color: Colors.black,
-                                    indent: 100.0,
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        AllCallMap()._launchMapBookStore();
-                                      });
-                                    },
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.map,
-                                          color: Colors.blueAccent,
-                                        ),
-                                        Text(
-                                          "Map",
-                                          style: TextStyle(
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
-                                        ),
-                                      ],
+                                    Divider(
+                                      color: Colors.black,
+                                      indent: 100.0,
                                     ),
-                                  ),
-                                  Divider(
-                                    color: Colors.black,
-                                    indent: 100.0,
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        AllCallMap()._BookStoreMAIL();
-                                      });
-                                    },
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.mail,
-                                          color: Colors.blueAccent,
-                                        ),
-                                        Text(
-                                          "Mail",
-                                          style: TextStyle(
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
-                                        ),
-                                      ],
+                                    GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          AllCallMap()._launchMapBookStore();
+                                        });
+                                      },
+                                      child: Column(
+                                        children: <Widget>[
+                                          Icon(
+                                            Icons.map,
+                                            color: Colors.blueAccent,
+                                          ),
+                                          Text(
+                                            "Map",
+                                            style: TextStyle(
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.blueAccent),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                    Divider(
+                                      color: Colors.black,
+                                      indent: 100.0,
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          AllCallMap()._BookStoreMAIL();
+                                        });
+                                      },
+                                      child: Column(
+                                        children: <Widget>[
+                                          Icon(
+                                            Icons.mail,
+                                            color: Colors.blueAccent,
+                                          ),
+                                          Text(
+                                            "Mail",
+                                            style: TextStyle(
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.blueAccent),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],
@@ -1305,58 +1314,61 @@ class _ImageScreenState extends State<ImageScreen> {
                             Padding(
                               padding: const EdgeInsets.only(
                                   right: 10.0, left: 10.0, bottom: 10.0, top: 10.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        AllCallMap()._launchMaps();
-                                      });
-                                    },
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.map,
-                                          color: Colors.blueAccent,
-                                        ),
-                                        Text(
-                                          "Map",
-                                          style: TextStyle(
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
-                                        ),
-                                      ],
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          AllCallMap()._launchMaps();
+                                        });
+                                      },
+                                      child: Column(
+                                        children: <Widget>[
+                                          Icon(
+                                            Icons.map,
+                                            color: Colors.blueAccent,
+                                          ),
+                                          Text(
+                                            "Map",
+                                            style: TextStyle(
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.blueAccent),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  Divider(
-                                    color: Colors.black,
-                                    indent: 100.0,
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        AllCallMap()._HOSMAIL();
-                                      });
-                                    },
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.mail,
-                                          color: Colors.blueAccent,
-                                        ),
-                                        Text(
-                                          "Mail",
-                                          style: TextStyle(
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
-                                        ),
-                                      ],
+                                    Divider(
+                                      color: Colors.black,
+                                      indent: 100.0,
                                     ),
-                                  ),
-                                ],
+                                    GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          AllCallMap()._HOSMAIL();
+                                        });
+                                      },
+                                      child: Column(
+                                        children: <Widget>[
+                                          Icon(
+                                            Icons.mail,
+                                            color: Colors.blueAccent,
+                                          ),
+                                          Text(
+                                            "Mail",
+                                            style: TextStyle(
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.blueAccent),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],
@@ -1422,95 +1434,98 @@ class _ImageScreenState extends State<ImageScreen> {
                                   right: 10.0, left: 10.0, bottom: 10.0, top: 10.0),
                               child: SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: <Widget>[
-                                    Padding(
-                                      padding: const EdgeInsets.only(right: 60.0),
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          setState(() {
-                                            AllCallMap()._callMe();
-                                          });
-                                        },
-                                        child: SingleChildScrollView(
-                                          scrollDirection: Axis.horizontal,
-                                          child: Column(
+                                child: SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.only(right: 60.0),
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              AllCallMap()._callMe();
+                                            });
+                                          },
+                                          child: SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            child: Column(
 
-                                            children: <Widget>[
-                                              Icon(
-                                                Icons.phone,
-                                                color: Colors.blueAccent,
-                                              ),
-                                              Text(
-                                                "Call",
-                                                style: TextStyle(
-                                                    fontSize: 20.0,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: Colors.blueAccent),
-                                              ),
-                                            ],
+                                              children: <Widget>[
+                                                Icon(
+                                                  Icons.phone,
+                                                  color: Colors.blueAccent,
+                                                ),
+                                                Text(
+                                                  "Call",
+                                                  style: TextStyle(
+                                                      fontSize: 20.0,
+                                                      fontWeight: FontWeight.w600,
+                                                      color: Colors.blueAccent),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(right: 60.0),
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          setState(() {
-                                            AllCallMap()._launchMaps();
-                                          });
-                                        },
-                                        child: SingleChildScrollView(
-                                          scrollDirection: Axis.horizontal,
-                                          child: Column(
-                                            children: <Widget>[
-                                              Icon(
-                                                Icons.map,
-                                                color: Colors.blueAccent,
-                                              ),
-                                              Text(
-                                                "Map",
-                                                style: TextStyle(
-                                                    fontSize: 20.0,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: Colors.blueAccent),
-                                              ),
-                                            ],
+                                      Padding(
+                                        padding: const EdgeInsets.only(right: 60.0),
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              AllCallMap()._launchMaps();
+                                            });
+                                          },
+                                          child: SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            child: Column(
+                                              children: <Widget>[
+                                                Icon(
+                                                  Icons.map,
+                                                  color: Colors.blueAccent,
+                                                ),
+                                                Text(
+                                                  "Map",
+                                                  style: TextStyle(
+                                                      fontSize: 20.0,
+                                                      fontWeight: FontWeight.w600,
+                                                      color: Colors.blueAccent),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(right: 0.0),
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          setState(() {
-                                            AllCallMap()._LIBMAIL();
-                                          });
-                                        },
-                                        child: SingleChildScrollView(
-                                          scrollDirection: Axis.horizontal,
-                                          child: Column(
-                                            children: <Widget>[
-                                              Icon(
-                                                Icons.mail,
-                                                color: Colors.blueAccent,
-                                              ),
-                                              Text(
-                                                "Mail",
-                                                style: TextStyle(
-                                                    fontSize: 20.0,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: Colors.blueAccent),
-                                              ),
-                                            ],
+                                      Padding(
+                                        padding: const EdgeInsets.only(right: 0.0),
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              AllCallMap()._LIBMAIL();
+                                            });
+                                          },
+                                          child: SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            child: Column(
+                                              children: <Widget>[
+                                                Icon(
+                                                  Icons.mail,
+                                                  color: Colors.blueAccent,
+                                                ),
+                                                Text(
+                                                  "Mail",
+                                                  style: TextStyle(
+                                                      fontSize: 20.0,
+                                                      fontWeight: FontWeight.w600,
+                                                      color: Colors.blueAccent),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

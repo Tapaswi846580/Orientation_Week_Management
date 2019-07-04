@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'login_screen.dart';
 import 'resources.dart';
 import 'admin_insert_full_screen_dialog.dart';
+import 'package:flutter/rendering.dart';
 
 final String ip = Resource.ip;
 Set<String> eventDates = new Set();
@@ -447,9 +448,10 @@ class EventDetailsExpansionTile extends StatefulWidget {
 }
 
 class EventDetailsExpansionTileState extends State {
-//  List<Events> events = new List();
+
   bool undoValue = false;
-//  EventDetailsExpansionTileState({@required this.events});
+
+
   Widget _buildEventDateExpansionTile(BuildContext context, int index) {
     return Padding(
         padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
@@ -660,48 +662,51 @@ class EventDetailsExpansionTileState extends State {
                     color: Colors.transparent,
                     height: 5.0,
                   ),
-                  Row(
-                    children: <Widget>[
-                      Text(
-                        "Swipe right to ",
-                        style: TextStyle(
-                            fontStyle: FontStyle.italic, fontSize: 10.0),
-                      ),
-                      Text(
-                        "Delete ",
-                        style: TextStyle(
-                            fontStyle: FontStyle.italic,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 10.0,
-                            color: Color(0xffe71827)),
-                      ),
-                      Text(
-                        "& left to ",
-                        style: TextStyle(
-                            fontStyle: FontStyle.italic, fontSize: 10.0),
-                      ),
-                      Text(
-                        "Update ",
-                        style: TextStyle(
-                            fontStyle: FontStyle.italic,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 10.0,
-                            color: Color(0xff292664)),
-                      ),
-                      Text(
-                        ", long press for ",
-                        style: TextStyle(
-                            fontStyle: FontStyle.italic, fontSize: 10.0),
-                      ),
-                      Text(
-                        "Description ",
-                        style: TextStyle(
-                            fontStyle: FontStyle.italic,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 10.0,
-                            color: Colors.black),
-                      ),
-                    ],
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: <Widget>[
+                        Text(
+                          "Swipe right to ",
+                          style: TextStyle(
+                              fontStyle: FontStyle.italic, fontSize: 10.0),
+                        ),
+                        Text(
+                          "Delete ",
+                          style: TextStyle(
+                              fontStyle: FontStyle.italic,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10.0,
+                              color: Color(0xffe71827)),
+                        ),
+                        Text(
+                          "& left to ",
+                          style: TextStyle(
+                              fontStyle: FontStyle.italic, fontSize: 10.0),
+                        ),
+                        Text(
+                          "Update ",
+                          style: TextStyle(
+                              fontStyle: FontStyle.italic,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10.0,
+                              color: Color(0xff292664)),
+                        ),
+                        Text(
+                          ", long press for ",
+                          style: TextStyle(
+                              fontStyle: FontStyle.italic, fontSize: 10.0),
+                        ),
+                        Text(
+                          "Description ",
+                          style: TextStyle(
+                              fontStyle: FontStyle.italic,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10.0,
+                              color: Colors.black),
+                        ),
+                      ],
+                    ),
                   )
                 ],
               ),

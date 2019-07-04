@@ -21,17 +21,23 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
   final startTimeController = TextEditingController();
   final endTimeController = TextEditingController();
   final batchController = TextEditingController();
-  String selectedRadio = "A";
+  String selectedGrpRadio = "A";
+  String selectedBatchRadio = "Both";
   bool apiCall = false, timedOut = false;
   static final postUrl =
       'http://${Resource.ip}:8080/JavaAPI/rest/services/addEvent';
 
-  setSelectedRadio(String val) {
+  setSelectedGrpRadio(String val) {
     setState(() {
-      selectedRadio = val;
+      selectedGrpRadio = val;
     });
   }
 
+  setSelectedBatchRadio(String val) {
+    setState(() {
+      selectedBatchRadio = val;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -103,9 +109,9 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                         Radio(
                           value: "A",
                           activeColor: Color(0xff292664),
-                          groupValue: selectedRadio,
+                          groupValue: selectedGrpRadio,
                           onChanged: (val) {
-                            setSelectedRadio(val);
+                            setSelectedGrpRadio(val);
                           },
                         ),
                         Text(
@@ -116,9 +122,9 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                         Radio(
                           value: "B",
                           activeColor: Color(0xff292664),
-                          groupValue: selectedRadio,
+                          groupValue: selectedGrpRadio,
                           onChanged: (val) {
-                            setSelectedRadio(val);
+                            setSelectedGrpRadio(val);
                           },
                         ),
                         Text(
@@ -128,7 +134,55 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                         ),
                       ],
                     ),
-                    Padding(
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Text(
+                          "Batch: ",
+                          style: TextStyle(fontSize: 18.0),
+                        ),
+                        Radio(
+                          value: "BATCH-1",
+                          activeColor: Color(0xff292664),
+                          groupValue: selectedBatchRadio,
+                          onChanged: (val) {
+                            setSelectedBatchRadio(val);
+                          },
+                        ),
+                        Text(
+                          "1",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w800, fontSize: 20.0),
+                        ),
+                        Radio(
+                          value: "BATCH-2",
+                          activeColor: Color(0xff292664),
+                          groupValue: selectedBatchRadio,
+                          onChanged: (val) {
+                            setSelectedBatchRadio(val);
+                          },
+                        ),
+                        Text(
+                          "2",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w800, fontSize: 20.0),
+                        ),
+                        Radio(
+                          value: "Both",
+                          activeColor: Color(0xff292664),
+                          groupValue: selectedBatchRadio,
+                          onChanged: (val) {
+                            setSelectedBatchRadio(val);
+                          },
+                        ),
+                        Text(
+                          "Both",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w800, fontSize: 20.0),
+                        ),
+                      ],
+                    ),
+                    /*Padding(
                       padding: const EdgeInsets.only(top: 7.0),
                       child: TextField(
                         keyboardType: TextInputType.multiline,
@@ -151,7 +205,7 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                         ),
                         controller: batchController,
                       ),
-                    ),
+                    ),*/
                     Padding(
                       padding: const EdgeInsets.only(top: 5.0),
                       child: InkWell(
@@ -169,15 +223,11 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                             });
                           });
                         },
-                        child: /*Text("${event.date}")*/ TextField(
-//                      inputType: InputType.date,
-//                      format: DateFormat("dd-MMMM-yyyy"),
+                        child: TextField(
                           keyboardType: TextInputType.datetime,
                           enabled: false,
 
                           style: TextStyle(fontWeight: FontWeight.bold),
-//                      editable: false,
-//                            style: Theme.of(context).textTheme.title,
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.date_range),
                             labelText: 'Date*',
@@ -277,7 +327,6 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                       padding: const EdgeInsets.only(top: 7.0),
                       child: TextField(
                         keyboardType: TextInputType.multiline,
-//                                style: Theme.of(context).textTheme.body1,
                         decoration: InputDecoration(
                           labelText: 'Venue*',
                           labelStyle: TextStyle(
@@ -328,20 +377,19 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                           ? null
                           : () async {
                         if (eventDateController.text.length != 0 &&
-                            selectedRadio.length != 0 &&
+                            selectedGrpRadio.length != 0 &&
                             startTimeController.text.length != 0 &&
                             endTimeController.text.length != 0 &&
                             eventNameController.text.length != 0 &&
-                            eventVenueController.text.length != 0 &&
-                            batchController.text.length != 0) {
+                            eventVenueController.text.length != 0) {
                           try {
                             setState(() {
                               apiCall = true;
                             });
                             var data = {
                               'date': '${eventDateController.text}',
-                              'grp': '$selectedRadio',
-                              'batch': '${batchController.text}',
+                              'grp': '$selectedGrpRadio',
+                              'batch': '$selectedBatchRadio',
                               'startTime': '${startTimeController.text}',
                               'endTime': '${endTimeController.text}',
                               'activity': '${eventNameController.text}',
