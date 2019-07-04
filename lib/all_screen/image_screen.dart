@@ -11,9 +11,10 @@ class _ImageScreenState extends State<ImageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xffE8E8E8),
       appBar: AppBar(
         backgroundColor: Color(0xff292664),
-        title: Text("Image Gallery", style: TextStyle(color: Colors.white),),
+        title: Text("Campus Guide", style: TextStyle(color: Colors.white),),
         centerTitle: true,
         leading: IconButton(
             icon: Icon(Icons.arrow_back),
@@ -25,6 +26,9 @@ class _ImageScreenState extends State<ImageScreen> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(top: 10.0,bottom: 10.0),
+              ),
               Card(
                 child: ExpansionTile(
                   title: Text("Event Venue",textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.w500,fontSize: 20.0),),
@@ -32,6 +36,120 @@ class _ImageScreenState extends State<ImageScreen> {
                     Column(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
+
+                        /*6*/
+                        Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width,
+                            height: MediaQuery.of(context).size.height / 4,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  fit: BoxFit.fill,
+                                  colorFilter: ColorFilter.linearToSrgbGamma(),
+                                  image: AssetImage('images/scs1.jpg'),
+                                )),
+                          ),
+                        ),
+                        ExpansionTile(
+                          leading: Icon(
+                            Icons.school,
+                            color: Color(0xffe71827),
+                          ),
+                          title: Text(
+                            "School of Computer Studies",
+                            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
+                          ),
+                          trailing: Text("Read more..",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  right: 20.0, left: 20.0, bottom: 20.0, top: 10.0),
+                              child: Text(
+                                "Address: A.G. Campus Commerce Six Roads, University Road, Vasant Vihar, Navrangpura, Ahmedabad, Gujarat 380009",
+                                style: TextStyle(
+                                    fontSize: 20.0, fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  right: 20.0, left: 20.0, bottom: 20.0, top: 10.0),
+                              child: Text(
+                                "The School of Computer Studies was established in 2000 "
+                                    "by the Ahmedabad Education Trust to provide education "
+                                    "to students seeking specialised programmes in information technology,"
+                                    " creating a focused environment in which to achieve "
+                                    "academic excellence and take the first steps to building rewarding careers.",
+                                softWrap: true,
+                                style: TextStyle(
+                                    fontSize: 20.0, fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  right: 20.0, left: 20.0, bottom: 20.0, top: 10.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        AllCallMap()._callMeSCS();
+                                      });
+                                    },
+                                    child: Column(
+                                      children: <Widget>[
+                                        Icon(
+                                          Icons.phone,
+                                          color: Colors.blueAccent,
+                                        ),
+                                        Text(
+                                          "Call",
+                                          style: TextStyle(
+                                              fontSize: 20.0,
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.blueAccent),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Divider(
+                                    color: Colors.black,
+                                    indent: 100.0,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        AllCallMap()._launchMapsSCS();
+                                      });
+                                    },
+                                    child: Column(
+                                      children: <Widget>[
+                                        Icon(
+                                          Icons.map,
+                                          color: Colors.blueAccent,
+                                        ),
+                                        Text(
+                                          "Map",
+                                          style: TextStyle(
+                                              fontSize: 20.0,
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.blueAccent),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+
+                          ],
+                        ),
+                        Divider(
+                          color: Colors.black45,
+                          height: 20.0,
+                        ),
+
                         /*1st*/
                         Padding(
                           padding: EdgeInsets.all(8.0),
@@ -51,9 +169,10 @@ class _ImageScreenState extends State<ImageScreen> {
                             color: Color(0xffe71827),
                           ),
                           title: Text(
-                            "School of Engineering and Applied Science",
+                            "GICT Building",
                             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
                           ),
+                          trailing: Text("Read more..",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -147,7 +266,7 @@ class _ImageScreenState extends State<ImageScreen> {
                             decoration: BoxDecoration(
                                 image: DecorationImage(
                                   fit: BoxFit.fill,
-                                  image: AssetImage('images/1.jpg'),
+                                  image: AssetImage('images/a2.jpg'),
                                 )),
                           ),
                         ),
@@ -160,6 +279,7 @@ class _ImageScreenState extends State<ImageScreen> {
                             "Amrut Mody School of Management",
                             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
                           ),
+                          trailing: Text("Read more..",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -265,9 +385,10 @@ class _ImageScreenState extends State<ImageScreen> {
                             color: Color(0xffe71827),
                           ),
                           title: Text(
-                            "Biological & Life Sciences, School of Arts and Sciences, Ahmedabad University",
+                            "Biological & Life Sciences, School of Arts and Sciences",
                             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
                           ),
+                          trailing: Text("Read more..",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -378,6 +499,7 @@ class _ImageScreenState extends State<ImageScreen> {
                             "Centre for Heritage Management (CHM)",
                             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
                           ),
+                          trailing: Text("Read more..",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -485,9 +607,10 @@ class _ImageScreenState extends State<ImageScreen> {
                             color: Color(0xffe71827),
                           ),
                           title: Text(
-                            "Venture Studio, Ahmedabad University",
+                            "Venture Studio",
                             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
                           ),
+                          trailing: Text("Read more..",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -574,122 +697,15 @@ class _ImageScreenState extends State<ImageScreen> {
                           color: Colors.black45,
                           height: 20.0,
                         ),
-                        /*6*/
-                        Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width,
-                            height: MediaQuery.of(context).size.height / 4,
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  fit: BoxFit.fill,
-                                  colorFilter: ColorFilter.linearToSrgbGamma(),
-                                  image: AssetImage('images/scs1.jpg'),
-                                )),
-                          ),
-                        ),
-                        ExpansionTile(
-                          leading: Icon(
-                            Icons.school,
-                            color: Color(0xffe71827),
-                          ),
-                          title: Text(
-                            "School of Computer Studies, Ahmedabad University",
-                            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
-                          ),
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  right: 20.0, left: 20.0, bottom: 20.0, top: 10.0),
-                              child: Text(
-                                "Address: A.G. Campus Commerce Six Roads, University Road, Vasant Vihar, Navrangpura, Ahmedabad, Gujarat 380009",
-                                style: TextStyle(
-                                    fontSize: 20.0, fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  right: 20.0, left: 20.0, bottom: 20.0, top: 10.0),
-                              child: Text(
-                                "The School of Computer Studies was established in 2000 "
-                                    "by the Ahmedabad Education Trust to provide education "
-                                    "to students seeking specialised programmes in information technology,"
-                                    " creating a focused environment in which to achieve "
-                                    "academic excellence and take the first steps to building rewarding careers.",
-                                softWrap: true,
-                                style: TextStyle(
-                                    fontSize: 20.0, fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  right: 20.0, left: 20.0, bottom: 20.0, top: 10.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        AllCallMap()._callMeSCS();
-                                      });
-                                    },
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.phone,
-                                          color: Colors.blueAccent,
-                                        ),
-                                        Text(
-                                          "Call",
-                                          style: TextStyle(
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Divider(
-                                    color: Colors.black,
-                                    indent: 100.0,
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        AllCallMap()._launchMapsSCS();
-                                      });
-                                    },
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.map,
-                                          color: Colors.blueAccent,
-                                        ),
-                                        Text(
-                                          "Map",
-                                          style: TextStyle(
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
 
-                          ],
-                        ),
-                        Divider(
-                          color: Colors.black45,
-                          height: 20.0,
-                        ),
                       ],
                     ),
                   ],
 
                 ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 10.0,bottom: 10.0),
               ),
               Card(
                 child: ExpansionTile(
@@ -708,12 +724,13 @@ class _ImageScreenState extends State<ImageScreen> {
                                   AssetImage('images/c5.jpg'),
                                   AssetImage('images/c2.jpg'),
                                 ],
+                                autoplay: false,
                                 dotSize: 4.0,
                                 dotSpacing: 15.0,
                                 dotColor: Colors.black45,
                                 indicatorBgPadding: 5.0,
                                 dotBgColor: Colors.white.withOpacity(0.5),
-                                borderRadius: false,
+                                borderRadius: true,
                               )
                           ),
                           ExpansionTile(
@@ -722,9 +739,10 @@ class _ImageScreenState extends State<ImageScreen> {
                               color: Color(0xffe71827),
                             ),
                             title: Text(
-                              "Seas Canteen",
+                              "GICT Canteen",
                               style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
                             ),
+                            trailing: Text("Read more..",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
                             children: <Widget>[
                               Padding(
                                 padding: const EdgeInsets.only(
@@ -784,6 +802,9 @@ class _ImageScreenState extends State<ImageScreen> {
                     ],
                 ),
               ),
+              Padding(
+                padding: EdgeInsets.only(top: 10.0,bottom: 10.0),
+              ),
               Card(
                 child: ExpansionTile(
                   title: Text("University Office",textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.w500,fontSize: 20.0),),
@@ -795,16 +816,16 @@ class _ImageScreenState extends State<ImageScreen> {
                             height: MediaQuery.of(context).size.height / 3,
                             child:Carousel(
                               images: [
-                                AssetImage('images/b1.jpg'),
-                                AssetImage('images/b2.jpg'),
-                                AssetImage('images/b3.jpg'),
+                                AssetImage('images/u1.jpg'),
+                                AssetImage('images/u2.jpg')
                               ],
+                              autoplay: false,
                               dotSize: 4.0,
                               dotSpacing: 15.0,
                               dotColor: Colors.black45,
                               indicatorBgPadding: 5.0,
                               dotBgColor: Colors.white.withOpacity(0.5),
-                              borderRadius: false,
+                              borderRadius: true,
                             )
                         ),
                         ExpansionTile(
@@ -816,6 +837,7 @@ class _ImageScreenState extends State<ImageScreen> {
                             "Office of Admissions and Financial Aid",
                             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
                           ),
+                          trailing: Text("Read more..",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -917,6 +939,9 @@ class _ImageScreenState extends State<ImageScreen> {
                   ],
                 ),
               ),
+              Padding(
+                padding: EdgeInsets.only(top: 10.0,bottom: 10.0),
+              ),
               Card(
                 child: ExpansionTile(
                   title: Text("Medical Room",textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.w500,fontSize: 20.0),),
@@ -934,12 +959,13 @@ class _ImageScreenState extends State<ImageScreen> {
                                 AssetImage('images/s2.jpg'),
                                 AssetImage('images/s3.jpg'),
                               ],
+                              autoplay: false,
                               dotSize: 4.0,
                               dotSpacing: 15.0,
                               dotColor: Colors.black45,
                               indicatorBgPadding: 5.0,
                               dotBgColor: Colors.white.withOpacity(0.5),
-                              borderRadius: false,
+                              borderRadius: true,
                             )
                         ),
                         ExpansionTile(
@@ -951,6 +977,7 @@ class _ImageScreenState extends State<ImageScreen> {
                             "Office of the Dean of Students",
                             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
                           ),
+                          trailing: Text("Read more..",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -1061,6 +1088,9 @@ class _ImageScreenState extends State<ImageScreen> {
                   ],
                 ),
               ),
+              Padding(
+                padding: EdgeInsets.only(top: 10.0,bottom: 10.0),
+              ),
               Card(
                 child: ExpansionTile(
                   title: Text("Bookstore",textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.w500,fontSize: 20.0),),
@@ -1076,12 +1106,13 @@ class _ImageScreenState extends State<ImageScreen> {
                                 AssetImage('images/b2.jpg'),
                                 AssetImage('images/b3.jpg'),
                               ],
+                              autoplay: false,
                               dotSize: 4.0,
                               dotSpacing: 15.0,
                               dotColor: Colors.black45,
                               indicatorBgPadding: 5.0,
                               dotBgColor: Colors.white.withOpacity(0.5),
-                              borderRadius: false,
+                              borderRadius: true,
                             )
                         ),
                         ExpansionTile(
@@ -1093,6 +1124,7 @@ class _ImageScreenState extends State<ImageScreen> {
                             "University Bookstore",
                             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
                           ),
+                          trailing: Text("Read more..",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -1203,6 +1235,9 @@ class _ImageScreenState extends State<ImageScreen> {
                   ],
                 ),
               ),
+              Padding(
+                padding: EdgeInsets.only(top: 10.0,bottom: 10.0),
+              ),
               Card(
                 child: ExpansionTile(
                   title: Text("Students Housing Facilities",textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.w500,fontSize: 20.0),),
@@ -1223,12 +1258,13 @@ class _ImageScreenState extends State<ImageScreen> {
                                 AssetImage('images/h7.jpg'),
                                 AssetImage('images/h8.jpg'),
                               ],
+                              autoplay: false,
                               dotSize: 4.0,
                               dotSpacing: 15.0,
                               dotColor: Colors.black45,
                               indicatorBgPadding: 5.0,
                               dotBgColor: Colors.white.withOpacity(0.5),
-                              borderRadius: false,
+                              borderRadius: true,
                             )
                         ),
                         ExpansionTile(
@@ -1240,6 +1276,7 @@ class _ImageScreenState extends State<ImageScreen> {
                             "Ahemdabad University Hostel",
                             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
                           ),
+                          trailing: Text("Read more..",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -1256,12 +1293,12 @@ class _ImageScreenState extends State<ImageScreen> {
                               child: Wrap(
                                 direction: Axis.horizontal,
                                 children: <Widget>[
-                                  Text("- Wi-Fi enabled rooms.",style: TextStyle(fontWeight: FontWeight.w400,fontSize: 20.0,color: Colors.green)),
-                                  Text("- Common areas with lounge furniture.",style: TextStyle(fontWeight: FontWeight.w400,fontSize: 20.0,color: Colors.green)),
-                                  Text("- Well-equipped gym including treadmills, cross-trainers, cycles, home gym, bench press, chest press, yoga mats, leg machines, weights and plates.",style: TextStyle(fontWeight: FontWeight.w400,fontSize: 20.0,color: Colors.green)),
-                                  Text("- Reading room with casual seating and book racks.",style: TextStyle(fontWeight: FontWeight.w400,fontSize: 20.0,color: Colors.green)),
-                                  Text("- Biometric access systems and CCTV surveillance for security.",style: TextStyle(fontWeight: FontWeight.w400,fontSize: 20.0,color: Colors.green)),
-                                  Text("- Unlimited laundry and professional housekeeping services on daily basis.",style: TextStyle(fontWeight: FontWeight.w400,fontSize: 20.0,color: Colors.green)),
+                                  Text("* Wi-Fi enabled rooms.",style: TextStyle(fontWeight: FontWeight.w400,fontSize: 20.0,color: Colors.green),),
+                                  Text("* Common areas with lounge furniture.",style: TextStyle(fontWeight: FontWeight.w400,fontSize: 20.0,color: Colors.green),),
+                                  Text("* Well-equipped gym including treadmills, cross-trainers, cycles, home gym, bench press, chest press, yoga mats, leg machines, weights and plates.",style: TextStyle(fontWeight: FontWeight.w400,fontSize: 20.0,color: Colors.green),),
+                                  Text("* Reading room with casual seating and book racks.",style: TextStyle(fontWeight: FontWeight.w400,fontSize: 20.0,color: Colors.green),),
+                                  Text("* Biometric access systems and CCTV surveillance for security.",style: TextStyle(fontWeight: FontWeight.w400,fontSize: 20.0,color: Colors.green),),
+                                  Text("* Unlimited laundry and professional housekeeping services on daily basis.",style: TextStyle(fontWeight: FontWeight.w400,fontSize: 20.0,color: Colors.green),),
                                 ],
                               ),
                             ),
@@ -1330,6 +1367,9 @@ class _ImageScreenState extends State<ImageScreen> {
                   ],
                 ),
               ),
+              Padding(
+                padding: EdgeInsets.only(top: 10.0,bottom: 10.0),
+              ),
               Card(
                 child: ExpansionTile(
                   title: Text("Library",textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.w500,fontSize: 20.0),),
@@ -1343,13 +1383,17 @@ class _ImageScreenState extends State<ImageScreen> {
                               images: [
                                 AssetImage('images/l1.jpeg'),
                                 AssetImage('images/l2.jpg'),
+                                AssetImage('images/l3.jpg'),
+                                AssetImage('images/l4.jpg'),
+                                AssetImage('images/l5.jpg'),
                               ],
+                              autoplay: false,
                               dotSize: 4.0,
                               dotSpacing: 15.0,
                               dotColor: Colors.black45,
                               indicatorBgPadding: 5.0,
                               dotBgColor: Colors.white.withOpacity(0.5),
-                              borderRadius: false,
+                              borderRadius: true,
                             )
                         ),
                         ExpansionTile(
@@ -1358,9 +1402,10 @@ class _ImageScreenState extends State<ImageScreen> {
                             color: Color(0xffe71827),
                           ),
                           title: Text(
-                            "SEAS Library",
+                            "Central Library",
                             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
                           ),
+                          trailing: Text("Read more..",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -1500,14 +1545,13 @@ class _ImageScreenState extends State<ImageScreen> {
                             ),
                           ],
                         ),
-                        Divider(
-                          color: Colors.black45,
-                          height: 20.0,
-                        ),
                       ],
                     ),
                   ],
                 ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 10.0,bottom: 10.0),
               ),
             ],
           ),

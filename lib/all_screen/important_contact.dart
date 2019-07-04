@@ -10,96 +10,102 @@ class _ContactDeatilsState extends State<ContactDeatils> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
         backgroundColor: Color(0xff292664),
-        title: Text("Important Contact Details",style: TextStyle(color: Colors.white),),
+        title: Text("Important Contact Details", style: TextStyle(color: Colors.white),),
+        centerTitle: true,
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            color: Colors.white,
+            onPressed: () => Navigator.of(context).pop()),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            ListTile(
-              title: Text("Samved Hospital",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
-              subtitle: Text("Tap to call"),
-              onTap: () => AllCallEmail()._AUSamved(),
-              trailing: IconButton(
-                  icon: Icon(Icons.location_on, color: Color(0xff292664)),
-                  onPressed: () => AllCallEmail()._launchMapsamved()),
-            ),
-            Divider(
-              color: Colors.black,
-            ),
+      body: Column(
+        children: <Widget>[
 
-            ListTile(
-              title: Text("Medical Room",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
-              subtitle: Text("Tap to call"),
-              onTap: () => AllCallEmail()._AUSstu(),
-              trailing: IconButton(
-                  icon: Icon(Icons.mail, color: Color(0xff292664)),
-                  onPressed: () => AllCallEmail()._AUSetuMail()),
-            ),
-            Divider(
-              color: Colors.black,
-            ),
+          ListTile(
+            title: Text("Samved Hospital",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
+            subtitle: Text("Tap to call"),
+            onTap: () => AllCallEmail()._AUSamved(),
+            trailing: IconButton(
+                icon: Icon(Icons.location_on, color: Color(0xff292664)),
+                onPressed: () => AllCallEmail()._launchMapsamved()),
+          ),
+          Divider(
+            color: Colors.black,
+          ),
 
-            ListTile(
-              title: Text("University Office",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
-              subtitle: Text("Tap to call"),
-              onTap: () => AllCallEmail()._AUO(),
-              trailing: IconButton(
-                  icon: Icon(Icons.mail, color: Color(0xff292664)),
-                  onPressed: () => AllCallEmail()._AUMail()),
-            ),
-            Divider(
-              color: Colors.black,
-            ),
+          ListTile(
+            title: Text("Medical Room",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
+            subtitle: Text("Tap to call"),
+            onTap: () => AllCallEmail()._AUSstu(),
+            trailing: IconButton(
+                icon: Icon(Icons.mail, color: Color(0xff292664)),
+                onPressed: () => AllCallEmail()._AUSetuMail()),
+          ),
+          Divider(
+            color: Colors.black,
+          ),
 
-            ListTile(
-              title: Text("Counselor Office",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
-              subtitle: Text("Tap to call"),
-              onTap: () => AllCallEmail()._AUOC(),
-              trailing: IconButton(
-                  icon: Icon(Icons.mail, color: Color(0xff292664)),
-                  onPressed: () => AllCallEmail()._AUCMail()),
-            ),
-            Divider(
-              color: Colors.black,
-            ),
 
-            ListTile(
-              title: Text("AURIS Support",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
-              trailing: IconButton(
-                  icon: Icon(Icons.mail, color: Color(0xff292664)),
-                  onPressed: () => AllCallEmail()._AUAM()),
-            ),
-            Divider(
-              color: Colors.black,
-            ),
+          ListTile(
+            title: Text("University Office",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
+            subtitle: Text("Tap to call"),
+            onTap: () => AllCallEmail()._AUO(),
+            trailing: IconButton(
+                icon: Icon(Icons.mail, color: Color(0xff292664)),
+                onPressed: () => AllCallEmail()._AUMail()),
+          ),
+          Divider(
+            color: Colors.black,
+          ),
 
-            ListTile(
-              title: Text("Programme Office",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
-              subtitle: Text("Tap to call"),
-              onTap: () => AllCallEmail()._AUSstu(),// Pending che
-              trailing: IconButton(
-                  icon: Icon(Icons.mail, color: Color(0xff292664)),
-                  onPressed: () => AllCallEmail()._AUSetuMail()),// pending che
-            ),
-            Divider(
-              color: Colors.black,
-            ),
+          ListTile(
+            title: Text("University Counselor",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
+            subtitle: Text("Tap to call"),
+            onTap: () => AllCallEmail()._AUOC(),
+            trailing: IconButton(
+                icon: Icon(Icons.mail, color: Color(0xff292664)),
+                onPressed: () => AllCallEmail()._AUCMail()),
+          ),
+          Divider(
+            color: Colors.black,
+          ),
 
-            ListTile(
-              title: Text("Office of Admission and Financial Aids",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
-              subtitle: Text("Tap to call"),
-              onTap: () => AllCallEmail()._AUOAF(),
-              trailing: IconButton(
-                  icon: Icon(Icons.mail, color: Color(0xff292664)),
-                  onPressed: () => AllCallEmail()._AUOAFM()),
-            ),
-            Divider(
-              color: Colors.black,
-            ),
-          ],
-        ),
+          ListTile(
+            title: Text("AURIS Support",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
+            trailing: IconButton(
+                icon: Icon(Icons.mail, color: Color(0xff292664)),
+                onPressed: () => AllCallEmail()._AUAM()),
+          ),
+          Divider(
+            color: Colors.black,
+          ),
+
+         /* ListTile(
+            title: Text("Programme Office",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
+            subtitle: Text("Tap to call"),
+            onTap: () => AllCallEmail()._AUSstu(),// Pending che
+            trailing: IconButton(
+                icon: Icon(Icons.mail, color: Color(0xff292664)),
+                onPressed: () => AllCallEmail()._AUSetuMail()),// pending che
+          ),
+          Divider(
+            color: Colors.black,
+          ),*/
+
+          ListTile(
+            title: Text("Office of Admission and Financial Aids",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
+            subtitle: Text("Tap to call"),
+            onTap: () => AllCallEmail()._AUOAF(),
+            trailing: IconButton(
+                icon: Icon(Icons.mail, color: Color(0xff292664)),
+                onPressed: () => AllCallEmail()._AUOAFM()),
+          ),
+          Divider(
+            color: Colors.black,
+          ),
+        ],
       ),
     );
   }
