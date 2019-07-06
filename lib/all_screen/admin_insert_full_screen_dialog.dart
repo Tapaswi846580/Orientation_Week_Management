@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'Events.dart';
@@ -111,6 +112,7 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                           activeColor: Color(0xff292664),
                           groupValue: selectedGrpRadio,
                           onChanged: (val) {
+                            HapticFeedback.lightImpact();
                             setSelectedGrpRadio(val);
                           },
                         ),
@@ -124,6 +126,7 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                           activeColor: Color(0xff292664),
                           groupValue: selectedGrpRadio,
                           onChanged: (val) {
+                            HapticFeedback.lightImpact();
                             setSelectedGrpRadio(val);
                           },
                         ),
@@ -146,6 +149,7 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                           activeColor: Color(0xff292664),
                           groupValue: selectedBatchRadio,
                           onChanged: (val) {
+                            HapticFeedback.lightImpact();
                             setSelectedBatchRadio(val);
                           },
                         ),
@@ -159,6 +163,7 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                           activeColor: Color(0xff292664),
                           groupValue: selectedBatchRadio,
                           onChanged: (val) {
+                            HapticFeedback.lightImpact();
                             setSelectedBatchRadio(val);
                           },
                         ),
@@ -172,6 +177,7 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                           activeColor: Color(0xff292664),
                           groupValue: selectedBatchRadio,
                           onChanged: (val) {
+                            HapticFeedback.lightImpact();
                             setSelectedBatchRadio(val);
                           },
                         ),
@@ -182,34 +188,12 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                         ),
                       ],
                     ),
-                    /*Padding(
-                      padding: const EdgeInsets.only(top: 7.0),
-                      child: TextField(
-                        keyboardType: TextInputType.multiline,
-//                                style: Theme.of(context).textTheme.body1,
-                        decoration: InputDecoration(
-                          labelText: 'Batch*',
-                          labelStyle: TextStyle(
-                              fontStyle: FontStyle.italic,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.black),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.green),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xffe71827)),
-                          ),
-                        ),
-                        controller: batchController,
-                      ),
-                    ),*/
+
                     Padding(
                       padding: const EdgeInsets.only(top: 5.0),
                       child: InkWell(
                         onTap: () {
+                          HapticFeedback.lightImpact();
                           showDatePicker(
                               context: context,
                               initialDate: DateTime.now(),
@@ -271,6 +255,7 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                                 ),
                                 child: InkWell(
                                   onTap: () {
+                                    HapticFeedback.lightImpact();
                                     showTimePicker(
                                         context: context,
                                         initialTime: TimeOfDay.now())
@@ -300,6 +285,7 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                                 ),
                                 child: InkWell(
                                   onTap: () {
+                                    HapticFeedback.lightImpact();
                                     showTimePicker(
                                         context: context,
                                         initialTime: TimeOfDay.now())
@@ -410,6 +396,7 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                               setState(() {
                                 timedOut = true;
                               });
+                              HapticFeedback.heavyImpact();
                               showDialog(
                                   context: context,
                                   builder: (BuildContext context) =>
@@ -439,6 +426,7 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                               setState(() {
                                 apiCall = false;
                               });
+                              HapticFeedback.heavyImpact();
                               showDialog(
                                   context: context,
                                   builder: (BuildContext context) =>
@@ -470,6 +458,7 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                               setState(() {
                                 apiCall = false;
                               });
+                              HapticFeedback.heavyImpact();
                               showDialog(
                                   context: context,
                                   builder: (BuildContext context) =>
@@ -499,6 +488,7 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                               setState(() {
                                 apiCall = false;
                               });
+                              HapticFeedback.heavyImpact();
                               showDialog(
                                   context: context,
                                   builder: (BuildContext context) =>
@@ -528,6 +518,7 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                               setState(() {
                                 apiCall = false;
                               });
+                              HapticFeedback.heavyImpact();
                               showDialog(
                                   context: context,
                                   builder: (BuildContext context) =>
@@ -560,6 +551,7 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                             });
 
                             if (timedOut == false) {
+                              HapticFeedback.heavyImpact();
                               showDialog(
                                   context: context,
                                   builder: (BuildContext context) =>
@@ -591,6 +583,7 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
                             });
                           }
                         }else{
+                          HapticFeedback.heavyImpact();
                           showDialog(
                               context: context,
                               builder: (BuildContext context) =>

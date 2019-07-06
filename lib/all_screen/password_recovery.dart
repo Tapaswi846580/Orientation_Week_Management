@@ -281,6 +281,7 @@ class RegisterButton extends StatelessWidget {
                     fullscreenDialog: true,
                   ));
                 }else{
+                  HapticFeedback.heavyImpact();
                   Scaffold.of(context).showSnackBar(SnackBar(
                     content: Text(
                       'Password does not match requirements',
@@ -296,6 +297,7 @@ class RegisterButton extends StatelessWidget {
                   ));
                 }
               } else {
+                HapticFeedback.heavyImpact();
                 Scaffold.of(context).showSnackBar(SnackBar(
                   content: Text(
                     'Password and confirm password should be matched',
@@ -311,6 +313,7 @@ class RegisterButton extends StatelessWidget {
                 ));
               }
             } else {
+              HapticFeedback.heavyImpact();
               Scaffold.of(context).showSnackBar(SnackBar(
                 content: Text(
                   'Please enter proper \'ahduni\' email',
@@ -326,6 +329,7 @@ class RegisterButton extends StatelessWidget {
               ));
             }
           } else {
+            HapticFeedback.heavyImpact();
             Scaffold.of(context).showSnackBar(SnackBar(
               content: Text(
                 'Please enter all required fields ⚠️',

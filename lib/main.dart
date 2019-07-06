@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import './all_screen/spalsh_screen.dart';
 import 'package:myfirst/all_screen/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'all_screen/register_screen.dart';
-import 'all_screen/password_recovery.dart';
 import 'all_screen/admin_home_screen.dart';
-import 'all_screen/admin_event_screen_final.dart';
 import 'all_screen/student_home_screen.dart';
 
 void main() => runApp(new Myflutter());

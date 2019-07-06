@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'Events.dart';
 import 'package:http/http.dart' as http;
@@ -27,20 +28,27 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
   final startTimeController = TextEditingController();
   final endTimeController = TextEditingController();
   final batchController = TextEditingController();
-  String selectedRadio = "A";
+  String selectedGrpRadio = "A";
+  String selectedBatchRadio = "Both";
   bool apiCall = false, timedOut = false;
   static final postUrl =
       'http://${Resource.ip}:8080/JavaAPI/rest/services/updateEvent';
-  setSelectedRadio(String val) {
+  setSelectedGrpRadio(String val) {
     setState(() {
-      selectedRadio = val;
+      selectedGrpRadio = val;
+    });
+  }
+
+  setSelectedBatchRadio(String val) {
+    setState(() {
+      selectedBatchRadio = val;
     });
   }
 
   @override
   void initState() {
     eventNameController.text = event.activity;
-    selectedRadio = event.grp;
+    selectedGrpRadio = event.grp;
     batchController.text = event.batch;
     eventDateController.text = event.date;
     startTimeController.text = event.startTime;
@@ -120,9 +128,10 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                         Radio(
                           value: "A",
                           activeColor: Color(0xff292664),
-                          groupValue: selectedRadio,
+                          groupValue: selectedGrpRadio,
                           onChanged: (val) {
-                            setSelectedRadio(val);
+                            HapticFeedback.lightImpact();
+                            setSelectedGrpRadio(val);
                           },
                         ),
                         Text(
@@ -133,9 +142,10 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                         Radio(
                           value: "B",
                           activeColor: Color(0xff292664),
-                          groupValue: selectedRadio,
+                          groupValue: selectedGrpRadio,
                           onChanged: (val) {
-                            setSelectedRadio(val);
+                            HapticFeedback.lightImpact();
+                            setSelectedGrpRadio(val);
                           },
                         ),
                         Text(
@@ -145,7 +155,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                         ),
                       ],
                     ),
-                    Padding(
+                    /*Padding(
                       padding: const EdgeInsets.only(top: 7.0),
                       child: TextField(
                         keyboardType: TextInputType.multiline,
@@ -168,15 +178,68 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                         ),
                         controller: batchController,
                       ),
+                    ),*/
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Text(
+                          "Batch: ",
+                          style: TextStyle(fontSize: 18.0),
+                        ),
+                        Radio(
+                          value: "BATCH-1",
+                          activeColor: Color(0xff292664),
+                          groupValue: selectedBatchRadio,
+                          onChanged: (val) {
+                            HapticFeedback.lightImpact();
+                            setSelectedBatchRadio(val);
+                          },
+                        ),
+                        Text(
+                          "1",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w800, fontSize: 20.0),
+                        ),
+                        Radio(
+                          value: "BATCH-2",
+                          activeColor: Color(0xff292664),
+                          groupValue: selectedBatchRadio,
+                          onChanged: (val) {
+                            HapticFeedback.lightImpact();
+                            setSelectedBatchRadio(val);
+                          },
+                        ),
+                        Text(
+                          "2",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w800, fontSize: 20.0),
+                        ),
+                        Radio(
+                          value: "Both",
+                          activeColor: Color(0xff292664),
+                          groupValue: selectedBatchRadio,
+                          onChanged: (val) {
+                            HapticFeedback.lightImpact();
+                            setSelectedBatchRadio(val);
+                          },
+                        ),
+                        Text(
+                          "Both",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w800, fontSize: 20.0),
+                        ),
+                      ],
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 5.0),
                       child: InkWell(
                         onTap: () {
+                          HapticFeedback.lightImpact();
                           showDatePicker(
-                                  context: context,
-                                  firstDate: DateTime.now(),
-                                  lastDate: DateTime(2020))
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime(2018),
+                              lastDate: DateTime(2020))
                               .then((dt) {
                             var formatter = DateFormat("dd-MMMM-yyyy");
                             setState(() {
@@ -188,6 +251,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                         child: TextField(
                           keyboardType: TextInputType.datetime,
                           enabled: false,
+
                           style: TextStyle(fontWeight: FontWeight.bold),
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.date_range),
@@ -229,6 +293,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                 width: 120.0,
                                 child: InkWell(
                                   onTap: () {
+                                    HapticFeedback.lightImpact();
                                     showTimePicker(
                                             context: context,
                                             initialTime: TimeOfDay.now())
@@ -255,6 +320,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                 width: 120.0,
                                 child: InkWell(
                                   onTap: () {
+                                    HapticFeedback.lightImpact();
                                     showTimePicker(
                                             context: context,
                                             initialTime: TimeOfDay.now())
@@ -333,7 +399,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                           ? null
                           : () async {
                               if (eventDateController.text.length != 0 &&
-                                  selectedRadio.length != 0 &&
+                                  selectedGrpRadio.length != 0 &&
                                   startTimeController.text.length != 0 &&
                                   endTimeController.text.length != 0 &&
                                   eventNameController.text.length != 0 &&
@@ -345,8 +411,8 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                   var data = {
                                     'id': '${event.id}',
                                     'date': '${eventDateController.text}',
-                                    'grp': '$selectedRadio',
-                                    'batch': '${batchController.text}',
+                                    'grp': '$selectedGrpRadio',
+                                    'batch': '$selectedBatchRadio',
                                     'startTime': '${startTimeController.text}',
                                     'endTime': '${endTimeController.text}',
                                     'activity': '${eventNameController.text}',
@@ -367,6 +433,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                     setState(() {
                                       timedOut = true;
                                     });
+                                    HapticFeedback.heavyImpact();
                                     showDialog(
                                         context: context,
                                         builder: (BuildContext context) =>
@@ -396,7 +463,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                     setState(() {
                                       apiCall = false;
                                     });
-//                                print("Updated");
+                                    HapticFeedback.heavyImpact();
                                     showDialog(
                                         context: context,
                                         builder: (BuildContext context) =>
@@ -431,6 +498,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                     setState(() {
                                       apiCall = false;
                                     });
+                                    HapticFeedback.heavyImpact();
                                     showDialog(
                                         context: context,
                                         builder: (BuildContext context) =>
@@ -463,6 +531,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                   });
 
                                   if (timedOut == false) {
+                                    HapticFeedback.heavyImpact();
                                     showDialog(
                                         context: context,
                                         builder: (BuildContext context) =>
@@ -494,6 +563,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                   });
                                 }
                               }else{
+                                HapticFeedback.heavyImpact();
                                 showDialog(
                                     context: context,
                                     builder: (BuildContext context) =>

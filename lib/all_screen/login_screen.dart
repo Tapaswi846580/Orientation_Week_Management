@@ -460,6 +460,7 @@ class SignInButtonState extends State {
                           setState(() {
                             timedOut = true;
                           });
+                          HapticFeedback.heavyImpact();
                           Scaffold.of(context).showSnackBar(SnackBar(
                             content: Text(
                               'Server Timed Out',
@@ -498,6 +499,7 @@ class SignInButtonState extends State {
                           setState(() {
                             apiCall = false;
                           });
+                          HapticFeedback.heavyImpact();
                           Scaffold.of(context).showSnackBar(SnackBar(
                             content: Text(
                               'Invalid Login Credentials :(',
@@ -515,6 +517,7 @@ class SignInButtonState extends State {
                           setState(() {
                             apiCall = false;
                           });
+                          HapticFeedback.heavyImpact();
                           Scaffold.of(context).showSnackBar(SnackBar(
                             content: Text(
                               'Some error has occurred, please contact administrator',
@@ -532,9 +535,10 @@ class SignInButtonState extends State {
                           setState(() {
                             apiCall = false;
                           });
+                          HapticFeedback.heavyImpact();
                           Scaffold.of(context).showSnackBar(SnackBar(
                             content: Text(
-                              'Server could not be reached, please contact administrator',
+                              'Server could not be reached, please try again',
                               style: TextStyle(color: Colors.white),
                             ),
                             action: SnackBarAction(
@@ -550,6 +554,7 @@ class SignInButtonState extends State {
                           setState(() {
                             apiCall = false;
                           });
+                          HapticFeedback.heavyImpact();
                           Scaffold.of(context).showSnackBar(SnackBar(
                             content: Text(
                               'Some error has occurred, please contact administrator',
@@ -570,6 +575,7 @@ class SignInButtonState extends State {
                           apiCall = false;
                         });
                         if (timedOut == false) {
+                          HapticFeedback.heavyImpact();
                           Scaffold.of(context).showSnackBar(SnackBar(
                             content: Text(
                               'Server could not be reached, please contact administrator ⚠️',
@@ -592,6 +598,7 @@ class SignInButtonState extends State {
                       setState(() {
                         apiCall = false;
                       });
+                      HapticFeedback.heavyImpact();
                       Scaffold.of(context).showSnackBar(SnackBar(
                         content: Text(
                           'Please enter proper \'ahduni\' email',
@@ -611,6 +618,7 @@ class SignInButtonState extends State {
                       apiCall = false;
                     });
                     // Write logic for invalid input
+                    HapticFeedback.heavyImpact();
                     Scaffold.of(context).showSnackBar(SnackBar(
                       content: Text(
                         'Please enter all required fields ⚠️',

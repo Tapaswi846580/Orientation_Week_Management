@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:math' as math;
@@ -182,10 +183,10 @@ class RegistrationFullScreenDialogState extends State {
                               e.sendEmail(emailId, otp).then((result) {
                                 result.forEach((sr) {
                                   if (sr.sent) {
-                                    //print('Message sent');
                                     setState(() {
                                       apiCall = false;
                                     });
+                                    HapticFeedback.heavyImpact();
                                     showDialog(
                                         context: context,
                                         builder: (BuildContext context) =>
@@ -225,7 +226,7 @@ class RegistrationFullScreenDialogState extends State {
                                     String problem;
                                     for (var p in sr.validationProblems) {
                                       problem = p.code;
-
+                                      HapticFeedback.heavyImpact();
                                       showDialog(
                                           context: context,
                                           builder: (BuildContext context) =>
@@ -291,6 +292,7 @@ class RegistrationFullScreenDialogState extends State {
                                       setState(() {
                                         disableButton = false;
                                       });
+                                      HapticFeedback.heavyImpact();
                                       showDialog(
                                           context: context,
                                           builder: (BuildContext context) =>
@@ -339,6 +341,7 @@ class RegistrationFullScreenDialogState extends State {
                                       setState(() {
                                         disableButton = false;
                                       });
+                                      HapticFeedback.heavyImpact();
                                       showDialog(
                                           context: context,
                                           builder: (BuildContext context) =>
@@ -371,6 +374,7 @@ class RegistrationFullScreenDialogState extends State {
                                       setState(() {
                                         disableButton = false;
                                       });
+                                      HapticFeedback.heavyImpact();
                                       showDialog(
                                           context: context,
                                           builder: (BuildContext context) =>
@@ -404,6 +408,7 @@ class RegistrationFullScreenDialogState extends State {
                                     setState(() {
                                       disableButton = false;
                                     });
+                                    HapticFeedback.heavyImpact();
                                     showDialog(
                                         context: context,
                                         builder: (BuildContext context) =>
@@ -434,6 +439,7 @@ class RegistrationFullScreenDialogState extends State {
                                             ));
                                   }
                                 } else {
+                                  HapticFeedback.heavyImpact();
                                   showDialog(
                                       context: context,
                                       builder: (BuildContext context) =>

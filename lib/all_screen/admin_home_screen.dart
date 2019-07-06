@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'Events.dart';
@@ -73,6 +74,7 @@ class _AdminHomeState extends State<AdminHome> {
         setState(() {
           timedOut = true;
         });
+        HapticFeedback.heavyImpact();
         showDialog(
             context: context,
             builder: (BuildContext context) => AlertDialog(
@@ -104,6 +106,7 @@ class _AdminHomeState extends State<AdminHome> {
         apiCall = false;
       });
       if (timedOut == false) {
+        HapticFeedback.heavyImpact();
         showDialog(
             context: context,
             builder: (BuildContext context) => AlertDialog(
@@ -150,6 +153,7 @@ class _AdminHomeState extends State<AdminHome> {
                 ? IconButton(
                     icon: Icon(Icons.refresh),
                     onPressed: () {
+                      HapticFeedback.lightImpact();
                       setState(() {
                         apiCall = true;
                         getData().then((val) {
@@ -316,6 +320,7 @@ class _AdminHomeState extends State<AdminHome> {
               icon: Icon(Icons.power_settings_new),
               color: Color(0xffe71827),
               onPressed: () {
+                HapticFeedback.heavyImpact();
                 showDialog(
                     context: context,
                     builder: (BuildContext context) => AlertDialog(
@@ -340,6 +345,7 @@ class _AdminHomeState extends State<AdminHome> {
                               child: Text('Sign Out',
                                   style: TextStyle(color: Color(0xffe71827))),
                               onPressed: () async {
+                                HapticFeedback.heavyImpact();
                                 var pref =
                                     await SharedPreferences.getInstance();
                                 pref.clear().then((boolVal) {
@@ -397,6 +403,7 @@ class _AdminHomeState extends State<AdminHome> {
                             alignment: Alignment.bottomRight,
                             child: FloatingActionButton(
                                 onPressed: () async {
+                                  HapticFeedback.lightImpact();
                                   Navigator.of(context)
                                       .push(new MaterialPageRoute(
                                     builder: (BuildContext context) {
@@ -500,6 +507,7 @@ class EventDetailsExpansionTileState extends State {
                 color: Color(0xffe71827),
               ),
               onPressed: () {
+                HapticFeedback.heavyImpact();
                 showDialog(
                     context: context,
                     builder: (BuildContext context) => AlertDialog(
@@ -543,6 +551,7 @@ class EventDetailsExpansionTileState extends State {
                                       action: SnackBarAction(
                                           label: "Undo",
                                           onPressed: () {
+                                            HapticFeedback.lightImpact();
                                             setState(() {
                                               events.insert(p, e);
                                               eventDates.add(date);
@@ -570,6 +579,7 @@ class EventDetailsExpansionTileState extends State {
                 color: Color(0xff292664),
               ),
               onPressed: () {
+                HapticFeedback.lightImpact();
                 Navigator.of(context)
                     .push(new MaterialPageRoute(
                   builder: (BuildContext context) {
@@ -589,6 +599,7 @@ class EventDetailsExpansionTileState extends State {
         child: InkWell(
           highlightColor: Color(0xff292664),
           onLongPress: () {
+            HapticFeedback.lightImpact();
             showDialog(
                 context: context,
                 builder: (BuildContext context) => AlertDialog(
@@ -744,6 +755,7 @@ class EventDetailsExpansionTileState extends State {
         setState(() {
           timedOut = true;
         });
+        HapticFeedback.heavyImpact();
         showDialog(
             context: context,
             builder: (BuildContext context) => AlertDialog(
@@ -775,6 +787,7 @@ class EventDetailsExpansionTileState extends State {
         apiCall = false;
       });
       if (timedOut == false) {
+        HapticFeedback.heavyImpact();
         showDialog(
             context: context,
             builder: (BuildContext context) => AlertDialog(

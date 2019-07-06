@@ -34,25 +34,24 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
 
   void choiceAction(String choice) {
     if (choice == "Campus Guide") {
+      HapticFeedback.lightImpact();
       setState(() {
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => ImageScreen()));
       });
     } else if (choice == "Sign Out") {
       setState(() {
+        HapticFeedback.heavyImpact();
         _showDialog();
       });
     } else if (choice == "Refresh") {
+      HapticFeedback.lightImpact();
       setState(() {
         apiCall = true;
-        /*getData().then((val) {
-          setState(() {
-            apiCall = false;
-          });
-        });*/
         getGroup();
       });
     } else if (choice == "Contact Details") {
+      HapticFeedback.lightImpact();
       setState(() {
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => ContactDeatils()));
@@ -282,6 +281,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
               IconButton(
                   icon: Icon(Icons.info_outline),
                   onPressed: () {
+                    HapticFeedback.lightImpact();
                     showDialog(
                         context: context,
                         builder: (BuildContext context) => AlertDialog(
@@ -459,11 +459,13 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                     : Icon(Icons.pageview),
                 onPressed: isPageView
                     ? () {
+                  HapticFeedback.lightImpact();
                         setState(() {
                           isPageView = false;
                         });
                       }
                     : () {
+                  HapticFeedback.lightImpact();
                         setState(() {
                           isPageView = true;
                         });
@@ -609,6 +611,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                     size: 30.0,
                   ),
                   onPressed: () {
+                    HapticFeedback.lightImpact();
                     _controller.previousPage(
                         duration: Duration(milliseconds: 500),
                         curve: Cubic(10, 10, 10, 10));
@@ -628,6 +631,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                       size: 30.0,
                     ),
                     onPressed: () {
+                      HapticFeedback.lightImpact();
                       _controller.nextPage(
                           duration: Duration(milliseconds: 500),
                           curve: Cubic(10, 10, 10, 10));

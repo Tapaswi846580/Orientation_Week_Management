@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:math' as math;
@@ -288,6 +289,7 @@ class PasswordRecoveryFullScreenDialogState extends State {
                                         setState(() {
                                           disableButton = false;
                                         });
+                                        HapticFeedback.heavyImpact();
                                         showDialog(
                                             context: context,
                                             builder: (BuildContext context) =>
@@ -339,6 +341,7 @@ class PasswordRecoveryFullScreenDialogState extends State {
                                         setState(() {
                                           disableButton = false;
                                         });
+                                        HapticFeedback.heavyImpact();
                                         showDialog(
                                             context: context,
                                             builder: (BuildContext context) =>
@@ -371,6 +374,7 @@ class PasswordRecoveryFullScreenDialogState extends State {
                                         setState(() {
                                           disableButton = false;
                                         });
+                                        HapticFeedback.heavyImpact();
                                         showDialog(
                                             context: context,
                                             builder: (BuildContext context) =>
@@ -404,6 +408,7 @@ class PasswordRecoveryFullScreenDialogState extends State {
                                       setState(() {
                                         disableButton = false;
                                       });
+                                      HapticFeedback.heavyImpact();
                                       showDialog(
                                           context: context,
                                           builder: (BuildContext context) =>
@@ -434,6 +439,7 @@ class PasswordRecoveryFullScreenDialogState extends State {
                                               ));
                                     }
                                   } else {
+                                    HapticFeedback.heavyImpact();
                                     showDialog(
                                         context: context,
                                         builder: (BuildContext context) =>
