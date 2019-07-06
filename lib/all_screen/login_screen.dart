@@ -83,236 +83,425 @@ class _LoginState extends State<LoginPage> {
   final emailIdController = TextEditingController();
   final passwordController = TextEditingController();
 
+//  @override
+//  Widget build(BuildContext context) {
+//    return Scaffold(
+//      body: Container(
+//        child: SingleChildScrollView(
+//          child: Column(
+//            children: <Widget>[
+//              Container(
+//                width: MediaQuery.of(context).size.width,
+//                height: MediaQuery.of(context).size.height / 3,
+//                decoration: BoxDecoration(
+//                  gradient: LinearGradient(
+//                    begin: Alignment.topCenter,
+//                    end: Alignment.bottomCenter,
+//                    colors: [Color(0xff292664), Color(0xff292664)],
+//                  ),
+//                  borderRadius: BorderRadius.only(
+//                      bottomLeft: Radius.circular(0),
+//                      bottomRight: Radius.circular(90)),
+//                ),
+//                child: Column(
+//                  mainAxisAlignment: MainAxisAlignment.center,
+//                  children: <Widget>[
+//                    Align(
+//                      child: Icon(
+//                        Icons.account_circle,
+//                        size: 90.0,
+//                        color: Colors.white,
+//                      ),
+//                    ),
+//                    Align(
+//                      alignment: Alignment.bottomCenter,
+//                      child: Padding(
+//                        padding: const EdgeInsets.only(top: 10),
+//                        child: Text(
+//                          'Sign In',
+//                          style: TextStyle(
+//                            color: Colors.white,
+//                            fontSize: 30,
+//                            fontWeight: FontWeight.bold,
+//                          ),
+//                        ),
+//                      ),
+//                    )
+//                  ],
+//                ),
+//              ),
+//              Container(
+//                padding: EdgeInsets.only(top: 30),
+//                child: Column(
+//                  children: <Widget>[
+//                    Container(
+//                      width: MediaQuery.of(context).size.width / 1.2,
+//                      height: 50,
+//                      padding: EdgeInsets.only(
+//                          top: 2, left: 16, right: 16, bottom: 8),
+//                      decoration: BoxDecoration(
+//                          borderRadius: BorderRadius.all(Radius.circular(10)),
+//                          color: Colors.white,
+//                          boxShadow: [
+//                            BoxShadow(
+//                              color: Colors.black12,
+//                              blurRadius: 30,
+//                            )
+//                          ]),
+//                      child: TextFormField(
+//                        keyboardType: TextInputType.emailAddress,
+//                        autocorrect: false,
+//                        decoration: InputDecoration(
+//                          icon: Icon(Icons.alternate_email),
+//                          border: InputBorder.none,
+//                          hintText: 'Email*',
+//                        ),
+//                        controller: emailIdController,
+//                      ),
+//                    ),
+//                  ],
+//                ),
+//              ),
+//              Container(
+//                padding: EdgeInsets.only(top: 20),
+//                child: Column(
+//                  children: <Widget>[
+//                    Container(
+//                      width: MediaQuery.of(context).size.width / 1.2,
+//                      height: 50,
+//                      padding: EdgeInsets.only(
+//                          top: 2, left: 16, right: 16, bottom: 8),
+//                      decoration: BoxDecoration(
+//                          borderRadius: BorderRadius.all(Radius.circular(10)),
+//                          color: Colors.white,
+//                          boxShadow: [
+//                            BoxShadow(
+//                              color: Colors.black12,
+//                              blurRadius: 30,
+//                            )
+//                          ]),
+//                      child: TextField(
+//                        obscureText: true,
+//                        decoration: InputDecoration(
+//                          icon: Icon(Icons.vpn_key),
+//                          border: InputBorder.none,
+//                          hintText: 'Password*',
+//                        ),
+//                        controller: passwordController,
+//                      ),
+//                    ),
+//                    Padding(
+//                      padding: const EdgeInsets.only(top: 10.0),
+//                      child: Text("(*) Indicates Mandatory Field"),
+//                    ),
+//                  ],
+//                ),
+//              ),
+//              Container(
+//                padding: EdgeInsets.only(top: 20),
+//                child: Column(
+//                  children: <Widget>[
+//                    Container(
+//                      width: MediaQuery.of(context).size.width / 2,
+//                      height: 50,
+//                      padding: EdgeInsets.only(
+//                          top: 2, left: 16, right: 16, bottom: 8),
+//                      decoration: BoxDecoration(
+//                          borderRadius: BorderRadius.all(Radius.circular(10)),
+//                          color: Colors.white,
+//                          boxShadow: [
+//                            BoxShadow(
+//                              color: Colors.black12,
+//                              blurRadius: 10,
+//                            )
+//                          ]),
+//                      child: DropdownButtonHideUnderline(
+//                        child: DropdownButton<String>(
+//                          value: selectedVal,
+//                          onChanged: (String value) {
+//                            setState(() {
+//                              selectedVal = value;
+//                            });
+//                          },
+//                          items: _dropdownValues
+//                              .map((value) => DropdownMenuItem(
+//                                    child: Text(value),
+//                                    value: value,
+//                                  ))
+//                              .toList(),
+//                        ),
+//                      ),
+//                    )
+//                  ],
+//                ),
+//              ),
+//              Container(
+//                child: Align(
+//                  alignment: Alignment.centerRight,
+//                  child: Padding(
+//                    padding: const EdgeInsets.only(top: 5.0, right: 30.0),
+//                    child: FlatButton(
+//                      onPressed: () {
+//                        Navigator.of(context).push(MaterialPageRoute<Null>(
+//                            builder: (BuildContext context) {
+//                          return PasswordRecoveryScreen();
+//                        }));
+//                      },
+//                      child: Text(
+//                        "Lost your Password ?",
+//                        style: TextStyle(
+//                            fontSize: 15,
+//                            color: Color(0xff292664),
+//                            decorationStyle: TextDecorationStyle.solid,
+//                            fontStyle: FontStyle.normal,
+//                            fontWeight: FontWeight.bold,
+//                            letterSpacing: 1),
+//                      ),
+//                    ),
+//                  ),
+//                ),
+//              ),
+//              Container(
+//                height: 80.0,
+//                child: Row(
+//                  crossAxisAlignment: CrossAxisAlignment.center,
+//                  children: <Widget>[
+//                    Padding(
+//                      padding: const EdgeInsets.only(left: 20.0),
+//                      child: SignInButton(
+//                        emailIdController: emailIdController,
+//                        passwordController: passwordController,
+//                      ),
+//                    ),
+//                    Padding(
+//                      padding: const EdgeInsets.only(left: 30.0),
+//                      child: Container(
+//                        margin: EdgeInsets.only(top: 0.0),
+//                        width: MediaQuery.of(context).size.width / 2.5,
+//                        height: 35.0,
+//                        decoration: BoxDecoration(
+//                            color: Colors.white,
+//                            borderRadius: BorderRadius.all(Radius.circular(10)),
+//                            boxShadow: [
+//                              BoxShadow(
+//                                //color: Colors.blueAccent,
+//                                blurRadius: 0,
+//                              )
+//                            ]),
+//                        child: OutlineButton(
+//                          shape: new RoundedRectangleBorder(
+//                              borderRadius: new BorderRadius.circular(10.0)),
+//                          color: Color(0xff292664),
+//                          onPressed: () {
+//                            Navigator.of(context).push(MaterialPageRoute<Null>(
+//                                builder: (BuildContext context) {
+//                              return  RegisterScreen();
+//                            }));
+//                          },
+//                          child: Center(
+//                            child: Text(
+//                              "Register",
+//                              style: TextStyle(
+//                                  fontSize: 20.0,
+//                                  color: Colors.black,
+//                                  fontWeight: FontWeight.bold),
+//                            ),
+//                          ),
+//                        ),
+//                      ),
+//                    ),
+//                  ],
+//                ),
+//              ),
+//            ],
+//          ),
+//        ),
+//      ),
+//    );
+//  }
+
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 3,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [Color(0xff292664), Color(0xff292664)],
-                  ),
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(0),
-                      bottomRight: Radius.circular(90)),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Align(
-                      child: Icon(
-                        Icons.account_circle,
-                        size: 90.0,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Text(
-                          'Sign In',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.only(top: 30),
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width / 1.2,
-                      height: 50,
-                      padding: EdgeInsets.only(
-                          top: 2, left: 16, right: 16, bottom: 8),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black12,
-                              blurRadius: 30,
-                            )
-                          ]),
-                      child: TextFormField(
-                        keyboardType: TextInputType.emailAddress,
-                        autocorrect: false,
-                        decoration: InputDecoration(
-                          icon: Icon(Icons.alternate_email),
-                          border: InputBorder.none,
-                          hintText: 'Email*',
-                        ),
-                        controller: emailIdController,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.only(top: 20),
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width / 1.2,
-                      height: 50,
-                      padding: EdgeInsets.only(
-                          top: 2, left: 16, right: 16, bottom: 8),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black12,
-                              blurRadius: 30,
-                            )
-                          ]),
-                      child: TextField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          icon: Icon(Icons.vpn_key),
-                          border: InputBorder.none,
-                          hintText: 'Password*',
-                        ),
-                        controller: passwordController,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      child: Text("(*) Indicates Mandatory Field"),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.only(top: 20),
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width / 2,
-                      height: 50,
-                      padding: EdgeInsets.only(
-                          top: 2, left: 16, right: 16, bottom: 8),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black12,
-                              blurRadius: 10,
-                            )
-                          ]),
-                      child: DropdownButtonHideUnderline(
-                        child: DropdownButton<String>(
-                          value: selectedVal,
-                          onChanged: (String value) {
-                            setState(() {
-                              selectedVal = value;
-                            });
-                          },
-                          items: _dropdownValues
-                              .map((value) => DropdownMenuItem(
-                                    child: Text(value),
-                                    value: value,
-                                  ))
-                              .toList(),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 5.0, right: 30.0),
-                    child: FlatButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute<Null>(
-                            builder: (BuildContext context) {
-                          return PasswordRecoveryScreen();
-                        }));
-                      },
-                      child: Text(
-                        "Lost your Password ?",
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Color(0xff292664),
-                            decorationStyle: TextDecorationStyle.solid,
-                            fontStyle: FontStyle.normal,
-                            fontWeight: FontWeight.bold,
-                            letterSpacing: 1),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                height: 80.0,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
-                      child: SignInButton(
-                        emailIdController: emailIdController,
-                        passwordController: passwordController,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 30.0),
+    Widget alldetails = Container(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 30.0, right: 30.0,top: 150.0),
+        child: Card(
+          elevation: 10.0,
+          shape:
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0,bottom: 20.0),
+                    child: Center(
                       child: Container(
-                        margin: EdgeInsets.only(top: 0.0),
-                        width: MediaQuery.of(context).size.width / 2.5,
-                        height: 35.0,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            boxShadow: [
-                              BoxShadow(
-                                //color: Colors.blueAccent,
-                                blurRadius: 0,
-                              )
-                            ]),
-                        child: OutlineButton(
-                          shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(10.0)),
-                          color: Color(0xff292664),
+                        child: Image.asset(
+                          'images/au.png',
+                          height: MediaQuery.of(context).size.height/7,
+                          width: MediaQuery.of(context).size.width/2,
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  TextFormField(
+                    keyboardType: TextInputType.emailAddress,
+                    autocorrect: false,
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.email),
+                      labelText: "Email-Id*",
+                      border: InputBorder.none,
+                      hintText: 'eg: john.a@ahduni.edu.in',
+                    ),
+                    controller: emailIdController,
+                  ),
+                  Divider(
+                    height: 10.0,
+                    color: Colors.black,
+                  ),
+                  TextField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.vpn_key),
+                      labelText: "Enter Password*",
+                      border: InputBorder.none,
+                    ),
+                    controller: passwordController,
+                  ),
+                  Divider(
+                    height: 10.0,
+                    color: Colors.black,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: Text(
+                      "(*) Indicates Mandatory Field",
+                      style: TextStyle(fontWeight: FontWeight.w500, color: Colors.red),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(top: 20),
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          width: MediaQuery.of(context).size.width / 2,
+                          height: 50,
+                          padding: EdgeInsets.only(
+                              top: 2, left: 16, right: 16, bottom: 8),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black12,
+                                  blurRadius: 10,
+                                )
+                              ]),
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton<String>(
+                              value: selectedVal,
+                              onChanged: (String value) {
+                                HapticFeedback.lightImpact();
+                                setState(() {
+                                  selectedVal = value;
+                                });
+                              },
+                              items: _dropdownValues
+                                  .map((value) => DropdownMenuItem(
+                                child: Text(value),
+                                value: value,
+                              ))
+                                  .toList(),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 5.0, right: 30.0),
+                        child: FlatButton(
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute<Null>(
                                 builder: (BuildContext context) {
-                              return  RegisterScreen();
-                            }));
+                                  return PasswordRecoveryScreen();
+                                }));
                           },
-                          child: Center(
-                            child: Text(
-                              "Register",
-                              style: TextStyle(
-                                  fontSize: 20.0,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
+                          child: Text(
+                            "Lost your Password ?",
+                            style: TextStyle(
+                                fontSize: 15,
+                                color: Color(0xff292664),
+                                decorationStyle: TextDecorationStyle.solid,
+                                fontStyle: FontStyle.normal,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 1),
                           ),
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20.0),
+                        child: SignInButton(
+                          emailIdController: emailIdController,
+                          passwordController: passwordController,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+                        child: Center(
+                          child: OutlineButton(
+                            onPressed: (){
+                              Navigator.of(context).push(MaterialPageRoute<Null>(
+                                  builder: (BuildContext context) {
+                                    return  RegisterScreen();
+                                  }));
+                            },
+//                            disabledColor: Color(0xff292664),
+                            color: Color(0xff292664),
+//                            elevation: 10.0,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0)),
+                            child: Text(
+                              "Register",
+                              style: TextStyle(
+                                  color: Colors.black, fontSize: 20.0),
+                            ),
+
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
+            ),
+          ),
+        ),
+      ),
+    );
+    return Scaffold(
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        color: Color.fromRGBO(58, 66, 86, 1.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              alldetails
             ],
           ),
         ),
@@ -320,6 +509,7 @@ class _LoginState extends State<LoginPage> {
     );
   }
 }
+
 
 class SignInButton extends StatefulWidget {
   final TextEditingController emailIdController;
@@ -410,218 +600,185 @@ class SignInButtonState extends State {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: 0.0),
-      width: MediaQuery.of(context).size.width / 2.5,
-      height: 35.0,
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(50)),
-          boxShadow: [
-            BoxShadow(
-              color: Color(0xff292664),
-              blurRadius: 0,
-            )
-          ]),
-      child: RaisedButton(
-          color: Color(0xff292664),
-          child: Center(
-            child: getProperWidget(),
-          ),
-          disabledColor: Color(0xff292664),
-          onPressed: apiCall
-              ? null
-              : () async {
-                  if (emailIdController.text.length != 0 &&
-                      passwordController.text.length != 0) {
-                    String email = emailIdController.text;
-                    var emailRegex =
-                        r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$";
-                    RegExp regExp = new RegExp(emailRegex);
-                    if (regExp.hasMatch(email) &&
-                        email.contains("ahduni.edu.in")) {
-                      var data = {
-                        'emailId': '${emailIdController.text}',
-                        'password': '${passwordController.text}',
-                        'type': selectedVal,
-                      };
-                      try {
+    return RaisedButton(
+        color: Color(0xff292664),
+        child: Center(
+          child: getProperWidget(),
+        ),
+        disabledColor: Color(0xff292664),
+        onPressed: apiCall
+            ? null
+            : () async {
+                if (emailIdController.text.trim().length != 0 &&
+                    passwordController.text.trim().length != 0) {
+                  String email = emailIdController.text.trim();
+                  var emailRegex =
+                      r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$";
+                  RegExp regExp = new RegExp(emailRegex);
+                  if (regExp.hasMatch(email) &&
+                      email.contains("ahduni.edu.in")) {
+                    var data = {
+                      'emailId': '${emailIdController.text.trim()}',
+                      'password': '${passwordController.text.trim()}',
+                      'type': selectedVal,
+                    };
+                    try {
+                      setState(() {
+                        apiCall = true;
+                      });
+                      var post = await http.post(
+                        Uri.encodeFull(postUrl),
+                        body: json.encode(data),
+                        headers: {"Content-Type": "application/json"},
+                      ).timeout(
+                          Duration(
+                            seconds: 20, //Set timeout to 10 seconds
+                          ), onTimeout: () {
                         setState(() {
-                          apiCall = true;
+                          timedOut = true;
                         });
-                        var post = await http.post(
-                          Uri.encodeFull(postUrl),
-                          body: json.encode(data),
-                          headers: {"Content-Type": "application/json"},
-                        ).timeout(
-                            Duration(
-                              seconds: 20, //Set timeout to 10 seconds
-                            ), onTimeout: () {
-                          setState(() {
-                            timedOut = true;
-                          });
-                          HapticFeedback.heavyImpact();
-                          Scaffold.of(context).showSnackBar(SnackBar(
-                            content: Text(
-                              'Server Timed Out',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            action: SnackBarAction(
-                              label: 'OK',
-                              onPressed: () {
-                                print(timedOut);
-                              },
-                              textColor: Colors.white,
-                            ),
-                            backgroundColor: Color(0xffe71827),
-                            duration: Duration(seconds: 3),
-                          ));
-                        });
-                        var res = post.body;
-                        if (res == "Valid") {
-                          this._setEmailPref(email);
-                          this._setUserPref(selectedVal);
-                          setState(() {
-                            apiCall = false;
-                          });
-
-                          selectedVal == "Student"
-                              ? Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          StudentHomeScreen()))
-                              : Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => AdminHome()));
-                        } else if (res == "Invalid") {
-                          setState(() {
-                            apiCall = false;
-                          });
-                          HapticFeedback.heavyImpact();
-                          Scaffold.of(context).showSnackBar(SnackBar(
-                            content: Text(
-                              'Invalid Login Credentials :(',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            action: SnackBarAction(
-                              label: 'OK',
-                              onPressed: () {},
-                              textColor: Colors.white,
-                            ),
-                            backgroundColor: Color(0xffe71827),
-                            duration: Duration(seconds: 3),
-                          ));
-                        } else if (res == "Error") {
-                          setState(() {
-                            apiCall = false;
-                          });
-                          HapticFeedback.heavyImpact();
-                          Scaffold.of(context).showSnackBar(SnackBar(
-                            content: Text(
-                              'Some error has occurred, please contact administrator',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            action: SnackBarAction(
-                              label: 'OK',
-                              onPressed: () {},
-                              textColor: Colors.white,
-                            ),
-                            backgroundColor: Color(0xffe71827),
-                            duration: Duration(seconds: 3),
-                          ));
-                        } else if(post.statusCode == 404) {
-                          setState(() {
-                            apiCall = false;
-                          });
-                          HapticFeedback.heavyImpact();
-                          Scaffold.of(context).showSnackBar(SnackBar(
-                            content: Text(
-                              'Server could not be reached, please try again',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            action: SnackBarAction(
-                              label: 'OK',
-                              onPressed: () {},
-                              textColor: Colors.white,
-                            ),
-                            backgroundColor: Color(0xffe71827),
-                            duration: Duration(seconds: 3),
-                          ));
-                        }
-                        else{
-                          setState(() {
-                            apiCall = false;
-                          });
-                          HapticFeedback.heavyImpact();
-                          Scaffold.of(context).showSnackBar(SnackBar(
-                            content: Text(
-                              'Some error has occurred, please contact administrator',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            action: SnackBarAction(
-                              label: 'OK',
-                              onPressed: () {},
-                              textColor: Colors.white,
-                            ),
-                            backgroundColor: Color(0xffe71827),
-                            duration: Duration(seconds: 3),
-                          ));
-                        }
-
-                      } catch (e) {
+                        HapticFeedback.heavyImpact();
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                          content: Text(
+                            'Server Timed Out',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          action: SnackBarAction(
+                            label: 'OK',
+                            onPressed: () {
+                              print(timedOut);
+                            },
+                            textColor: Colors.white,
+                          ),
+                          backgroundColor: Color(0xffe71827),
+                          duration: Duration(seconds: 3),
+                        ));
+                      });
+                      var res = post.body;
+                      if (res == "Valid") {
+                        this._setEmailPref(email);
+                        this._setUserPref(selectedVal);
                         setState(() {
                           apiCall = false;
                         });
-                        if (timedOut == false) {
-                          HapticFeedback.heavyImpact();
-                          Scaffold.of(context).showSnackBar(SnackBar(
-                            content: Text(
-                              'Server could not be reached, please contact administrator ⚠️',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            action: SnackBarAction(
-                              label: 'OK',
-                              onPressed: () {},
-                              textColor: Colors.white,
-                            ),
-                            backgroundColor: Color(0xffe71827),
-                            duration: Duration(seconds: 3),
-                          ));
-                        }
+
+                        selectedVal == "Student"
+                            ? Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        StudentHomeScreen()))
+                            : Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AdminHome()));
+                      } else if (res == "Invalid") {
                         setState(() {
-                          timedOut = false;
+                          apiCall = false;
                         });
+                        HapticFeedback.heavyImpact();
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                          content: Text(
+                            'Invalid Login Credentials :(',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          action: SnackBarAction(
+                            label: 'OK',
+                            onPressed: () {},
+                            textColor: Colors.white,
+                          ),
+                          backgroundColor: Color(0xffe71827),
+                          duration: Duration(seconds: 3),
+                        ));
+                      } else if (res == "Error") {
+                        setState(() {
+                          apiCall = false;
+                        });
+                        HapticFeedback.heavyImpact();
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                          content: Text(
+                            'Some error has occurred, please contact administrator',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          action: SnackBarAction(
+                            label: 'OK',
+                            onPressed: () {},
+                            textColor: Colors.white,
+                          ),
+                          backgroundColor: Color(0xffe71827),
+                          duration: Duration(seconds: 3),
+                        ));
+                      } else if(post.statusCode == 404) {
+                        setState(() {
+                          apiCall = false;
+                        });
+                        HapticFeedback.heavyImpact();
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                          content: Text(
+                            'Server could not be reached, please try again',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          action: SnackBarAction(
+                            label: 'OK',
+                            onPressed: () {},
+                            textColor: Colors.white,
+                          ),
+                          backgroundColor: Color(0xffe71827),
+                          duration: Duration(seconds: 3),
+                        ));
                       }
-                    } else {
+                      else{
+                        setState(() {
+                          apiCall = false;
+                        });
+                        HapticFeedback.heavyImpact();
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                          content: Text(
+                            'Some error has occurred, please contact administrator',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          action: SnackBarAction(
+                            label: 'OK',
+                            onPressed: () {},
+                            textColor: Colors.white,
+                          ),
+                          backgroundColor: Color(0xffe71827),
+                          duration: Duration(seconds: 3),
+                        ));
+                      }
+
+                    } catch (e) {
                       setState(() {
                         apiCall = false;
                       });
-                      HapticFeedback.heavyImpact();
-                      Scaffold.of(context).showSnackBar(SnackBar(
-                        content: Text(
-                          'Please enter proper \'ahduni\' email',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        action: SnackBarAction(
-                          label: 'OK',
-                          onPressed: () {},
-                          textColor: Colors.white,
-                        ),
-                        backgroundColor: Color(0xffe71827),
-                        duration: Duration(seconds: 2),
-                      ));
+                      if (timedOut == false) {
+                        HapticFeedback.heavyImpact();
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                          content: Text(
+                            'Server could not be reached, please contact administrator ⚠️',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          action: SnackBarAction(
+                            label: 'OK',
+                            onPressed: () {},
+                            textColor: Colors.white,
+                          ),
+                          backgroundColor: Color(0xffe71827),
+                          duration: Duration(seconds: 3),
+                        ));
+                      }
+                      setState(() {
+                        timedOut = false;
+                      });
                     }
                   } else {
                     setState(() {
                       apiCall = false;
                     });
-                    // Write logic for invalid input
                     HapticFeedback.heavyImpact();
                     Scaffold.of(context).showSnackBar(SnackBar(
                       content: Text(
-                        'Please enter all required fields ⚠️',
+                        'Please enter proper \'ahduni\' email',
                         style: TextStyle(color: Colors.white),
                       ),
                       action: SnackBarAction(
@@ -633,10 +790,29 @@ class SignInButtonState extends State {
                       duration: Duration(seconds: 2),
                     ));
                   }
-                },
-          shape: new RoundedRectangleBorder(
-              borderRadius: new BorderRadius.circular(10.0))),
-    );
+                } else {
+                  setState(() {
+                    apiCall = false;
+                  });
+                  // Write logic for invalid input
+                  HapticFeedback.heavyImpact();
+                  Scaffold.of(context).showSnackBar(SnackBar(
+                    content: Text(
+                      'Please enter all required fields ⚠️',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    action: SnackBarAction(
+                      label: 'OK',
+                      onPressed: () {},
+                      textColor: Colors.white,
+                    ),
+                    backgroundColor: Color(0xffe71827),
+                    duration: Duration(seconds: 2),
+                  ));
+                }
+              },
+        shape: new RoundedRectangleBorder(
+            borderRadius: new BorderRadius.circular(10.0)));
   }
 }
 

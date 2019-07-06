@@ -77,7 +77,7 @@ class PasswordRecoveryFullScreenDialogState extends State {
     } else {
       return Text(
         "Update",
-        style: TextStyle(color: Colors.lightGreenAccent),
+        style: TextStyle(color: Colors.white),
       );
     }
   }
@@ -103,6 +103,14 @@ class PasswordRecoveryFullScreenDialogState extends State {
           "One Time Password",
           style: TextStyle(color: Colors.white),
         ),
+        leading: IconButton(
+          icon: new Icon(
+            Icons.close,
+            color: Colors.white,
+            size: 30.0,
+          ),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         backgroundColor: Color(0xff292664),
       ),
       body: Padding(
@@ -112,8 +120,12 @@ class PasswordRecoveryFullScreenDialogState extends State {
             //mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                "Please Enter OTP sent on provided email address.",
-                style: TextStyle(color: Colors.indigo),
+                "Please Enter OTP sent on",
+                style: TextStyle(color: Color(0xff292664),fontSize: 20.0),
+              ),
+              Text(
+                "$emailId",
+                style: TextStyle(color: Colors.green),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 15.0),
