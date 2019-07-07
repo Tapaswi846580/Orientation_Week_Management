@@ -55,7 +55,10 @@ class _AdminInsertFullscreenDialogState extends State<AdminInsertFullscreenDialo
               color: Colors.white,
               size: 30.0,
             ),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: (){
+              HapticFeedback.lightImpact();
+              Navigator.of(context).pop();
+             },
           ),
         ),
         body: Padding(
