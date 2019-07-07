@@ -520,7 +520,7 @@ class _LoginState extends State<LoginPage> {
         color: Color.fromRGBO(58, 66, 86, 1.0),
       child: FlipCard(
         key: cardKey,
-        flipOnTouch: true,
+        flipOnTouch: false,
         direction: FlipDirection.HORIZONTAL, // default
         front: Align(alignment: Alignment.center,child: alldetails,),
         back: Align(
