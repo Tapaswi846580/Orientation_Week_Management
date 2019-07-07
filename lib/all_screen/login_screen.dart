@@ -514,21 +514,23 @@ class _LoginState extends State<LoginPage> {
         ),
       ),
     );
-    return Container(
-      height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        color: Color.fromRGBO(58, 66, 86, 1.0),
-      child: FlipCard(
-        key: cardKey,
-        flipOnTouch: false,
-        direction: FlipDirection.HORIZONTAL, // default
-        front: Align(alignment: Alignment.center,child: alldetails,),
-        back: Align(
-          alignment: Alignment.center,
-          child: Align(
+    return Scaffold(
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          color: Color.fromRGBO(58, 66, 86, 1.0),
+        child: FlipCard(
+          key: cardKey,
+          flipOnTouch: false,
+          direction: FlipDirection.HORIZONTAL, // default
+          front: Align(alignment: Alignment.center,child: alldetails,),
+          back: Align(
             alignment: Alignment.center,
-            child: isRegisterPage ?RegisterPage() :PasswordRecoverPage(),
-          )
+            child: Align(
+              alignment: Alignment.center,
+              child: isRegisterPage ?RegisterPage() :PasswordRecoverPage(),
+            )
+          ),
         ),
       ),
     );
