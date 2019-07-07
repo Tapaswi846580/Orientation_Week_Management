@@ -439,6 +439,7 @@ class _LoginState extends State<LoginPage> {
 //                                builder: (BuildContext context) {
 //                                  return PasswordRecoveryScreen();
 //                                }));
+                            HapticFeedback.lightImpact();
                             setState(() {
                               isRegisterPage = false;
                             });
@@ -481,6 +482,7 @@ class _LoginState extends State<LoginPage> {
 //                                  builder: (BuildContext context) {
 //                                    return  RegisterScreen();
 //                                  }));
+                              HapticFeedback.lightImpact();
                               setState(() {
                                 isRegisterPage = true;
                               });
@@ -1236,7 +1238,10 @@ class _registerState extends State<RegisterPage> {
                         SizedBox(
                             width: MediaQuery.of(context).size.width/3.5,
                             child: OutlineButton(
-                              onPressed: ()=> cardKey.currentState.toggleCard(),
+                              onPressed: (){
+                                HapticFeedback.lightImpact();
+                                cardKey.currentState.toggleCard();
+                              },
                               color: Color(0xff292664),
                               borderSide: BorderSide(color: Color(0xff292664),style: BorderStyle.solid,width: 2),
 //                            elevation: 10.0,
@@ -1312,6 +1317,7 @@ class SendOTPButton extends StatelessWidget {
         ),
       ),
       onPressed: () {
+        HapticFeedback.heavyImpact();
         String email = emailIdController.text.trim();
         String password = passwordController.text.trim();
         String confirmPassword = confirmPasswordController.text.trim();
@@ -1717,7 +1723,10 @@ class PasswordRecoveryState extends State{
                         SizedBox(
                             width: MediaQuery.of(context).size.width/3.5,
                             child: OutlineButton(
-                              onPressed: ()=>cardKey.currentState.toggleCard(),
+                              onPressed: (){
+                                HapticFeedback.lightImpact();
+                                cardKey.currentState.toggleCard();
+                               },
                               color: Color(0xff292664),
                               borderSide: BorderSide(color: Color(0xff292664),style: BorderStyle.solid,width: 2),
 //                            elevation: 10.0,
@@ -1792,6 +1801,7 @@ class SendOTPButtonPasswordRecovery extends StatelessWidget {
         ),
       ),
       onPressed: () {
+        HapticFeedback.heavyImpact();
         String email = emailIdController.text.trim();
         String password = passwordController.text.trim();
         String confirmPassword = confirmPasswordController.text.trim();
