@@ -327,14 +327,7 @@ class PasswordRecoveryFullScreenDialogState extends State {
                                                         otp = null;
                                                         Navigator.pop(
                                                             context, 'OK');
-                                                        Navigator.pop(
-                                                            this.context, 'OK');
-                                                        Navigator.pushReplacement(
-                                                            context,
-                                                            MaterialPageRoute(
-                                                                builder:
-                                                                    (context) =>
-                                                                        LoginScreen()));
+
                                                       },
                                                     )
                                                   ],
@@ -342,12 +335,6 @@ class PasswordRecoveryFullScreenDialogState extends State {
                                           otp = null;
                                           Navigator.pop(
                                               this.context, 'OK');
-                                          Navigator.pushReplacement(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder:
-                                                      (context) =>
-                                                      LoginScreen()));
                                         });
                                       } else if (res == "Not Registered") {
                                         setState(() {
@@ -381,7 +368,11 @@ class PasswordRecoveryFullScreenDialogState extends State {
                                                               context, 'OK');
                                                         })
                                                   ],
-                                                ));
+                                                )).then((val){
+                                          otp = null;
+                                          Navigator.pop(
+                                              this.context, 'OK');
+                                        });
                                       } else if (res == "Error") {
                                         setState(() {
                                           disableButton = false;

@@ -1227,7 +1227,7 @@ class _registerState extends State<RegisterPage> {
                       children: <Widget>[
                         SizedBox(
                           width: MediaQuery.of(context).size.width/3.5,
-                          child: SendOTPButtonPasswordRecovery(
+                          child: SendOTPButton(
                             emailIdController: emailIdController,
                             passwordController: passwordController,
                             confirmPasswordController: confirmPasswordController,
@@ -1345,8 +1345,10 @@ class SendOTPButton extends StatelessWidget {
                   },
                   fullscreenDialog: true,
                 )).then((val){
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()));
+                  emailIdController.text = "";
+                  passwordController.text = "";
+                  confirmPasswordController.text="";
+                  cardKey.currentState.toggleCard();
                 });
               }else{
                 HapticFeedback.heavyImpact();
@@ -1823,8 +1825,10 @@ class SendOTPButtonPasswordRecovery extends StatelessWidget {
                   },
                   fullscreenDialog: true,
                 )).then((val){
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()));
+                  emailIdController.text = "";
+                  passwordController.text = "";
+                  confirmPasswordController.text="";
+                  cardKey.currentState.toggleCard();
                 });
               }else{
                 HapticFeedback.heavyImpact();
