@@ -241,18 +241,20 @@ class _registerState extends State<RegisterPage> {
 //    );
 //  }
 
+
+  /*height: MediaQuery.of(context).size.height/1.5,*/
   @override
   Widget build(BuildContext context) {
     Widget alldetails = Container(
       child: Padding(
-        padding: const EdgeInsets.only(left: 30.0, right: 30.0,top: 150.0),
-        child: Card(
-          elevation: 10.0,
-          shape:
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-          child: Padding(
-            padding: const EdgeInsets.only(left: 30.0, right: 30.0),
-            child: SingleChildScrollView(
+        padding: const EdgeInsets.only(right: 20, left: 20),
+        child: SingleChildScrollView(
+          child: Card(
+            elevation: 10.0,
+            shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 30.0, right: 30.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
@@ -328,23 +330,39 @@ class _registerState extends State<RegisterPage> {
                     ),
                   ),
 
-
-
-
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
-                        child: Center(
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0.0, bottom: 20.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width/3.5,
                           child: SendOTPButton(
                             emailIdController: emailIdController,
                             passwordController: passwordController,
                             confirmPasswordController: confirmPasswordController,
+                          ),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width/3.5,
+                          child: OutlineButton(
+                            onPressed: (){},
+                            color: Color(0xff292664),
+//                            elevation: 10.0,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0)),
+                            child: FittedBox(
+                              fit: BoxFit.fitWidth,
+                              child: Text(
+                                "Back",
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 16.0),
+                              ),
+                            ),
                           )
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -358,12 +376,15 @@ class _registerState extends State<RegisterPage> {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         color: Color.fromRGBO(58, 66, 86, 1.0),
-        child: SingleChildScrollView(
-          child: Column(
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              alldetails
-            ],
+//          mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                alldetails
+              ],
+            ),
           ),
         ),
       ),
@@ -385,82 +406,62 @@ class SendOTPButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final otpController = TextEditingController();
-    return Container(
-      margin: EdgeInsets.only(top: 0.0),
-      width: MediaQuery.of(context).size.width / 2.5,
-      height: 40.0,
-      child: RaisedButton(
-        color: Color(0xff292664),
-        child: Center(
-          child: FittedBox(
-            fit: BoxFit.fitHeight,
-            child: Text(
-              "Send OTP",
-              style: TextStyle(
-                  fontSize: 20.0,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold),
-            ),
+    return RaisedButton(
+      color: Color(0xff292664),
+      child: Center(
+        child: FittedBox(
+          fit: BoxFit.fitWidth,
+          child: Text(
+            "Send OTP",
+            style: TextStyle(
+                fontSize: 20.0,
+                color: Colors.white,
+                fontWeight: FontWeight.bold),
           ),
         ),
-        onPressed: () {
-          String email = emailIdController.text.trim();
-          String password = passwordController.text.trim();
-          String confirmPassword = confirmPasswordController.text.trim();
-          if (emailIdController.text.trim().length != 0 &&
-              passwordController.text.trim().length != 0 &&
-              confirmPasswordController.text.trim().length != 0) {
-            // Regular Expression for email ID validation
-            var emailRegex =
-                r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$";
-            RegExp regExp = new RegExp(emailRegex);
-            if (regExp.hasMatch(email) && email.contains("ahduni.edu.in")) {
-              if (password == confirmPassword) {
-                // Regular Expression for password validation
-                var pswdRegex =
-                    r"^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,}$";
-                RegExp regExp1 = new RegExp(pswdRegex);
-                if (regExp1.hasMatch(password)) {
-                  //Generating random number for otp
-                  var random = new math.Random();
-                  var otp = random.nextInt(9999);
-                  var e = new Email();
-                  e.sendEmail(email, otp);
+      ),
+      onPressed: () {
+        String email = emailIdController.text.trim();
+        String password = passwordController.text.trim();
+        String confirmPassword = confirmPasswordController.text.trim();
+        if (emailIdController.text.trim().length != 0 &&
+            passwordController.text.trim().length != 0 &&
+            confirmPasswordController.text.trim().length != 0) {
+          // Regular Expression for email ID validation
+          var emailRegex =
+              r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$";
+          RegExp regExp = new RegExp(emailRegex);
+          if (regExp.hasMatch(email) && email.contains("ahduni.edu.in")) {
+            if (password == confirmPassword) {
+              // Regular Expression for password validation
+              var pswdRegex =
+                  r"^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,}$";
+              RegExp regExp1 = new RegExp(pswdRegex);
+              if (regExp1.hasMatch(password)) {
+                //Generating random number for otp
+                var random = new math.Random();
+                var otp = random.nextInt(9999);
+                var e = new Email();
+                e.sendEmail(email, otp);
 
-                  Navigator.of(context).push(new MaterialPageRoute(
-                    builder: (BuildContext context) {
-                      return RegistrationFullScreenDialog(
-                        emailId: email,
-                        password: password,
-                        otp: otp,
-                      );
-                    },
-                    fullscreenDialog: true,
-                  )).then((val){
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()));
-                  });
-                }else{
-                  HapticFeedback.heavyImpact();
-                  Scaffold.of(context).showSnackBar(SnackBar(
-                    content: Text(
-                      'Password does not match requirements',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    action: SnackBarAction(
-                      label: 'OK',
-                      onPressed: () {},
-                      textColor: Colors.white,
-                    ),
-                    backgroundColor: Color(0xffe71827),
-                    duration: Duration(seconds: 2),
-                  ));
-                }
-              } else {
+                Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return RegistrationFullScreenDialog(
+                      emailId: email,
+                      password: password,
+                      otp: otp,
+                    );
+                  },
+                  fullscreenDialog: true,
+                )).then((val){
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()));
+                });
+              }else{
                 HapticFeedback.heavyImpact();
                 Scaffold.of(context).showSnackBar(SnackBar(
                   content: Text(
-                    'Password and confirm password should be matched',
+                    'Password does not match requirements',
                     style: TextStyle(color: Colors.white),
                   ),
                   action: SnackBarAction(
@@ -476,7 +477,7 @@ class SendOTPButton extends StatelessWidget {
               HapticFeedback.heavyImpact();
               Scaffold.of(context).showSnackBar(SnackBar(
                 content: Text(
-                  'Please enter proper \'ahduni\' email',
+                  'Password and confirm password should be matched',
                   style: TextStyle(color: Colors.white),
                 ),
                 action: SnackBarAction(
@@ -492,7 +493,7 @@ class SendOTPButton extends StatelessWidget {
             HapticFeedback.heavyImpact();
             Scaffold.of(context).showSnackBar(SnackBar(
               content: Text(
-                'Please enter all required fields ⚠️',
+                'Please enter proper \'ahduni\' email',
                 style: TextStyle(color: Colors.white),
               ),
               action: SnackBarAction(
@@ -504,10 +505,25 @@ class SendOTPButton extends StatelessWidget {
               duration: Duration(seconds: 2),
             ));
           }
-        },
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-      ),
+        } else {
+          HapticFeedback.heavyImpact();
+          Scaffold.of(context).showSnackBar(SnackBar(
+            content: Text(
+              'Please enter all required fields ⚠️',
+              style: TextStyle(color: Colors.white),
+            ),
+            action: SnackBarAction(
+              label: 'OK',
+              onPressed: () {},
+              textColor: Colors.white,
+            ),
+            backgroundColor: Color(0xffe71827),
+            duration: Duration(seconds: 2),
+          ));
+        }
+      },
+      shape:
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
     );
   }
 }
