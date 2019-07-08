@@ -9,7 +9,7 @@ import 'resources.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter/services.dart';
 import 'package:myfirst/all_screen/important_contact.dart';
-
+//Student home screen
 Set<String> eventDates = new Set();
 List<Event> events;
 bool apiCall = false, timedOut = false, isRegistered = true, isPageView = true;

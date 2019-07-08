@@ -8,6 +8,7 @@ import 'dart:async';
 import 'resources.dart';
 import 'login_screen.dart';
 import 'package:pin_code_text_field/pin_code_text_field.dart';
+//password recovery full screen dialog
 
 class PasswordRecoveryFullScreenDialog extends StatefulWidget {
   final String emailId;

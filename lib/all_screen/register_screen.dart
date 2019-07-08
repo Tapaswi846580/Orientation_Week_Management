@@ -5,6 +5,7 @@ import 'registration_full_screen_dialog.dart';
 import 'dart:math' as math;
 import 'Email.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+//Register screen
 
 class RegisterScreen extends StatelessWidget {
   @override

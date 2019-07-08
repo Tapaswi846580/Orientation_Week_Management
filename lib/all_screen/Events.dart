@@ -1,3 +1,4 @@
+//Event entity class
 class Event{
   int _id;
   String _date,_grp,_batch,_startTime,_endTime,_activity,_description,_venue;

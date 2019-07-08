@@ -10,6 +10,7 @@ import 'login_screen.dart';
 import 'resources.dart';
 import 'admin_insert_full_screen_dialog.dart';
 import 'package:flutter/rendering.dart';
+//admin home screen
 
 final String ip = Resource.ip;
 Set<String> eventDates = new Set();

@@ -4,6 +4,7 @@ import 'login_screen.dart';
 import 'password_recovery_full_screen_dialog.dart';
 import 'dart:math' as math;
 import 'Email.dart';
+//Password recovery screen
 
 class PasswordRecoveryScreen extends StatelessWidget{
   @override

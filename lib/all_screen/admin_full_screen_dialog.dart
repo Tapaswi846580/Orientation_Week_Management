@@ -5,7 +5,7 @@ import 'Events.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'resources.dart';
-
+//admin update event full screen dialog box
 
 class AdminFullscreenDialog extends StatefulWidget {
   Event event;

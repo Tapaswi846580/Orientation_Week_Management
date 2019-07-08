@@ -8,6 +8,7 @@ import 'dart:async';
 import 'resources.dart';
 import 'login_screen.dart';
 import 'package:pin_code_text_field/pin_code_text_field.dart';
+//Register full screen dialog
 
 class RegistrationFullScreenDialog extends StatefulWidget {
   final String emailId;

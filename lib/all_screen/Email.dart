@@ -1,5 +1,6 @@
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server.dart';
+// email sending
 class Email{
   String username = "orientationweekmanagement@gmail.com";
   String password = "orientation-week-management";
