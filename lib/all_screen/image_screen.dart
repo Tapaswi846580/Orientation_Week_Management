@@ -276,7 +276,7 @@ class _ImageScreenState extends State<ImageScreen> {
                             color: Color(0xffe71827),
                           ),
                           title: Text(
-                            "Amrut Mody School of Management",
+                            "AMSOM UG",
                             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
                           ),
                           trailing: Text("Read more..",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
@@ -311,7 +311,7 @@ class _ImageScreenState extends State<ImageScreen> {
                                   GestureDetector(
                                     onTap: () {
                                       setState(() {
-                                        AllCallMap()._callMe();
+                                        AllCallMap()._callMeAMSOMUG();
                                       });
                                     },
                                     child: Column(
@@ -337,7 +337,7 @@ class _ImageScreenState extends State<ImageScreen> {
                                   GestureDetector(
                                     onTap: () {
                                       setState(() {
-                                        AllCallMap()._launchMaps();
+                                        AllCallMap()._launchMapsAMOSMUG();
                                       });
                                     },
                                     child: Column(
@@ -1607,6 +1607,38 @@ class AllCallMap {
       throw 'Could not launch url';
     }
   }
+
+  _callMeAMSOMUG() async {
+    // Android
+    const uri = 'tel:07961911350';
+    if (await canLaunch(uri)) {
+      await launch(uri);
+    } else {
+      const uri = 'tel:07961911350';
+      if (await canLaunch(uri)) {
+        await launch(uri);
+      } else {
+        throw 'Could not launch $uri';
+      }
+    }
+  }
+
+  _launchMapsAMOSMUG() async {
+    String googleUrl =
+        'https://goo.gl/maps/pNLSoTfSMydM8uX59';
+    String appleUrl =
+        'https://goo.gl/maps/pNLSoTfSMydM8uX59';
+    if (await canLaunch("comgooglemaps://")) {
+      print('launching com googleUrl');
+      await launch(googleUrl);
+    } else if (await canLaunch(appleUrl)) {
+      print('launching apple url');
+      await launch(appleUrl);
+    } else {
+      throw 'Could not launch url';
+    }
+  }
+
 
   _callMeBiological() async {
     // Android

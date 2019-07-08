@@ -194,8 +194,8 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
           events.forEach((e) {
             if (e.grp == grp &&
                 (e.batch == batch ||
-                    e.batch == "BOTH" ||
-                    e.batch == "null" ||
+                    e.batch.toLowerCase() == "BOTH".toLowerCase() ||
+                    e.batch.toLowerCase() == "null".toLowerCase() ||
                     e.batch == "" ||
                     e.batch == null)) eventDates.add(e.date);
           });
@@ -403,7 +403,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
 
                                     ListTile(
                                       title: Text(
-                                        "Email of Student Mitra",
+                                        "Email of Student Mitr",
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 15.0,
@@ -421,7 +421,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
 
                                     ListTile(
                                       title: Text(
-                                        "Mobile of Student Mitra",
+                                        "Mobile of Student Mitr",
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 15.0,
@@ -685,8 +685,8 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
         e.date == date &&
         e.grp == grp &&
         (e.batch == batch ||
-            e.batch == "BOTH" ||
-            e.batch == "null" ||
+            e.batch.toLowerCase() == "BOTH".toLowerCase() ||
+            e.batch.toLowerCase() == "null".toLowerCase() ||
             e.batch == "" ||
             e.batch == null));
 
@@ -725,7 +725,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                               "Venue: ${e.venue}",
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
-                            e.description == "null" || e.description == ""
+                            e.description.toLowerCase() == "null".toLowerCase() || e.description == "" || e.description == null
                                 ? Text("\n\nNo description")
                                 : Text("\n\n" + e.description),
                           ],

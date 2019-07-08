@@ -218,7 +218,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                               fontWeight: FontWeight.w800, fontSize: 20.0),
                         ),
                         Radio(
-                          value: "Both",
+                          value: "BOTH",
                           activeColor: Color(0xff292664),
                           groupValue: selectedBatchRadio,
                           onChanged: (val) {
