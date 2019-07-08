@@ -385,7 +385,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
 
                                     ListTile(
                                       title: Text(
-                                        "Student Mitra",
+                                        "Student Mitr",
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 15.0,
