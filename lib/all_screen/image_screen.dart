@@ -9,6 +9,18 @@ class ImageScreen extends StatefulWidget {
 }
 
 class _ImageScreenState extends State<ImageScreen> {
+  bool isExpandedSCS = false;
+  bool isExpandedGICT = false;
+  bool isExpandedAMSOMUG = false;
+  bool isExpandedB = false;
+  bool isExpandedCHM = false;
+  bool isExpandedV = false;
+  bool isExpandedC = false;
+  bool isExpandedU = false;
+  bool isExpandedM = false;
+  bool isExpandedBook = false;
+  bool isExpandedh = false;
+  bool isExpandedL = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +73,12 @@ class _ImageScreenState extends State<ImageScreen> {
                             "School of Computer Studies",
                             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
                           ),
-                          trailing: Text("Read more..",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
+                          onExpansionChanged: (val){
+                            setState(() {
+                              isExpandedSCS = val;
+                            });
+                          },
+                          trailing: Text(isExpandedSCS ? "Read less": "Read more",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -173,7 +190,12 @@ class _ImageScreenState extends State<ImageScreen> {
                             "GICT Building",
                             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
                           ),
-                          trailing: Text("Read more..",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
+                          onExpansionChanged: (val){
+                            setState(() {
+                              isExpandedGICT = val;
+                            });
+                          },
+                          trailing: Text(isExpandedGICT ? "Read less": "Read more",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -280,7 +302,12 @@ class _ImageScreenState extends State<ImageScreen> {
                             "AMSOM UG",
                             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
                           ),
-                          trailing: Text("Read more..",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
+                          onExpansionChanged: (val){
+                            setState(() {
+                              isExpandedAMSOMUG = val;
+                            });
+                          },
+                          trailing: Text(isExpandedAMSOMUG ? "Read less": "Read more",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -389,7 +416,12 @@ class _ImageScreenState extends State<ImageScreen> {
                             "Biological & Life Sciences, School of Arts and Sciences",
                             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
                           ),
-                          trailing: Text("Read more..",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
+                          onExpansionChanged: (val){
+                            setState(() {
+                              isExpandedB = val;
+                            });
+                          },
+                          trailing: Text(isExpandedB ? "Read less": "Read more",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -500,7 +532,12 @@ class _ImageScreenState extends State<ImageScreen> {
                             "Centre for Heritage Management (CHM)",
                             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
                           ),
-                          trailing: Text("Read more..",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
+                          onExpansionChanged: (val){
+                            setState(() {
+                              isExpandedCHM = val;
+                            });
+                          },
+                          trailing: Text(isExpandedCHM ? "Read less": "Read more",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -611,7 +648,12 @@ class _ImageScreenState extends State<ImageScreen> {
                             "Venture Studio",
                             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
                           ),
-                          trailing: Text("Read more..",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
+                          onExpansionChanged: (val){
+                            setState(() {
+                              isExpandedV = val;
+                            });
+                          },
+                          trailing: Text(isExpandedV ? "Read less": "Read more",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -627,7 +669,7 @@ class _ImageScreenState extends State<ImageScreen> {
                                   right: 20.0, left: 20.0, bottom: 20.0, top: 10.0),
                               child: Text(
                                 "VentureStudio is a startup incubator established by Ahmedabad University "
-                                    "in active collaboration with Stanford University – Centre for Design Research."
+                                    "in active collaboration with Stanford University ñ Centre for Design Research."
                                     " Since its inception in 2011, VentureStudio has helped incubate over 45 "
                                     "ventures in domains ranging health, education, energy and the environment "
                                     "to the agriculture industry, consumer products, transportation and more",
@@ -710,97 +752,102 @@ class _ImageScreenState extends State<ImageScreen> {
               ),
               Card(
                 child: ExpansionTile(
-                    title: Text("Cafeteria",textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.w500,fontSize: 20.0),),
-                    children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                         SizedBox(
-                              width: MediaQuery.of(context).size.width/1.1,
-                              height: MediaQuery.of(context).size.height / 3,
-                              child:Carousel(
-                                images: [
-                                  AssetImage('images/c1.jpg'),
-                                  AssetImage('images/c3.jpg'),
-                                  AssetImage('images/c4.jpg'),
-                                  AssetImage('images/c5.jpg'),
-                                  AssetImage('images/c2.jpg'),
-                                ],
-                                autoplay: false,
-                                dotSize: 4.0,
-                                dotSpacing: 15.0,
-                                dotColor: Colors.black45,
-                                indicatorBgPadding: 5.0,
-                                dotBgColor: Colors.white.withOpacity(0.5),
-                                borderRadius: true,
-                              )
+                  title: Text("Cafeteria",textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.w500,fontSize: 20.0),),
+                  children: <Widget>[
+                    Column(
+                      children: <Widget>[
+                        SizedBox(
+                            width: MediaQuery.of(context).size.width/1.1,
+                            height: MediaQuery.of(context).size.height / 3,
+                            child:Carousel(
+                              images: [
+                                AssetImage('images/c1.jpg'),
+                                AssetImage('images/c3.jpg'),
+                                AssetImage('images/c4.jpg'),
+                                AssetImage('images/c5.jpg'),
+                                AssetImage('images/c2.jpg'),
+                              ],
+                              autoplay: false,
+                              dotSize: 4.0,
+                              dotSpacing: 15.0,
+                              dotColor: Colors.black45,
+                              indicatorBgPadding: 5.0,
+                              dotBgColor: Colors.white.withOpacity(0.5),
+                              borderRadius: true,
+                            )
+                        ),
+                        ExpansionTile(
+                          leading: Icon(
+                            Icons.school,
+                            color: Color(0xffe71827),
                           ),
-                          ExpansionTile(
-                            leading: Icon(
-                              Icons.school,
-                              color: Color(0xffe71827),
-                            ),
-                            title: Text(
-                              "GICT Canteen",
-                              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
-                            ),
-                            trailing: Text("Read more..",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    right: 20.0, left: 20.0, bottom: 20.0, top: 10.0),
-                                child: Text(
-                                  "Hours : Monday to Saturday 8AM - 8PM",
-                                  style: TextStyle(
-                                      fontSize: 20.0, fontWeight: FontWeight.bold,),
-                                ),
+                          title: Text(
+                            "GICT Canteen",
+                            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
+                          ),
+                          onExpansionChanged: (val){
+                            setState(() {
+                              isExpandedC = val;
+                            });
+                          },
+                          trailing: Text(isExpandedC ? "Read less": "Read more",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  right: 20.0, left: 20.0, bottom: 20.0, top: 10.0),
+                              child: Text(
+                                "Hours : Monday to Saturday 8AM - 8PM",
+                                style: TextStyle(
+                                  fontSize: 20.0, fontWeight: FontWeight.bold,),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    right: 20.0, left: 20.0, bottom: 20.0, top: 10.0),
-                                child: Text(
-                                  "The big room with a lunch line and tables where Students eat their Lunch",
-                                  style: TextStyle(
-                                      fontSize: 20.0, fontWeight: FontWeight.w400),
-                                ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  right: 20.0, left: 20.0, bottom: 20.0, top: 10.0),
+                              child: Text(
+                                "The big room with a lunch line and tables where Students eat their Lunch",
+                                style: TextStyle(
+                                    fontSize: 20.0, fontWeight: FontWeight.w400),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    right: 20.0, left: 20.0, bottom: 20.0, top: 10.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          AllCallMap()._launchMapsCanteen();
-                                        });
-                                      },
-                                      child: Column(
-                                        children: <Widget>[
-                                          Icon(
-                                            Icons.map,
-                                            color: Colors.blueAccent,
-                                          ),
-                                          Text(
-                                            "Map",
-                                            style: TextStyle(
-                                                fontSize: 20.0,
-                                                fontWeight: FontWeight.w600,
-                                                color: Colors.blueAccent),
-                                          ),
-                                        ],
-                                      ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  right: 20.0, left: 20.0, bottom: 20.0, top: 10.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        AllCallMap()._launchMapsCanteen();
+                                      });
+                                    },
+                                    child: Column(
+                                      children: <Widget>[
+                                        Icon(
+                                          Icons.map,
+                                          color: Colors.blueAccent,
+                                        ),
+                                        Text(
+                                          "Map",
+                                          style: TextStyle(
+                                              fontSize: 20.0,
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.blueAccent),
+                                        ),
+                                      ],
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
+                            ),
 
-                            ],
-                          ),
-                        ],
-                      ),
+                          ],
+                        ),
+                      ],
+                    ),
 
-                    ],
+                  ],
                 ),
               ),
               Padding(
@@ -838,7 +885,12 @@ class _ImageScreenState extends State<ImageScreen> {
                             "Office of Admissions and Financial Aid",
                             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
                           ),
-                          trailing: Text("Read more..",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
+                          onExpansionChanged: (val){
+                            setState(() {
+                              isExpandedU = val;
+                            });
+                          },
+                          trailing: Text(isExpandedU ? "Read less": "Read more",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -981,7 +1033,12 @@ class _ImageScreenState extends State<ImageScreen> {
                             "Office of the Dean of Students",
                             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
                           ),
-                          trailing: Text("Read more..",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
+                          onExpansionChanged: (val){
+                            setState(() {
+                              isExpandedM = val;
+                            });
+                          },
+                          trailing: Text(isExpandedM ? "Read less": "Read more",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -1131,7 +1188,12 @@ class _ImageScreenState extends State<ImageScreen> {
                             "University Bookstore",
                             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
                           ),
-                          trailing: Text("Read more..",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
+                          onExpansionChanged: (val){
+                            setState(() {
+                              isExpandedBook = val;
+                            });
+                          },
+                          trailing: Text(isExpandedBook ? "Read less": "Read more",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -1286,7 +1348,12 @@ class _ImageScreenState extends State<ImageScreen> {
                             "Ahemdabad University Hostel",
                             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
                           ),
-                          trailing: Text("Read more..",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
+                          onExpansionChanged: (val){
+                            setState(() {
+                              isExpandedh = val;
+                            });
+                          },
+                          trailing: Text(isExpandedh ? "Read less": "Read more",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -1418,7 +1485,12 @@ class _ImageScreenState extends State<ImageScreen> {
                             "Central Library",
                             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20.0),
                           ),
-                          trailing: Text("Read more..",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
+                          onExpansionChanged: (val){
+                            setState(() {
+                              isExpandedL = val;
+                            });
+                          },
+                          trailing: Text(isExpandedL ? "Read less": "Read more",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -1535,24 +1607,24 @@ class _ImageScreenState extends State<ImageScreen> {
                               child: SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
                                 child: DataTable(
-                                    columns:<DataColumn>[
-                                      DataColumn(label: Text("Day",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18.0,color: Colors.black),)),
-                                      DataColumn(label: Text("During Semester",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18.0,color: Colors.black))),
-                                      DataColumn(label: Text("During Vacation",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18.0,color: Colors.black))),
-                                    ],
+                                  columns:<DataColumn>[
+                                    DataColumn(label: Text("Day",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18.0,color: Colors.black),)),
+                                    DataColumn(label: Text("During Semester",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18.0,color: Colors.black))),
+                                    DataColumn(label: Text("During Vacation",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18.0,color: Colors.black))),
+                                  ],
                                   rows:<DataRow>[
                                     DataRow(
                                       cells: <DataCell>[
                                         DataCell(Text("Monday - Friday")),
-                                        DataCell(Text("8.00 AM – 8.00 PM")),
-                                        DataCell(Text("9.00 AM – 5.00 PM")),
+                                        DataCell(Text("8.00 AM ñ 8.00 PM")),
+                                        DataCell(Text("9.00 AM ñ 5.00 PM")),
                                       ],
                                     ),
                                     DataRow(
                                       cells: <DataCell>[
                                         DataCell(Text("Saturday")),
-                                        DataCell(Text("9.00 AM – 5.00 PM")),
-                                        DataCell(Text("9.00 AM – 1.00 PM")),
+                                        DataCell(Text("9.00 AM ñ 5.00 PM")),
+                                        DataCell(Text("9.00 AM ñ 1.00 PM")),
                                       ],
                                     ),
                                   ],
