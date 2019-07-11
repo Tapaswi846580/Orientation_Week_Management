@@ -13,7 +13,7 @@ import 'package:myfirst/all_screen/important_contact.dart';
 Set<String> eventDates = new Set();
 List<Event> events;
 bool apiCall = false, timedOut = false, isRegistered = true, isPageView = true;
-String email,
+String email="",
     grp,
     batch,
     circle,
@@ -524,8 +524,8 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Text(
-                      "Welcome $email",
-//                style: TextStyle( color: Colors.white),
+                      "Welcome ${email.substring(0,1).toUpperCase()+email.substring(1,email.indexOf("."))}",
+                style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
