@@ -13,7 +13,7 @@ import 'package:myfirst/all_screen/important_contact.dart';
 Set<String> eventDates = new Set();
 List<Event> events;
 bool apiCall = false, timedOut = false, isRegistered = true, isPageView = true;
-String email="",
+String email="Guest",
     grp,
     batch,
     circle,
