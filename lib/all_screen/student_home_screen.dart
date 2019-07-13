@@ -179,7 +179,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
   Future<bool> getData() async {
     try {
       final url =
-          'http://${Resource.ip}:8080/JavaAPI/rest/services/getAllEvent';
+          'http://${Resource.ip}:8080/JavaAPI/rest/services/getAllEvent/$circle';
       await http.get(
         Uri.encodeFull(url),
         headers: {"Content-Type": "application/json"},
@@ -194,11 +194,27 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
           events.forEach((e) {
             if (e.grp == grp &&
                 (e.batch == batch ||
-                    e.batch.toLowerCase() == "BOTH".toLowerCase() ||
-                    e.batch.toLowerCase() == "null".toLowerCase() ||
-                    e.batch == "" ||
+                    e.batch.toLowerCase().trim() == "BOTH".toLowerCase().trim() ||
+                    e.batch.toLowerCase().trim() == "null".toLowerCase().trim() ||
+                    e.batch.trim() == "" ||
                     e.batch == null)) eventDates.add(e.date);
           });
+
+          /*events = events.where((e){
+            if(e.description.toLowerCase().trim() == "null".toLowerCase().trim() || e.description.trim() == "" || e.description == null){
+              e.description = "No Description";
+            }else{
+              List<String> str = e.description.split(";");
+              str.forEach((str){
+                str.split(":").forEach((s){
+                  if(s[0] == circle){
+                    e.description = s[1];
+                    print("dessssssssssssssssccccrription"+s[1]);
+                  }
+                });
+              });
+            }
+          });*/
         });
       }).timeout(
           Duration(
@@ -237,6 +253,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
       setState(() {
         apiCall = false;
       });
+      print(e.toString());
       if (timedOut == false) {
         showDialog(
             context: context,
@@ -524,6 +541,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Text(
+//                      "Welcome $email",
                       "Welcome ${email.substring(0,1).toUpperCase()+email.substring(1,email.indexOf("."))}",
                 style: TextStyle(fontWeight: FontWeight.bold),
                     ),
@@ -685,9 +703,9 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
         e.date == date &&
         e.grp == grp &&
         (e.batch == batch ||
-            e.batch.toLowerCase() == "BOTH".toLowerCase() ||
-            e.batch.toLowerCase() == "null".toLowerCase() ||
-            e.batch == "" ||
+            e.batch.toLowerCase().trim() == "BOTH".toLowerCase().trim() ||
+            e.batch.toLowerCase().trim() == "null".toLowerCase().trim() ||
+            e.batch.trim() == "" ||
             e.batch == null));
 
 //    var dateWiseEventsList = dateWiseEvents.toList();
@@ -698,6 +716,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
 //      print("Start ttime: ${e.startTime} ");
 //    });
     dateWiseEvents.forEach((e) {
+
       list.add(Slidable(
         key: Key("${e.id}"),
         actionPane: SlidableDrawerActionPane(),
@@ -707,6 +726,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
         child: InkWell(
           highlightColor: Color(0xff292664),
           onLongPress: () async {
+
             HapticFeedback.lightImpact();
             showDialog(
                 context: context,
@@ -725,7 +745,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                               "Venue: ${e.venue}",
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
-                            e.description.toLowerCase() == "null".toLowerCase() || e.description == "" || e.description == null
+                            e.description.toLowerCase().trim() == "null".toLowerCase().trim() || e.description.trim() == "" || e.description == null
                                 ? Text("\n\nNo description")
                                 : Text("\n\n" + e.description),
                           ],
