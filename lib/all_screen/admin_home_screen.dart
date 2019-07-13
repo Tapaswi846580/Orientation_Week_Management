@@ -51,7 +51,7 @@ class _AdminHomeState extends State<AdminHome> {
 
   Future<bool> getData() async {
     try {
-      final url = 'http://$ip:8080/JavaAPI/rest/services/getAllEvent';
+      final url = 'http://$ip:8080/JavaAPI/rest/services/getAllEvent/admin';
       await http.get(
         Uri.encodeFull(url),
         headers: {"Content-Type": "application/json"},
@@ -732,7 +732,7 @@ class EventDetailsExpansionTileState extends State {
 
   Future<bool> getData() async {
     try {
-      final url = 'http://$ip:8080/JavaAPI/rest/services/getAllEvent';
+      final url = 'http://$ip:8080/JavaAPI/rest/services/getAllEvent/admin';
       await http.get(
         Uri.encodeFull(url),
         headers: {"Content-Type": "application/json"},

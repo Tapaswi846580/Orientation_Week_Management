@@ -50,6 +50,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
     eventNameController.text = event.activity;
     selectedGrpRadio = event.grp;
     batchController.text = event.batch;
+    selectedBatchRadio = event.batch.toUpperCase();
     eventDateController.text = event.date;
     startTimeController.text = event.startTime;
     endTimeController.text = event.endTime;
