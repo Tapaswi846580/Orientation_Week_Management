@@ -30,44 +30,34 @@ class _SplashScreenState extends State<SplashScreen> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Expanded(
-                flex: 5,
-                child: Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      CircleAvatar(
-                        backgroundColor: Colors.white,
-                        radius: 50.0,
-                        child: ImagesAssert(),
-                      ),
-
-                      Padding(padding: EdgeInsets.only(top: 10.0,bottom: 10.0),
-                      ),
-                      AnimatedOpacity(
-                        opacity: !_visible ? 1.0 : 0.0,
-                        duration: Duration(seconds: 3),
-                        child: const Text("AHMEDABAD",style: TextStyle(color: Color(0xffe71827),fontSize: 40.0),),
-
-                      ),
-                      AnimatedOpacity(
-                        opacity: !_visible ? 1.0 : 0.0,
-                        duration: Duration(seconds: 3),
-                        child: const Text("UNIVERSITY",style: TextStyle(color: Color(0xff292664),fontSize: 40.0),),
-                      ),
-                      Divider(
-                        color: Colors.transparent,
-                        height: 30.0,
-                      ),
-                      AnimatedOpacity(
-                        opacity: !_visible ? 1.0 : 0.0,
-                        duration: Duration(seconds: 3),
-                        child: const Text("Orientation Week",style: TextStyle(color: Colors.black,fontSize: 30.0),),
-                      ),
-                    ],
-                  ),
-                ),
+              SizedBox(
+                height: 300.0,
+                  width: 300.0,
+                  child: Image.asset('images/aulogo.jpg',alignment: Alignment.center)),
+              AnimatedOpacity(
+                opacity: !_visible ? 1.0 : 0.0,
+                duration: Duration(seconds: 3),
+                child: const Text("Orientation Week",style: TextStyle(color: Colors.black,fontSize: 30.0),),
               ),
+
+//                      Padding(padding: EdgeInsets.only(top: 10.0,bottom: 10.0),
+//                      ),
+//                      AnimatedOpacity(
+//                        opacity: !_visible ? 1.0 : 0.0,
+//                        duration: Duration(seconds: 3),
+//                        child: const Text("AHMEDABAD",style: TextStyle(color: Color(0xffe71827),fontSize: 40.0),),
+//
+//                      ),
+//                      AnimatedOpacity(
+//                        opacity: !_visible ? 1.0 : 0.0,
+//                        duration: Duration(seconds: 3),
+//                        child: const Text("UNIVERSITY",style: TextStyle(color: Color(0xff292664),fontSize: 40.0),),
+//                      ),
+//                      Divider(
+//                        color: Colors.transparent,
+//                        height: 30.0,
+//                      ),
+
               /*Expanded(
                 flex: 2,
                 child: Column(
@@ -95,12 +85,13 @@ class _SplashScreenState extends State<SplashScreen> {
     startTime();
   }
 }
+/*
 class ImagesAssert extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    AssetImage assetmage = AssetImage('images/aulogo.png');
+    AssetImage assetmage = AssetImage('images/aulogo.jpg');
     Image image = Image(image: assetmage);
-    return Container(height: 90.0,alignment: Alignment.center, child:image);
+    return Container(height: 500.0,width: 100, alignment: Alignment.center, child:image);
   }
 
-}
+}*/
