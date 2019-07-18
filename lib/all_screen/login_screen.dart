@@ -104,7 +104,7 @@ class _LoginState extends State<LoginPage> {
 //                  gradient: LinearGradient(
 //                    begin: Alignment.topCenter,
 //                    end: Alignment.bottomCenter,
-//                    colors: [Color(0xff292664), Color(0xff292664)],
+//                    colors: [Color(0xff85160f), Color(0xff85160f)],
 //                  ),
 //                  borderRadius: BorderRadius.only(
 //                      bottomLeft: Radius.circular(0),
@@ -258,7 +258,7 @@ class _LoginState extends State<LoginPage> {
 //                        "Lost your Password ?",
 //                        style: TextStyle(
 //                            fontSize: 15,
-//                            color: Color(0xff292664),
+//                            color: Color(0xff85160f),
 //                            decorationStyle: TextDecorationStyle.solid,
 //                            fontStyle: FontStyle.normal,
 //                            fontWeight: FontWeight.bold,
@@ -298,7 +298,7 @@ class _LoginState extends State<LoginPage> {
 //                        child: OutlineButton(
 //                          shape: new RoundedRectangleBorder(
 //                              borderRadius: new BorderRadius.circular(10.0)),
-//                          color: Color(0xff292664),
+//                          color: Color(0xff85160f),
 //                          onPressed: () {
 //                            Navigator.of(context).push(MaterialPageRoute<Null>(
 //                                builder: (BuildContext context) {
@@ -384,13 +384,13 @@ class _LoginState extends State<LoginPage> {
                     height: 10.0,
                     color: Colors.black,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10.0),
-                    child: Text(
-                      "(*) Indicates Mandatory Field",
-                      style: TextStyle(fontWeight: FontWeight.w500, color: Colors.red),
-                    ),
-                  ),
+//                  Padding(
+//                    padding: const EdgeInsets.only(top: 10.0),
+//                    child: Text(
+//                      "(*) Indicates Mandatory Field",
+//                      style: TextStyle(fontWeight: FontWeight.w500, color: Colors.red),
+//                    ),
+//                  ),
                   Container(
                     padding: EdgeInsets.only(top: 20),
                     child: Column(
@@ -432,9 +432,9 @@ class _LoginState extends State<LoginPage> {
                   ),
                   Container(
                     child: Align(
-                      alignment: Alignment.centerRight,
+                      alignment: Alignment.center,
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 5.0, right: 30.0),
+                        padding: const EdgeInsets.only(top: 20.0, right: 0.0),
                         child: FlatButton(
                           onPressed: () {
 //                            Navigator.of(context).push(MaterialPageRoute<Null>(
@@ -450,10 +450,10 @@ class _LoginState extends State<LoginPage> {
                           child: FittedBox(
                             fit: BoxFit.fitWidth,
                             child: Text(
-                              "Lost your Password ?",
+                              "Forgot Password ?",
                               style: TextStyle(
                                   fontSize: 15,
-                                  color: Color(0xff292664),
+                                  color: Color(0xff85160f),
                                   decorationStyle: TextDecorationStyle.solid,
                                   fontStyle: FontStyle.normal,
                                   fontWeight: FontWeight.bold,
@@ -490,12 +490,12 @@ class _LoginState extends State<LoginPage> {
                               });
                               cardKey.currentState.toggleCard();
                             },
-//                            disabledColor: Color(0xff292664),
-                            color: Color(0xff292664),
+//                            disabledColor: Color(0xff85160f),
+                            color: Color(0xff85160f),
 //                            elevation: 10.0,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),),
-                            borderSide: BorderSide(color: Color(0xff292664),style: BorderStyle.solid,width: 2),
+                            borderSide: BorderSide(color: Color(0xff85160f),style: BorderStyle.solid,width: 2),
                             child: FittedBox(
                               fit: BoxFit.fitWidth,
                               child: Text(
@@ -642,7 +642,7 @@ class SignInButtonState extends State {
       return SizedBox(
         child: CircularProgressIndicator(
           backgroundColor: Colors.white,
-          valueColor: new AlwaysStoppedAnimation<Color>(Color(0xff292664)),
+          valueColor: new AlwaysStoppedAnimation<Color>(Color(0xff85160f)),
           strokeWidth: 3.0,
         ),
         height: 25.0,
@@ -654,7 +654,7 @@ class SignInButtonState extends State {
         child: Text(
           "Sign In",
           style: TextStyle(
-              fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.bold),
+              fontSize: 18.0, color: Colors.white, fontWeight: FontWeight.bold),
         ),
       );
     }
@@ -663,11 +663,11 @@ class SignInButtonState extends State {
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
-        color: Color(0xff292664),
+        color: Color(0xff85160f),
         child: Center(
           child: getProperWidget(),
         ),
-        disabledColor: Color(0xff292664),
+        disabledColor: Color(0xff85160f),
         onPressed: apiCall
             ? null
             : () async {
@@ -741,7 +741,7 @@ class SignInButtonState extends State {
                         HapticFeedback.heavyImpact();
                         Scaffold.of(context).showSnackBar(SnackBar(
                           content: Text(
-                            'Invalid Login Credentials :(',
+                            'Invalid Login Credentials',
                             style: TextStyle(color: Colors.white),
                           ),
                           action: SnackBarAction(
@@ -817,7 +817,7 @@ class SignInButtonState extends State {
                         HapticFeedback.heavyImpact();
                         Scaffold.of(context).showSnackBar(SnackBar(
                           content: Text(
-                            'Server could not be reached, please contact administrator ⚠️',
+                            'Server could not be reached, please contact administrator️',
                             style: TextStyle(color: Colors.white),
                           ),
                           action: SnackBarAction(
@@ -860,7 +860,7 @@ class SignInButtonState extends State {
                   HapticFeedback.heavyImpact();
                   Scaffold.of(context).showSnackBar(SnackBar(
                     content: Text(
-                      'Please enter all required fields ⚠️',
+                      'Please enter all required fields️',
                       style: TextStyle(color: Colors.white),
                     ),
                     action: SnackBarAction(
@@ -977,7 +977,7 @@ class _registerState extends State<RegisterPage> {
 //                  gradient: LinearGradient(
 //                    begin: Alignment.topCenter,
 //                    end: Alignment.bottomCenter,
-//                    colors: [Color(0xff292664), Color(0xff292664)],
+//                    colors: [Color(0xff85160f), Color(0xff85160f)],
 //                  ),
 //                  borderRadius: BorderRadius.only(
 //                      bottomLeft: Radius.circular(0),
@@ -1216,13 +1216,13 @@ class _registerState extends State<RegisterPage> {
                       style: TextStyle(color: Colors.indigo),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10.0,bottom: 10.0),
-                    child: Text(
-                      "(*) Indicates Mandatory Field",
-                      style: TextStyle(fontWeight: FontWeight.w500,color: Colors.red),
-                    ),
-                  ),
+//                  Padding(
+//                    padding: const EdgeInsets.only(top: 10.0,bottom: 10.0),
+//                    child: Text(
+//                      "(*) Indicates Mandatory Field",
+//                      style: TextStyle(fontWeight: FontWeight.w500,color: Colors.red),
+//                    ),
+//                  ),
 
                   Padding(
                     padding: const EdgeInsets.only(top: 0.0, bottom: 20.0),
@@ -1244,8 +1244,8 @@ class _registerState extends State<RegisterPage> {
                                 HapticFeedback.lightImpact();
                                 cardKey.currentState.toggleCard();
                               },
-                              color: Color(0xff292664),
-                              borderSide: BorderSide(color: Color(0xff292664),style: BorderStyle.solid,width: 2),
+                              color: Color(0xff85160f),
+                              borderSide: BorderSide(color: Color(0xff85160f),style: BorderStyle.solid,width: 2),
 //                            elevation: 10.0,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10.0)),
@@ -1305,7 +1305,7 @@ class SendOTPButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final otpController = TextEditingController();
     return RaisedButton(
-      color: Color(0xff292664),
+      color: Color(0xff85160f),
       child: Center(
         child: FittedBox(
           fit: BoxFit.fitWidth,
@@ -1410,7 +1410,7 @@ class SendOTPButton extends StatelessWidget {
           HapticFeedback.heavyImpact();
           Scaffold.of(context).showSnackBar(SnackBar(
             content: Text(
-              'Please enter all required fields ⚠️',
+              'Please enter all required fields',
               style: TextStyle(color: Colors.white),
             ),
             action: SnackBarAction(
@@ -1465,7 +1465,7 @@ class PasswordRecoveryState extends State{
 //                  gradient: LinearGradient(
 //                    begin: Alignment.topCenter,
 //                    end: Alignment.bottomCenter,
-//                    colors: [Color(0xff292664), Color(0xff292664)],
+//                    colors: [Color(0xff85160f), Color(0xff85160f)],
 //                  ),
 //                  borderRadius: BorderRadius.only(
 //                      bottomLeft: Radius.circular(0),
@@ -1602,7 +1602,7 @@ class PasswordRecoveryState extends State{
 //                child: Padding(
 //                  padding: const EdgeInsets.only(left: 33.0, top: 10.0),
 //                  child: Text("Password Should contain 6 or more characters, atleast one letter and one number.",
-//                    style: TextStyle(color: Color(0xff292664),wordSpacing: 1.0),
+//                    style: TextStyle(color: Color(0xff85160f),wordSpacing: 1.0),
 //                  ),
 //                ),
 //              ),
@@ -1701,13 +1701,13 @@ class PasswordRecoveryState extends State{
                       style: TextStyle(color: Colors.indigo),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10.0,bottom: 10.0),
-                    child: Text(
-                      "(*) Indicates Mandatory Field",
-                      style: TextStyle(fontWeight: FontWeight.w500,color: Colors.red),
-                    ),
-                  ),
+//                  Padding(
+//                    padding: const EdgeInsets.only(top: 10.0,bottom: 10.0),
+//                    child: Text(
+//                      "(*) Indicates Mandatory Field",
+//                      style: TextStyle(fontWeight: FontWeight.w500,color: Colors.red),
+//                    ),
+//                  ),
 
                   Padding(
                     padding: const EdgeInsets.only(top: 0.0, bottom: 20.0),
@@ -1729,8 +1729,8 @@ class PasswordRecoveryState extends State{
                                 HapticFeedback.lightImpact();
                                 cardKey.currentState.toggleCard();
                                },
-                              color: Color(0xff292664),
-                              borderSide: BorderSide(color: Color(0xff292664),style: BorderStyle.solid,width: 2),
+                              color: Color(0xff85160f),
+                              borderSide: BorderSide(color: Color(0xff85160f),style: BorderStyle.solid,width: 2),
 //                            elevation: 10.0,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10.0)),
@@ -1789,7 +1789,7 @@ class SendOTPButtonPasswordRecovery extends StatelessWidget {
   Widget build(BuildContext context) {
     final otpController = TextEditingController();
     return RaisedButton(
-      color: Color(0xff292664),
+      color: Color(0xff85160f),
       child: Center(
         child: FittedBox(
           fit: BoxFit.fitWidth,
@@ -1894,7 +1894,7 @@ class SendOTPButtonPasswordRecovery extends StatelessWidget {
           HapticFeedback.heavyImpact();
           Scaffold.of(context).showSnackBar(SnackBar(
             content: Text(
-              'Please enter all required fields ⚠️',
+              'Please enter all required fields',
               style: TextStyle(color: Colors.white),
             ),
             action: SnackBarAction(

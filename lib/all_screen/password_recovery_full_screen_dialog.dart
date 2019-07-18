@@ -53,7 +53,7 @@ class PasswordRecoveryFullScreenDialogState extends State {
       return SizedBox(
         child: CircularProgressIndicator(
           backgroundColor: Colors.white,
-          valueColor: new AlwaysStoppedAnimation<Color>(Color(0xff292664)),
+          valueColor: new AlwaysStoppedAnimation<Color>(Color(0xff85160f)),
           strokeWidth: 3.0,
         ),
         height: 20.0,
@@ -69,7 +69,7 @@ class PasswordRecoveryFullScreenDialogState extends State {
       return SizedBox(
         child: CircularProgressIndicator(
           backgroundColor: Colors.white,
-          valueColor: new AlwaysStoppedAnimation<Color>(Color(0xff292664)),
+          valueColor: new AlwaysStoppedAnimation<Color>(Color(0xff85160f)),
           strokeWidth: 3.0,
         ),
         height: 20.0,
@@ -115,7 +115,7 @@ class PasswordRecoveryFullScreenDialogState extends State {
             Navigator.of(context).pop();
          },
         ),
-        backgroundColor: Color(0xff292664),
+        backgroundColor: Color(0xff85160f),
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 15.0, left: 10.0, right: 10.0),
@@ -125,7 +125,7 @@ class PasswordRecoveryFullScreenDialogState extends State {
             children: <Widget>[
               Text(
                 "Please Enter OTP sent on",
-                style: TextStyle(color: Color(0xff292664),fontSize: 20.0),
+                style: TextStyle(color: Color(0xff85160f),fontSize: 20.0),
               ),
               Text(
                 "$emailId",
@@ -278,8 +278,8 @@ class PasswordRecoveryFullScreenDialogState extends State {
                       Padding(
                         padding: const EdgeInsets.only(left: 8.0),
                         child: RaisedButton(
-                          color: Color(0xff292664),
-                          disabledColor: Color(0xff292664),
+                          color: Color(0xff85160f),
+                          disabledColor: Color(0xff85160f),
                           child: getProperWidgetForRaisedButton(),
                           onPressed: disableButton
                               ? null
@@ -317,7 +317,7 @@ class PasswordRecoveryFullScreenDialogState extends State {
                                                                   10.0))),
                                                   title: Text("Status"),
                                                   content: Text(
-                                                    "Password Updated ! 😉",
+                                                    "Password Updated !",
                                                     style: TextStyle(
                                                         color: Colors.green),
                                                   ),
@@ -356,7 +356,7 @@ class PasswordRecoveryFullScreenDialogState extends State {
                                                                   10.0))),
                                                   title: Text("Status"),
                                                   content: Text(
-                                                    "This Email Id is not registered 🙁",
+                                                    "This Email Id is not registered",
                                                     style: TextStyle(
                                                         color: Color(0xffe71827)),
                                                   ),
@@ -427,7 +427,7 @@ class PasswordRecoveryFullScreenDialogState extends State {
                                                                 10.0))),
                                                 title: Text("Status"),
                                                 content: Text(
-                                                  "Server could not be reached ⚠️",
+                                                  "Server could not be reached️",
                                                   style: TextStyle(
                                                       color: Color(0xffe71827)),
                                                 ),
@@ -466,7 +466,7 @@ class PasswordRecoveryFullScreenDialogState extends State {
                                                 FlatButton(
                                                     child: Text('OK',
                                                         style: TextStyle(
-                                                            color: Color(0xff292664))),
+                                                            color: Color(0xff85160f))),
                                                     onPressed: () {
                                                       Navigator.pop(
                                                           context, 'OK');

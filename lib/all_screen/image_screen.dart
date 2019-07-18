@@ -26,7 +26,7 @@ class _ImageScreenState extends State<ImageScreen> {
     return Scaffold(
       backgroundColor: Color(0xffE8E8E8),
       appBar: AppBar(
-        backgroundColor: Color(0xff292664),
+        backgroundColor: Color(0xff85160f),
         title: Text("Campus Guide", style: TextStyle(color: Colors.white),),
         centerTitle: true,
         leading: IconButton(
@@ -67,7 +67,7 @@ class _ImageScreenState extends State<ImageScreen> {
                         ExpansionTile(
                           leading: Icon(
                             Icons.school,
-                            color: Color(0xffe71827),
+                            color: Color(0xff85160f),
                           ),
                           title: Text(
                             "School of Computer Studies",
@@ -78,7 +78,7 @@ class _ImageScreenState extends State<ImageScreen> {
                               isExpandedSCS = val;
                             });
                           },
-                          trailing: Text(isExpandedSCS ? "Read less": "Read more",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
+                          trailing: Text(isExpandedSCS ? "Read less": "Read more",style: TextStyle(color: Color(0xff85160f),fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -119,14 +119,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                       children: <Widget>[
                                         Icon(
                                           Icons.phone,
-                                          color: Colors.blueAccent,
+                                          color: Color(0xff85160f),
                                         ),
                                         Text(
                                           "Call",
                                           style: TextStyle(
                                               fontSize: 20.0,
                                               fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
+                                              color: Color(0xff85160f)),
                                         ),
                                       ],
                                     ),
@@ -145,14 +145,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                       children: <Widget>[
                                         Icon(
                                           Icons.map,
-                                          color: Colors.blueAccent,
+                                          color: Color(0xff85160f),
                                         ),
                                         Text(
                                           "Map",
                                           style: TextStyle(
                                               fontSize: 20.0,
                                               fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
+                                              color: Color(0xff85160f)),
                                         ),
                                       ],
                                     ),
@@ -184,7 +184,7 @@ class _ImageScreenState extends State<ImageScreen> {
                         ExpansionTile(
                           leading: Icon(
                             Icons.school,
-                            color: Color(0xffe71827),
+                            color: Color(0xff85160f),
                           ),
                           title: Text(
                             "GICT Building",
@@ -195,7 +195,7 @@ class _ImageScreenState extends State<ImageScreen> {
                               isExpandedGICT = val;
                             });
                           },
-                          trailing: Text(isExpandedGICT ? "Read less": "Read more",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
+                          trailing: Text(isExpandedGICT ? "Read less": "Read more",style: TextStyle(color: Color(0xff85160f),fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -232,14 +232,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                       children: <Widget>[
                                         Icon(
                                           Icons.phone,
-                                          color: Colors.blueAccent,
+                                          color: Color(0xff85160f),
                                         ),
                                         Text(
                                           "Call",
                                           style: TextStyle(
                                               fontSize: 20.0,
                                               fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
+                                              color: Color(0xff85160f)),
                                         ),
                                       ],
                                     ),
@@ -258,14 +258,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                       children: <Widget>[
                                         Icon(
                                           Icons.map,
-                                          color: Colors.blueAccent,
+                                          color: Color(0xff85160f),
                                         ),
                                         Text(
                                           "Map",
                                           style: TextStyle(
                                               fontSize: 20.0,
                                               fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
+                                              color: Color(0xff85160f)),
                                         ),
                                       ],
                                     ),
@@ -296,7 +296,7 @@ class _ImageScreenState extends State<ImageScreen> {
                         ExpansionTile(
                           leading: Icon(
                             Icons.school,
-                            color: Color(0xffe71827),
+                            color: Color(0xff85160f),
                           ),
                           title: Text(
                             "AMSOM UG",
@@ -307,7 +307,7 @@ class _ImageScreenState extends State<ImageScreen> {
                               isExpandedAMSOMUG = val;
                             });
                           },
-                          trailing: Text(isExpandedAMSOMUG ? "Read less": "Read more",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
+                          trailing: Text(isExpandedAMSOMUG ? "Read less": "Read more",style: TextStyle(color: Color(0xff85160f),fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -346,14 +346,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                       children: <Widget>[
                                         Icon(
                                           Icons.phone,
-                                          color: Colors.blueAccent,
+                                          color: Color(0xff85160f),
                                         ),
                                         Text(
                                           "Call",
                                           style: TextStyle(
                                               fontSize: 20.0,
                                               fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
+                                              color: Color(0xff85160f)),
                                         ),
                                       ],
                                     ),
@@ -372,14 +372,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                       children: <Widget>[
                                         Icon(
                                           Icons.map,
-                                          color: Colors.blueAccent,
+                                          color: Color(0xff85160f),
                                         ),
                                         Text(
                                           "Map",
                                           style: TextStyle(
                                               fontSize: 20.0,
                                               fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
+                                              color: Color(0xff85160f)),
                                         ),
                                       ],
                                     ),
@@ -410,7 +410,7 @@ class _ImageScreenState extends State<ImageScreen> {
                         ExpansionTile(
                           leading: Icon(
                             Icons.school,
-                            color: Color(0xffe71827),
+                            color: Color(0xff85160f),
                           ),
                           title: Text(
                             "Biological & Life Sciences, School of Arts and Sciences",
@@ -421,7 +421,7 @@ class _ImageScreenState extends State<ImageScreen> {
                               isExpandedB = val;
                             });
                           },
-                          trailing: Text(isExpandedB ? "Read less": "Read more",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
+                          trailing: Text(isExpandedB ? "Read less": "Read more",style: TextStyle(color: Color(0xff85160f),fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -462,14 +462,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                       children: <Widget>[
                                         Icon(
                                           Icons.phone,
-                                          color: Colors.blueAccent,
+                                          color: Color(0xff85160f),
                                         ),
                                         Text(
                                           "Call",
                                           style: TextStyle(
                                               fontSize: 20.0,
                                               fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
+                                              color: Color(0xff85160f)),
                                         ),
                                       ],
                                     ),
@@ -488,14 +488,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                       children: <Widget>[
                                         Icon(
                                           Icons.map,
-                                          color: Colors.blueAccent,
+                                          color: Color(0xff85160f),
                                         ),
                                         Text(
                                           "Map",
                                           style: TextStyle(
                                               fontSize: 20.0,
                                               fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
+                                              color: Color(0xff85160f)),
                                         ),
                                       ],
                                     ),
@@ -526,7 +526,7 @@ class _ImageScreenState extends State<ImageScreen> {
                         ExpansionTile(
                           leading: Icon(
                             Icons.school,
-                            color: Color(0xffe71827),
+                            color: Color(0xff85160f),
                           ),
                           title: Text(
                             "Centre for Heritage Management (CHM)",
@@ -537,7 +537,7 @@ class _ImageScreenState extends State<ImageScreen> {
                               isExpandedCHM = val;
                             });
                           },
-                          trailing: Text(isExpandedCHM ? "Read less": "Read more",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
+                          trailing: Text(isExpandedCHM ? "Read less": "Read more",style: TextStyle(color: Color(0xff85160f),fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -577,14 +577,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                       children: <Widget>[
                                         Icon(
                                           Icons.phone,
-                                          color: Colors.blueAccent,
+                                          color: Color(0xff85160f),
                                         ),
                                         Text(
                                           "Call",
                                           style: TextStyle(
                                               fontSize: 20.0,
                                               fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
+                                              color: Color(0xff85160f)),
                                         ),
                                       ],
                                     ),
@@ -603,14 +603,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                       children: <Widget>[
                                         Icon(
                                           Icons.map,
-                                          color: Colors.blueAccent,
+                                          color: Color(0xff85160f),
                                         ),
                                         Text(
                                           "Map",
                                           style: TextStyle(
                                               fontSize: 20.0,
                                               fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
+                                              color: Color(0xff85160f)),
                                         ),
                                       ],
                                     ),
@@ -642,7 +642,7 @@ class _ImageScreenState extends State<ImageScreen> {
                         ExpansionTile(
                           leading: Icon(
                             Icons.school,
-                            color: Color(0xffe71827),
+                            color: Color(0xff85160f),
                           ),
                           title: Text(
                             "Venture Studio",
@@ -653,7 +653,7 @@ class _ImageScreenState extends State<ImageScreen> {
                               isExpandedV = val;
                             });
                           },
-                          trailing: Text(isExpandedV ? "Read less": "Read more",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
+                          trailing: Text(isExpandedV ? "Read less": "Read more",style: TextStyle(color: Color(0xff85160f),fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -693,14 +693,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                       children: <Widget>[
                                         Icon(
                                           Icons.phone,
-                                          color: Colors.blueAccent,
+                                          color: Color(0xff85160f),
                                         ),
                                         Text(
                                           "Call",
                                           style: TextStyle(
                                               fontSize: 20.0,
                                               fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
+                                              color: Color(0xff85160f)),
                                         ),
                                       ],
                                     ),
@@ -719,14 +719,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                       children: <Widget>[
                                         Icon(
                                           Icons.map,
-                                          color: Colors.blueAccent,
+                                          color: Color(0xff85160f),
                                         ),
                                         Text(
                                           "Map",
                                           style: TextStyle(
                                               fontSize: 20.0,
                                               fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
+                                              color: Color(0xff85160f)),
                                         ),
                                       ],
                                     ),
@@ -779,7 +779,7 @@ class _ImageScreenState extends State<ImageScreen> {
                         ExpansionTile(
                           leading: Icon(
                             Icons.school,
-                            color: Color(0xffe71827),
+                            color: Color(0xff85160f),
                           ),
                           title: Text(
                             "GICT Canteen",
@@ -790,7 +790,7 @@ class _ImageScreenState extends State<ImageScreen> {
                               isExpandedC = val;
                             });
                           },
-                          trailing: Text(isExpandedC ? "Read less": "Read more",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
+                          trailing: Text(isExpandedC ? "Read less": "Read more",style: TextStyle(color: Color(0xff85160f),fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -826,14 +826,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                       children: <Widget>[
                                         Icon(
                                           Icons.map,
-                                          color: Colors.blueAccent,
+                                          color: Color(0xff85160f),
                                         ),
                                         Text(
                                           "Map",
                                           style: TextStyle(
                                               fontSize: 20.0,
                                               fontWeight: FontWeight.w600,
-                                              color: Colors.blueAccent),
+                                              color: Color(0xff85160f)),
                                         ),
                                       ],
                                     ),
@@ -879,7 +879,7 @@ class _ImageScreenState extends State<ImageScreen> {
                         ExpansionTile(
                           leading: Icon(
                             Icons.school,
-                            color: Color(0xffe71827),
+                            color: Color(0xff85160f),
                           ),
                           title: Text(
                             "Office of Admissions and Financial Aid",
@@ -890,7 +890,7 @@ class _ImageScreenState extends State<ImageScreen> {
                               isExpandedU = val;
                             });
                           },
-                          trailing: Text(isExpandedU ? "Read less": "Read more",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
+                          trailing: Text(isExpandedU ? "Read less": "Read more",style: TextStyle(color: Color(0xff85160f),fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -919,14 +919,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                         children: <Widget>[
                                           Icon(
                                             Icons.call,
-                                            color: Colors.blueAccent,
+                                            color: Color(0xff85160f),
                                           ),
                                           Text(
                                             "Call",
                                             style: TextStyle(
                                                 fontSize: 20.0,
                                                 fontWeight: FontWeight.w600,
-                                                color: Colors.blueAccent),
+                                                color: Color(0xff85160f)),
                                           ),
                                         ],
                                       ),
@@ -945,14 +945,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                         children: <Widget>[
                                           Icon(
                                             Icons.map,
-                                            color: Colors.blueAccent,
+                                            color: Color(0xff85160f),
                                           ),
                                           Text(
                                             "Map",
                                             style: TextStyle(
                                                 fontSize: 20.0,
                                                 fontWeight: FontWeight.w600,
-                                                color: Colors.blueAccent),
+                                                color: Color(0xff85160f)),
                                           ),
                                         ],
                                       ),
@@ -971,14 +971,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                         children: <Widget>[
                                           Icon(
                                             Icons.mail,
-                                            color: Colors.blueAccent,
+                                            color: Color(0xff85160f),
                                           ),
                                           Text(
                                             "Mail",
                                             style: TextStyle(
                                                 fontSize: 20.0,
                                                 fontWeight: FontWeight.w600,
-                                                color: Colors.blueAccent),
+                                                color: Color(0xff85160f)),
                                           ),
                                         ],
                                       ),
@@ -1027,7 +1027,7 @@ class _ImageScreenState extends State<ImageScreen> {
                         ExpansionTile(
                           leading: Icon(
                             Icons.school,
-                            color: Color(0xffe71827),
+                            color: Color(0xff85160f),
                           ),
                           title: Text(
                             "Office of the Dean of Students",
@@ -1038,7 +1038,7 @@ class _ImageScreenState extends State<ImageScreen> {
                               isExpandedM = val;
                             });
                           },
-                          trailing: Text(isExpandedM ? "Read less": "Read more",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
+                          trailing: Text(isExpandedM ? "Read less": "Read more",style: TextStyle(color: Color(0xff85160f),fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -1076,14 +1076,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                         children: <Widget>[
                                           Icon(
                                             Icons.call,
-                                            color: Colors.blueAccent,
+                                            color: Color(0xff85160f),
                                           ),
                                           Text(
                                             "Call",
                                             style: TextStyle(
                                                 fontSize: 20.0,
                                                 fontWeight: FontWeight.w600,
-                                                color: Colors.blueAccent),
+                                                color: Color(0xff85160f)),
                                           ),
                                         ],
                                       ),
@@ -1102,14 +1102,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                         children: <Widget>[
                                           Icon(
                                             Icons.map,
-                                            color: Colors.blueAccent,
+                                            color: Color(0xff85160f),
                                           ),
                                           Text(
                                             "Map",
                                             style: TextStyle(
                                                 fontSize: 20.0,
                                                 fontWeight: FontWeight.w600,
-                                                color: Colors.blueAccent),
+                                                color: Color(0xff85160f)),
                                           ),
                                         ],
                                       ),
@@ -1128,14 +1128,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                         children: <Widget>[
                                           Icon(
                                             Icons.mail,
-                                            color: Colors.blueAccent,
+                                            color: Color(0xff85160f),
                                           ),
                                           Text(
                                             "Mail",
                                             style: TextStyle(
                                                 fontSize: 20.0,
                                                 fontWeight: FontWeight.w600,
-                                                color: Colors.blueAccent),
+                                                color: Color(0xff85160f)),
                                           ),
                                         ],
                                       ),
@@ -1182,7 +1182,7 @@ class _ImageScreenState extends State<ImageScreen> {
                         ExpansionTile(
                           leading: Icon(
                             Icons.school,
-                            color: Color(0xffe71827),
+                            color: Color(0xff85160f),
                           ),
                           title: Text(
                             "University Bookstore",
@@ -1193,7 +1193,7 @@ class _ImageScreenState extends State<ImageScreen> {
                               isExpandedBook = val;
                             });
                           },
-                          trailing: Text(isExpandedBook ? "Read less": "Read more",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
+                          trailing: Text(isExpandedBook ? "Read less": "Read more",style: TextStyle(color: Color(0xff85160f),fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -1231,14 +1231,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                         children: <Widget>[
                                           Icon(
                                             Icons.call,
-                                            color: Colors.blueAccent,
+                                            color: Color(0xff85160f),
                                           ),
                                           Text(
                                             "Call",
                                             style: TextStyle(
                                                 fontSize: 20.0,
                                                 fontWeight: FontWeight.w600,
-                                                color: Colors.blueAccent),
+                                                color: Color(0xff85160f)),
                                           ),
                                         ],
                                       ),
@@ -1257,14 +1257,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                         children: <Widget>[
                                           Icon(
                                             Icons.map,
-                                            color: Colors.blueAccent,
+                                            color: Color(0xff85160f),
                                           ),
                                           Text(
                                             "Map",
                                             style: TextStyle(
                                                 fontSize: 20.0,
                                                 fontWeight: FontWeight.w600,
-                                                color: Colors.blueAccent),
+                                                color: Color(0xff85160f)),
                                           ),
                                         ],
                                       ),
@@ -1283,14 +1283,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                         children: <Widget>[
                                           Icon(
                                             Icons.mail,
-                                            color: Colors.blueAccent,
+                                            color: Color(0xff85160f),
                                           ),
                                           Text(
                                             "Mail",
                                             style: TextStyle(
                                                 fontSize: 20.0,
                                                 fontWeight: FontWeight.w600,
-                                                color: Colors.blueAccent),
+                                                color: Color(0xff85160f)),
                                           ),
                                         ],
                                       ),
@@ -1342,7 +1342,7 @@ class _ImageScreenState extends State<ImageScreen> {
                         ExpansionTile(
                           leading: Icon(
                             Icons.school,
-                            color: Color(0xffe71827),
+                            color: Color(0xff85160f),
                           ),
                           title: Text(
                             "Ahemdabad University Hostel",
@@ -1353,7 +1353,7 @@ class _ImageScreenState extends State<ImageScreen> {
                               isExpandedh = val;
                             });
                           },
-                          trailing: Text(isExpandedh ? "Read less": "Read more",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
+                          trailing: Text(isExpandedh ? "Read less": "Read more",style: TextStyle(color: Color(0xff85160f),fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -1397,14 +1397,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                         children: <Widget>[
                                           Icon(
                                             Icons.map,
-                                            color: Colors.blueAccent,
+                                            color: Color(0xff85160f),
                                           ),
                                           Text(
                                             "Map",
                                             style: TextStyle(
                                                 fontSize: 20.0,
                                                 fontWeight: FontWeight.w600,
-                                                color: Colors.blueAccent),
+                                                color: Color(0xff85160f)),
                                           ),
                                         ],
                                       ),
@@ -1423,14 +1423,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                         children: <Widget>[
                                           Icon(
                                             Icons.mail,
-                                            color: Colors.blueAccent,
+                                            color: Color(0xff85160f),
                                           ),
                                           Text(
                                             "Mail",
                                             style: TextStyle(
                                                 fontSize: 20.0,
                                                 fontWeight: FontWeight.w600,
-                                                color: Colors.blueAccent),
+                                                color: Color(0xff85160f)),
                                           ),
                                         ],
                                       ),
@@ -1479,7 +1479,7 @@ class _ImageScreenState extends State<ImageScreen> {
                         ExpansionTile(
                           leading: Icon(
                             Icons.school,
-                            color: Color(0xffe71827),
+                            color: Color(0xff85160f),
                           ),
                           title: Text(
                             "Central Library",
@@ -1490,7 +1490,7 @@ class _ImageScreenState extends State<ImageScreen> {
                               isExpandedL = val;
                             });
                           },
-                          trailing: Text(isExpandedL ? "Read less": "Read more",style: TextStyle(color: Colors.blueAccent,fontSize: 15.0,fontWeight: FontWeight.w600),),
+                          trailing: Text(isExpandedL ? "Read less": "Read more",style: TextStyle(color: Color(0xff85160f),fontSize: 15.0,fontWeight: FontWeight.w600),),
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.only(
@@ -1527,14 +1527,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                               children: <Widget>[
                                                 Icon(
                                                   Icons.phone,
-                                                  color: Colors.blueAccent,
+                                                  color: Color(0xff85160f),
                                                 ),
                                                 Text(
                                                   "Call",
                                                   style: TextStyle(
                                                       fontSize: 20.0,
                                                       fontWeight: FontWeight.w600,
-                                                      color: Colors.blueAccent),
+                                                      color: Color(0xff85160f)),
                                                 ),
                                               ],
                                             ),
@@ -1555,14 +1555,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                               children: <Widget>[
                                                 Icon(
                                                   Icons.map,
-                                                  color: Colors.blueAccent,
+                                                  color: Color(0xff85160f),
                                                 ),
                                                 Text(
                                                   "Map",
                                                   style: TextStyle(
                                                       fontSize: 20.0,
                                                       fontWeight: FontWeight.w600,
-                                                      color: Colors.blueAccent),
+                                                      color: Color(0xff85160f)),
                                                 ),
                                               ],
                                             ),
@@ -1583,14 +1583,14 @@ class _ImageScreenState extends State<ImageScreen> {
                                               children: <Widget>[
                                                 Icon(
                                                   Icons.mail,
-                                                  color: Colors.blueAccent,
+                                                  color: Color(0xff85160f),
                                                 ),
                                                 Text(
                                                   "Mail",
                                                   style: TextStyle(
                                                       fontSize: 20.0,
                                                       fontWeight: FontWeight.w600,
-                                                      color: Colors.blueAccent),
+                                                      color: Color(0xff85160f)),
                                                 ),
                                               ],
                                             ),

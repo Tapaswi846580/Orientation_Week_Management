@@ -54,7 +54,7 @@ class RegistrationFullScreenDialogState extends State {
       return SizedBox(
         child: CircularProgressIndicator(
           backgroundColor: Colors.white,
-          valueColor: new AlwaysStoppedAnimation<Color>(Color(0xff292664)),
+          valueColor: new AlwaysStoppedAnimation<Color>(Color(0xff85160f)),
           strokeWidth: 3.0,
         ),
         height: 20.0,
@@ -70,7 +70,7 @@ class RegistrationFullScreenDialogState extends State {
       return SizedBox(
         child: CircularProgressIndicator(
           backgroundColor: Colors.white,
-          valueColor: new AlwaysStoppedAnimation<Color>(Color(0xff292664)),
+          valueColor: new AlwaysStoppedAnimation<Color>(Color(0xff85160f)),
           strokeWidth: 3.0,
         ),
         height: 20.0,
@@ -115,7 +115,7 @@ class RegistrationFullScreenDialogState extends State {
             Navigator.of(context).pop();
             },
         ),
-        backgroundColor: Color(0xff292664),
+        backgroundColor: Color(0xff85160f),
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 15.0, left: 10.0, right: 10.0),
@@ -124,7 +124,7 @@ class RegistrationFullScreenDialogState extends State {
           children: <Widget>[
             Text(
               "Please Enter OTP sent on",
-              style: TextStyle(color: Color(0xff292664),fontSize: 20.0),
+              style: TextStyle(color: Color(0xff85160f),fontSize: 20.0),
             ),
             Text(
               "$emailId",
@@ -281,8 +281,8 @@ class RegistrationFullScreenDialogState extends State {
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
                       child: RaisedButton(
-                        color: Color(0xff292664),
-                        disabledColor: Color(0xff292664),
+                        color: Color(0xff85160f),
+                        disabledColor: Color(0xff85160f),
                         child: getProperWidgetForRaisedButton(),
                         onPressed: disableButton
                             ? null
@@ -320,7 +320,7 @@ class RegistrationFullScreenDialogState extends State {
                                                                 10.0))),
                                                 title: Text("Status"),
                                                 content: Text(
-                                                  "Successfully Registered ! 😉",
+                                                  "Successfully Registered !",
                                                   style: TextStyle(
                                                       color: Colors.green),
                                                 ),
@@ -364,7 +364,7 @@ class RegistrationFullScreenDialogState extends State {
                                                                 10.0))),
                                                 title: Text("Status"),
                                                 content: Text(
-                                                  "This Email Id is already registered 🙁",
+                                                  "This Email Id is already registered",
                                                   style: TextStyle(
                                                       color: Colors.red),
                                                 ),
@@ -435,7 +435,7 @@ class RegistrationFullScreenDialogState extends State {
                                                               10.0))),
                                               title: Text("Status"),
                                               content: Text(
-                                                "Server could not be reached ⚠️",
+                                                "Server could not be reached",
                                                 style: TextStyle(
                                                     color: Colors.red),
                                               ),

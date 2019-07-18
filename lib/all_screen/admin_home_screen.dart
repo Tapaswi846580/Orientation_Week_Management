@@ -89,7 +89,7 @@ class _AdminHomeState extends State<AdminHome> {
                   actions: <Widget>[
                     FlatButton(
                       child: Text('OK',
-                          style: TextStyle(color: Color(0xff292664))),
+                          style: TextStyle(color: Color(0xff85160f))),
                       onPressed: () {
                         Navigator.pop(context, 'OK');
                       },
@@ -115,13 +115,13 @@ class _AdminHomeState extends State<AdminHome> {
                       borderRadius: BorderRadius.all(Radius.circular(10.0))),
                   title: Text("Status"),
                   content: Text(
-                    "Server could not be reached ⚠️",
+                    "Server could not be reached",
                     style: TextStyle(color: Color(0xffe71827)),
                   ),
                   actions: <Widget>[
                     FlatButton(
                       child: Text('OK',
-                          style: TextStyle(color: Color(0xff292664))),
+                          style: TextStyle(color: Color(0xff85160f))),
                       onPressed: () {
                         Navigator.pop(context, 'OK');
                       },
@@ -148,7 +148,7 @@ class _AdminHomeState extends State<AdminHome> {
             "Activities",
             style: TextStyle(color: Colors.white),
           ),
-          backgroundColor: Color(0xff292664),
+          backgroundColor: Color(0xff85160f),
           actions: <Widget>[
             apiCall == false
                 ? IconButton(
@@ -193,7 +193,7 @@ class _AdminHomeState extends State<AdminHome> {
                                   children: <Widget>[
                                     Radio(
                                       value: "A",
-                                      activeColor: Color(0xff292664),
+                                      activeColor: Color(0xff85160f),
                                       groupValue: selectedGroupRadio,
                                       onChanged: (val) {
                                         setSelectedGroupRadio(val);
@@ -207,7 +207,7 @@ class _AdminHomeState extends State<AdminHome> {
                                     ),
                                     Radio(
                                       value: "B",
-                                      activeColor: Color(0xff292664),
+                                      activeColor: Color(0xff85160f),
                                       groupValue: selectedGroupRadio,
                                       onChanged: (val) {
                                         setSelectedGroupRadio(val);
@@ -221,7 +221,7 @@ class _AdminHomeState extends State<AdminHome> {
                                     ),
                                     Radio(
                                       value: "Both",
-                                      activeColor: Color(0xff292664),
+                                      activeColor: Color(0xff85160f),
                                       groupValue: selectedGroupRadio,
                                       onChanged: (val) {
                                         setSelectedGroupRadio(val);
@@ -251,7 +251,7 @@ class _AdminHomeState extends State<AdminHome> {
                                   children: <Widget>[
                                     Radio(
                                       value: "1",
-                                      activeColor: Color(0xff292664),
+                                      activeColor: Color(0xff85160f),
                                       groupValue: selectedBatchRadio,
                                       onChanged: (val) {
                                         setSelectedBatchRadio(val);
@@ -265,7 +265,7 @@ class _AdminHomeState extends State<AdminHome> {
                                     ),
                                     Radio(
                                       value: "2",
-                                      activeColor: Color(0xff292664),
+                                      activeColor: Color(0xff85160f),
                                       groupValue: selectedBatchRadio,
                                       onChanged: (val) {
                                         setSelectedBatchRadio(val);
@@ -279,7 +279,7 @@ class _AdminHomeState extends State<AdminHome> {
                                     ),
                                     Radio(
                                       value: "Both",
-                                      activeColor: Color(0xff292664),
+                                      activeColor: Color(0xff85160f),
                                       groupValue: selectedBatchRadio,
                                       onChanged: (val) {
                                         setSelectedBatchRadio(val);
@@ -303,7 +303,7 @@ class _AdminHomeState extends State<AdminHome> {
                               onPressed: () {
                                 Navigator.pop(context, 'OK');
                               },
-                              color: Color(0xff292664),
+                              color: Color(0xff85160f),
                             )
                           ],
                         ));
@@ -319,7 +319,7 @@ class _AdminHomeState extends State<AdminHome> {
             /*Log Out Button*/
             IconButton(
               icon: Icon(Icons.power_settings_new),
-              color: Color(0xffe71827),
+              color: Colors.white,
               onPressed: () {
                 HapticFeedback.heavyImpact();
                 showDialog(
@@ -374,7 +374,7 @@ class _AdminHomeState extends State<AdminHome> {
               ? MyLinearProgressIndicator(
                   backgroundColor: Colors.white,
                   valueColor:
-                      new AlwaysStoppedAnimation<Color>(Color(0xff292664)),
+                      new AlwaysStoppedAnimation<Color>(Color(0xff85160f)),
                 )
               : null,
         ),
@@ -421,9 +421,9 @@ class _AdminHomeState extends State<AdminHome> {
                                 child: Icon(
                                   Icons.add,
                                   size: 30.0,
-                                  color: Color(0xffe71827),
+                                  color: Colors.white,
                                 ),
-                                backgroundColor: Color(0xff292664)),
+                                backgroundColor: Color(0xff85160f)),
                           ),
                         ],
                       )
@@ -522,7 +522,7 @@ class EventDetailsExpansionTileState extends State {
                             FlatButton(
                               child: Text(
                                 "No",
-                                style: TextStyle(color: Color(0xff292664)),
+                                style: TextStyle(color: Color(0xff85160f)),
                               ),
                               onPressed: () {
                                 undoValue = false;
@@ -598,7 +598,7 @@ class EventDetailsExpansionTileState extends State {
               })
         ],
         child: InkWell(
-          highlightColor: Color(0xff292664),
+          highlightColor: Color(0xff85160f),
           onLongPress: () {
             HapticFeedback.lightImpact();
             showDialog(
@@ -616,7 +616,7 @@ class EventDetailsExpansionTileState extends State {
                       actions: <Widget>[
                         FlatButton(
                           child: Text('OK',
-                              style: TextStyle(color: Color(0xff292664))),
+                              style: TextStyle(color: Color(0xff85160f))),
                           onPressed: () {
                             Navigator.pop(context, 'OK');
                           },
@@ -632,7 +632,7 @@ class EventDetailsExpansionTileState extends State {
               title: Text(
                 e.activity,
                 style: TextStyle(
-                    fontWeight: FontWeight.bold, color: Color(0xff292664)),
+                    fontWeight: FontWeight.bold, color: Color(0xff85160f)),
               ),
               subtitle: Column(
                 children: <Widget>[
@@ -644,7 +644,7 @@ class EventDetailsExpansionTileState extends State {
                     children: <Widget>[
                       Text(e.startTime),
                       Text(
-                        " TO ",
+                        " to ",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       Text(e.endTime),
@@ -710,7 +710,7 @@ class EventDetailsExpansionTileState extends State {
                               fontStyle: FontStyle.italic, fontSize: 10.0),
                         ),
                         Text(
-                          "Description ",
+                          "Details ",
                           style: TextStyle(
                               fontStyle: FontStyle.italic,
                               fontWeight: FontWeight.bold,
@@ -770,7 +770,7 @@ class EventDetailsExpansionTileState extends State {
                   actions: <Widget>[
                     FlatButton(
                       child: Text('OK',
-                          style: TextStyle(color: Color(0xff292664))),
+                          style: TextStyle(color: Color(0xff85160f))),
                       onPressed: () {
                         Navigator.pop(context, 'OK');
                       },
@@ -796,13 +796,13 @@ class EventDetailsExpansionTileState extends State {
                       borderRadius: BorderRadius.all(Radius.circular(10.0))),
                   title: Text("Status"),
                   content: Text(
-                    "Server could not be reached ⚠️",
+                    "Server could not be reached",
                     style: TextStyle(color: Color(0xffe71827)),
                   ),
                   actions: <Widget>[
                     FlatButton(
                       child: Text('OK',
-                          style: TextStyle(color: Color(0xff292664))),
+                          style: TextStyle(color: Color(0xff85160f))),
                       onPressed: () {
                         Navigator.pop(context, 'OK');
                       },

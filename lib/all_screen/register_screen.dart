@@ -84,7 +84,7 @@ class _registerState extends State<RegisterPage> {
 //                  gradient: LinearGradient(
 //                    begin: Alignment.topCenter,
 //                    end: Alignment.bottomCenter,
-//                    colors: [Color(0xff292664), Color(0xff292664)],
+//                    colors: [Color(0xff85160f), Color(0xff85160f)],
 //                  ),
 //                  borderRadius: BorderRadius.only(
 //                      bottomLeft: Radius.circular(0),
@@ -348,7 +348,7 @@ class _registerState extends State<RegisterPage> {
                           width: MediaQuery.of(context).size.width/3.5,
                           child: OutlineButton(
                             onPressed: (){},
-                            color: Color(0xff292664),
+                            color: Color(0xff85160f),
 //                            elevation: 10.0,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0)),
@@ -408,7 +408,7 @@ class SendOTPButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final otpController = TextEditingController();
     return RaisedButton(
-      color: Color(0xff292664),
+      color: Color(0xff85160f),
       child: Center(
         child: FittedBox(
           fit: BoxFit.fitWidth,

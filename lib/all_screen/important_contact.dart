@@ -12,7 +12,7 @@ class _ContactDeatilsState extends State<ContactDeatils> {
     return Scaffold(
 
       appBar: AppBar(
-        backgroundColor: Color(0xff292664),
+        backgroundColor: Color(0xff85160f),
         title: Text("Important Contact Details", style: TextStyle(color: Colors.white),),
         centerTitle: true,
         leading: IconButton(
@@ -29,7 +29,7 @@ class _ContactDeatilsState extends State<ContactDeatils> {
               subtitle: Text("Tap to call"),
               onTap: () => AllCallEmail()._AUSamved(),
               trailing: IconButton(
-                  icon: Icon(Icons.location_on, color: Color(0xff292664)),
+                  icon: Icon(Icons.location_on, color: Color(0xff85160f)),
                   onPressed: () => AllCallEmail()._launchMapsamved()),
             ),
             Divider(
@@ -41,7 +41,7 @@ class _ContactDeatilsState extends State<ContactDeatils> {
               subtitle: Text("Tap to call"),
               onTap: () => AllCallEmail()._AUSstu(),
               trailing: IconButton(
-                  icon: Icon(Icons.mail, color: Color(0xff292664)),
+                  icon: Icon(Icons.mail, color: Color(0xff85160f)),
                   onPressed: () => AllCallEmail()._AUSetuMail()),
             ),
             Divider(
@@ -54,7 +54,7 @@ class _ContactDeatilsState extends State<ContactDeatils> {
               subtitle: Text("Tap to call"),
               onTap: () => AllCallEmail()._AUO(),
               trailing: IconButton(
-                  icon: Icon(Icons.mail, color: Color(0xff292664)),
+                  icon: Icon(Icons.mail, color: Color(0xff85160f)),
                   onPressed: () => AllCallEmail()._AUMail()),
             ),
             Divider(
@@ -66,7 +66,7 @@ class _ContactDeatilsState extends State<ContactDeatils> {
               subtitle: Text("Tap to call"),
               onTap: () => AllCallEmail()._AUOC(),
               trailing: IconButton(
-                  icon: Icon(Icons.mail, color: Color(0xff292664)),
+                  icon: Icon(Icons.mail, color: Color(0xff85160f)),
                   onPressed: () => AllCallEmail()._AUCMail()),
             ),
             Divider(
@@ -76,7 +76,7 @@ class _ContactDeatilsState extends State<ContactDeatils> {
             ListTile(
               title: Text("AURIS Support",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.0),),
               trailing: IconButton(
-                  icon: Icon(Icons.mail, color: Color(0xff292664)),
+                  icon: Icon(Icons.mail, color: Color(0xff85160f)),
                   onPressed: () => AllCallEmail()._AUAM()),
             ),
             Divider(
@@ -88,7 +88,7 @@ class _ContactDeatilsState extends State<ContactDeatils> {
               subtitle: Text("Tap to call"),
               onTap: () => AllCallEmail()._AUSstu(),// Pending che
               trailing: IconButton(
-                  icon: Icon(Icons.mail, color: Color(0xff292664)),
+                  icon: Icon(Icons.mail, color: Color(0xff85160f)),
                   onPressed: () => AllCallEmail()._AUSetuMail()),// pending che
             ),
             Divider(
@@ -100,7 +100,7 @@ class _ContactDeatilsState extends State<ContactDeatils> {
               subtitle: Text("Tap to call"),
               onTap: () => AllCallEmail()._AUOAF(),
               trailing: IconButton(
-                  icon: Icon(Icons.mail, color: Color(0xff292664)),
+                  icon: Icon(Icons.mail, color: Color(0xff85160f)),
                   onPressed: () => AllCallEmail()._AUOAFM()),
             ),
             Divider(

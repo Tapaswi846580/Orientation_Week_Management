@@ -66,7 +66,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xff292664),
+          backgroundColor: Color(0xff85160f),
           title: Text("Update Activity"),
           leading: IconButton(
             icon: new Icon(
@@ -100,7 +100,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
 //                            style: Theme.of(context).textTheme.title,
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Color(0xff292664)),
+                            color: Color(0xff85160f)),
 
                         decoration: InputDecoration(
                           labelText: 'Activity Title*',
@@ -131,7 +131,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                         ),
                         Radio(
                           value: "A",
-                          activeColor: Color(0xff292664),
+                          activeColor: Color(0xff85160f),
                           groupValue: selectedGrpRadio,
                           onChanged: (val) {
                             HapticFeedback.lightImpact();
@@ -145,7 +145,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                         ),
                         Radio(
                           value: "B",
-                          activeColor: Color(0xff292664),
+                          activeColor: Color(0xff85160f),
                           groupValue: selectedGrpRadio,
                           onChanged: (val) {
                             HapticFeedback.lightImpact();
@@ -192,7 +192,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                         ),
                         Radio(
                           value: "BATCH-1",
-                          activeColor: Color(0xff292664),
+                          activeColor: Color(0xff85160f),
                           groupValue: selectedBatchRadio,
                           onChanged: (val) {
                             HapticFeedback.lightImpact();
@@ -206,7 +206,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                         ),
                         Radio(
                           value: "BATCH-2",
-                          activeColor: Color(0xff292664),
+                          activeColor: Color(0xff85160f),
                           groupValue: selectedBatchRadio,
                           onChanged: (val) {
                             HapticFeedback.lightImpact();
@@ -220,7 +220,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                         ),
                         Radio(
                           value: "BOTH",
-                          activeColor: Color(0xff292664),
+                          activeColor: Color(0xff85160f),
                           groupValue: selectedBatchRadio,
                           onChanged: (val) {
                             HapticFeedback.lightImpact();
@@ -453,7 +453,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                                   child: Text('OK',
                                                       style: TextStyle(
                                                           color:
-                                                          Color(0xff292664))),
+                                                          Color(0xff85160f))),
                                                   onPressed: () {
                                                     Navigator.pop(
                                                         context, 'OK');
@@ -476,7 +476,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                               shape: RoundedRectangleBorder(
                                                   borderRadius: BorderRadius.all(Radius.circular(10.0))),
                                               content: Text(
-                                                "Record Updated ! 😉",
+                                                "Record Updated !",
                                                 style: TextStyle(
                                                     color: Colors.green),
                                               ),
@@ -485,7 +485,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                                   child: Text('OK',
                                                       style: TextStyle(
                                                           color:
-                                                          Color(0xff292664))),
+                                                          Color(0xff85160f))),
                                                   onPressed: () {
                                                     Navigator.pop(
                                                         context, 'OK');
@@ -511,7 +511,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                               shape: RoundedRectangleBorder(
                                                   borderRadius: BorderRadius.all(Radius.circular(10.0))),
                                               content: Text(
-                                                "Somethin went wrong, please try again. :(",
+                                                "Somethin went wrong, please try again.",
                                                 style: TextStyle(
                                                     color: Color(0xffe71827)),
                                               ),
@@ -520,7 +520,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                                   child: Text('OK',
                                                       style: TextStyle(
                                                           color:
-                                                          Color(0xff292664))),
+                                                          Color(0xff85160f))),
                                                   onPressed: () {
                                                     Navigator.pop(
                                                         context, 'OK');
@@ -544,7 +544,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                               shape: RoundedRectangleBorder(
                                                   borderRadius: BorderRadius.all(Radius.circular(10.0))),
                                               content: Text(
-                                                "Server could not be reached ⚠️",
+                                                "Server could not be reached️",
                                                 style: TextStyle(
                                                     color:Color(0xffe71827)),
                                               ),
@@ -553,7 +553,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                                   child: Text('OK',
                                                       style: TextStyle(
                                                           color:
-                                                          Color(0xff292664))),
+                                                          Color(0xff85160f))),
                                                   onPressed: () {
                                                     Navigator.pop(
                                                         context, 'OK');
@@ -585,7 +585,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                               child: Text('OK',
                                                   style: TextStyle(
                                                       color:
-                                                      Color(0xff292664))),
+                                                      Color(0xff85160f))),
                                               onPressed: () {
                                                 Navigator.pop(
                                                     context, 'OK');
@@ -595,8 +595,8 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
                                         ));
                               }
                             },
-                      color: Color(0xff292664),
-                      disabledColor: Color(0xff292664),
+                      color: Color(0xff85160f),
+                      disabledColor: Color(0xff85160f),
                     )
                   ],
                 ),
@@ -613,7 +613,7 @@ class _AdminFullscreenDialogState extends State<AdminFullscreenDialog> {
       return SizedBox(
         child: CircularProgressIndicator(
           backgroundColor: Colors.white,
-          valueColor: new AlwaysStoppedAnimation<Color>(Color(0xff292664)),
+          valueColor: new AlwaysStoppedAnimation<Color>(Color(0xff85160f)),
           strokeWidth: 3.0,
         ),
         height: 25.0,

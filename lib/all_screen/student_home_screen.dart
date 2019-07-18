@@ -123,7 +123,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                     actions: <Widget>[
                       FlatButton(
                         child: Text('OK',
-                            style: TextStyle(color: Color(0xff292664))),
+                            style: TextStyle(color: Color(0xff85160f))),
                         onPressed: () {
                           Navigator.pop(context, 'OK');
                         },
@@ -148,13 +148,13 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                         borderRadius: BorderRadius.all(Radius.circular(10.0))),
                     title: Text("Status"),
                     content: Text(
-                      "Server could not be reached ⚠️",
+                      "Server could not be reached️",
                       style: TextStyle(color: Color(0xffe71827)),
                     ),
                     actions: <Widget>[
                       FlatButton(
                         child: Text('OK',
-                            style: TextStyle(color: Color(0xff292664))),
+                            style: TextStyle(color: Color(0xff85160f))),
                         onPressed: () {
                           Navigator.pop(context, 'OK');
                         },
@@ -236,7 +236,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                   actions: <Widget>[
                     FlatButton(
                       child: Text('OK',
-                          style: TextStyle(color: Color(0xff292664))),
+                          style: TextStyle(color: Color(0xff85160f))),
                       onPressed: () {
                         Navigator.pop(context, 'OK');
                       },
@@ -262,13 +262,13 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                       borderRadius: BorderRadius.all(Radius.circular(10.0))),
                   title: Text("Status"),
                   content: Text(
-                    "Server could not be reached ⚠️",
+                    "Server could not be reached️",
                     style: TextStyle(color: Color(0xffe71827)),
                   ),
                   actions: <Widget>[
                     FlatButton(
                       child: Text('OK',
-                          style: TextStyle(color: Color(0xff292664))),
+                          style: TextStyle(color: Color(0xff85160f))),
                       onPressed: () {
                         Navigator.pop(context, 'OK');
                       },
@@ -311,7 +311,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                                   children: <Widget>[
                                     Center(
                                         child: Icon(
-                                      Icons.sentiment_satisfied,
+                                      Icons.info_outline,
                                       size: 40.0,
                                     )),
                                     Padding(
@@ -505,13 +505,13 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                 },
               ),
             ],
-            backgroundColor: Color(0xff292664),
-            title: SingleChildScrollView(scrollDirection: Axis.horizontal,child: Text("Orientation App")),
+            backgroundColor: Color(0xff85160f),
+            title: SingleChildScrollView(scrollDirection: Axis.horizontal,child: Text("Orientation Week")),
             bottom: apiCall
                 ? MyLinearProgressIndicator(
                     backgroundColor: Colors.white,
                     valueColor:
-                        new AlwaysStoppedAnimation<Color>(Color(0xff292664)),
+                        new AlwaysStoppedAnimation<Color>(Color(0xff85160f)),
                   )
                 : null,
           ),
@@ -625,7 +625,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                 IconButton(
                   icon: Icon(
                     Icons.arrow_back_ios,
-                    color: Color(0xff292664),
+                    color: Color(0xff85160f),
                     size: 30.0,
                   ),
                   onPressed: () {
@@ -645,7 +645,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                 IconButton(
                     icon: Icon(
                       Icons.arrow_forward_ios,
-                      color: Color(0xff292664),
+                      color: Color(0xff85160f),
                       size: 30.0,
                     ),
                     onPressed: () {
@@ -669,7 +669,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                   children: <Widget>[
                     Icon(
                       Icons.location_on,
-                      color: Color(0xff292664),
+                      color: Color(0xff85160f),
                       size: 40.0,
                     ),
                     Text(
@@ -724,7 +724,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
         actions: <Widget>[],
         secondaryActions: <Widget>[],
         child: InkWell(
-          highlightColor: Color(0xff292664),
+          highlightColor: Color(0xff85160f),
           onLongPress: () async {
 
             HapticFeedback.lightImpact();
@@ -746,7 +746,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                             e.description.toLowerCase().trim() == "null".toLowerCase().trim() || e.description.trim() == "" || e.description == null
-                                ? Text("\n\nNo description")
+                                ? Text(" ")
                                 : Text("\n\n" + e.description),
                           ],
                         ),
@@ -754,7 +754,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                       actions: <Widget>[
                         FlatButton(
                           child: Text('OK',
-                              style: TextStyle(color: Color(0xff292664))),
+                              style: TextStyle(color: Color(0xff85160f))),
                           onPressed: () {
                             Navigator.pop(context, 'OK');
                           },
@@ -770,7 +770,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
               title: Text(
                 e.activity,
                 style: TextStyle(
-                    fontWeight: FontWeight.bold, color: Color(0xff292664)),
+                    fontWeight: FontWeight.bold, color: Color(0xff85160f)),
               ),
               subtitle: Column(
                 children: <Widget>[
@@ -778,7 +778,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                     children: <Widget>[
                       Text(e.startTime),
                       Text(
-                        " TO ",
+                        " to ",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       Text(e.endTime),
@@ -820,7 +820,7 @@ class _StudentHomeScreenState extends State<StudentHomeScreen> {
                             fontStyle: FontStyle.italic, fontSize: 10.0),
                       ),
                       Text(
-                        "Description ",
+                        "Details ",
                         style: TextStyle(
                             fontStyle: FontStyle.italic,
                             fontWeight: FontWeight.bold,
